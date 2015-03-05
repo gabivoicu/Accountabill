@@ -4,5 +4,7 @@ Accountabill is an OpenSource web application that employs a user's location to 
 
 
 
+
+
 Accountabill was created by: 
 Gabriela Voicu, Ian Agne, Shiraz Sherwani, Elliott Young, and Rachel Kolcheck. 
