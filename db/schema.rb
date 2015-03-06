@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20150305204654) do
   enable_extension "hstore"
 
   create_table "politicians", force: :cascade do |t|
-    t.string   "name"
-    t.string   "position"
+    t.string   "bio_id"
+    t.string   "entity_id"
     t.hstore   "hash_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
