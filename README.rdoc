@@ -1,28 +1,25 @@
-== README
+= Accountabill
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Accountabill is an OpenSource web application that employs a user's location to easily view their government representatives on the Federal level. Users can examine the companies and corperations that have funded a representative, as well as what bills and laws they've supported in the past. Accountabill also provides the User with the representative's contact information.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Requirements
+- OpenCongress
+
+
+
+=== Technologies
+- Rails
+- Unicorn
+- Foundation
+- HStore - Postgres
+
+=== Testing
+- Travis
+- SimpleCov
+- Jasmine
+- RSpec
+
+
+Accountabill was created by: 
+Gabriela Voicu, Ian Agne, Shiraz Sherwani, Elliott Young, and Rachel Kolcheck. 
