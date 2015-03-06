@@ -61,6 +61,9 @@ GEM
     hike (1.2.3)
     hstore_accessor (1.0.1)
       activerecord (>= 4.0.0)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jasmine-core (2.2.0)
     jasmine-rails (0.10.7)
@@ -86,6 +89,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.0)
+    multi_xml (0.5.5)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.1)
@@ -194,6 +198,7 @@ DEPENDENCIES
   better_errors
   byebug
   hstore_accessor
+  httparty
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails
