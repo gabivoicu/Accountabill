@@ -20,13 +20,13 @@ $(document).ready(function(){
 
   $(".politician").on("click", function(event){
     event.preventDefault();
-
+    var bio_id = "A000014";
     //Steps:
     //Pull biocode out of results from zipcode search
     //Query the database using the biocode, get entity_id
     //Query the API using the entity_id and get the contributions
     //Render the contributions
-    var contributions = new ContributionsCollection();
+    var contributions = new ContributionsCollection({biocode: bio_id});
     console.log(contributions);
 
     var contributionView = new AllContributionsView({ collection: contributions });

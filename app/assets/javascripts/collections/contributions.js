@@ -1,4 +1,7 @@
 var ContributionsCollection = Backbone.Collection.extend({
-  url: '/contributions',
+  initialize: function(options){
+    console.log(options)
+    this.url = '/contributions/' + options.biocode;
+  },
   model: Contribution
 })
