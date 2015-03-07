@@ -1,5 +1,5 @@
 $(document).ready(function(){
-API_KEY = "2a92fee9d78f4fddbe5d9e14f3632465"
+API_KEY = SUNLIGHT_API_KEY
 
   $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
@@ -28,7 +28,7 @@ API_KEY = "2a92fee9d78f4fddbe5d9e14f3632465"
     //Render the contributions
 
     var entity_id = "4148b26f6f1c437cb50ea9ca4699417a";
-    var new_url = "http://transparencydata.com/api/1.0/aggregates/pol/4148b26f6f1c437cb50ea9ca4699417a/contributors.json?cycle=2012&limit=10&apikey=29e47b0de0384bcfb20ae020227a5426"
+    var new_url = "http://transparencydata.com/api/1.0/aggregates/pol/4148b26f6f1c437cb50ea9ca4699417a/contributors.json?cycle=2012&limit=10&apikey=" + API_KEY
 
     var contributions = new ContributionsCollection({ url: new_url });
     console.log(contributions);
