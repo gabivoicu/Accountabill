@@ -1,12 +1,8 @@
 class NetworkController < ApplicationController
 
   def contributions
-    # params[:bio_id] = "W000779"
-    politician = Politician.find_by_bio_id("W000779")
-    url = "http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors.json?cycle=2012&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}"
-    
-    p url
+    politician = Politician.find_by_bio_id(params[:bio_id])
 
-    @contributions = HTTParty.get(url)
+    @contributions = HTTParty.get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors.json?cycle=2012&limit=50&apikey=#{ENV['SUNLIGHT_API_KEY']}")
   end
 end
