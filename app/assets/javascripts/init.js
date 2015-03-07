@@ -1,5 +1,5 @@
 $(document).ready(function(){
-API_KEY = SUNLIGHT_API_KEY
+API_KEY = ENV['SUNLIGHT_API_KEY'];
 
   $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
