@@ -6,7 +6,6 @@ $(document).ready(function(){
     if($("#zip-search-form input").val().length === 5) {
         var zipcode = $("#zip-search-form input").val();
         console.log(zipcode);
-
         var politicians = new PoliticiansCollection({ zipcode: zipcode });
 
         var searchResultView = new PoliticianSearchResultsView({collection: politicians});
