@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150305204654) do
 
   # These are extensions that must be enabled in order to support this database
@@ -20,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150305204654) do
   create_table "politicians", force: :cascade do |t|
     t.string   "bio_id"
     t.string   "entity_id"
+    t.string   "name"
+    t.string   "position"
     t.hstore   "hash_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
