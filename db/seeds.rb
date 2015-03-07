@@ -18,6 +18,8 @@ end
 CSV.foreach('db/entity_id.csv') do |row|
   politician = Politician.find_by(bio_id: row[0])
   politician.entity_id = row[1]
+  puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
+  politician.save
 end
 
 # Politician.all.each do |politician|
