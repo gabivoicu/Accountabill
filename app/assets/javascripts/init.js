@@ -1,27 +1,26 @@
 $(document).ready(function(){
 // API_KEY = <%= ENV['SUNLIGHT_API_KEY'] %>;
 
-  $("#zip-search-form").on("submit", function(event){
+  $("#zip-search-form").on("keyup", function(event){
     event.preventDefault();
 
-    var zipcode = $("#zip-search-form input").val();
-    console.log(zipcode);
+    if($("#zip-search-form input").val().length === 5) {
+        var zipcode = $("#zip-search-form input").val();
+        console.log(zipcode);
 
-    var politicians = new PoliticiansCollection({ zipcode: zipcode });
-    var searchResultView = new PoliticianSearchResultsView({collection: politicians});
-    searchResultView.render()
-    $("#search-container").append(searchResultView.el);
-    politicians.fetch({reset: true});
+        var politicians = new PoliticiansCollection({ zipcode: zipcode });
+        var searchResultView = new PoliticianSearchResultsView({collection: politicians});
+        searchResultView.render()
+        $("#search-container").html(searchResultView.el);
+        politicians.fetch({reset: true});
+    }
   });
 
   $(".politician").on("click", function(event){
     event.preventDefault();
     var bio_id = "A000014";
     //Steps:
-    //Pull biocode out of results from zipcode search
-    //Query the database using the biocode, get entity_id
-    //Query the API using the entity_id and get the contributions
-    //Render the contributions
+    //Pull biocode out of results from zipcode search and replace the above line
     var contributions = new ContributionsCollection({biocode: bio_id});
     console.log(contributions);
 
