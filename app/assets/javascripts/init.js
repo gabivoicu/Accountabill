@@ -10,9 +10,9 @@ API_KEY = "2a92fee9d78f4fddbe5d9e14f3632465"
     var new_url = "http://congress.api.sunlightfoundation.com/legislators/locate?zip=" + zipcode + "&apikey=" + API_KEY;
 
     var politicians = new PoliticiansCollection({ url: new_url });
-    console.log("yay!")
     var searchResultView = new PoliticianSearchResultsView({collection: politicians});
-    searchResultView.render();
+    searchResultView.render()
+    $("#search-container").append(searchResultView.el);
     politicians.fetch({reset: true});
 
   });
