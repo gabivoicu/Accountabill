@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
+
 gem 'hstore_accessor'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -31,7 +32,7 @@ gem 'ejs'
 
 # Use Unicorn as the app server
 gem 'unicorn'
-
+gem "httparty"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
