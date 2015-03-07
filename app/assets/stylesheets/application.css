@@ -24,6 +24,11 @@ body h1{
   color: #142525;
 }
 
+#front-page-header{
+  margin-top: 10%;
+  font-size: 5em;
+}
+
 #search-container{
   background-color: #F4F2F3;
   padding-bottom: 15px;
