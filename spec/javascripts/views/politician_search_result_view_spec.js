@@ -4,12 +4,7 @@ describe("PoliticianSearchResultView", function(){
     beforeEach(function(){
         resultview = new PoliticianSearchResultView
     });
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-})
-=======
+    
     describe( "When initializing a new PoliticianSearchResultView", function(){
         xit("initializes with a JST template", function(){
             // Jasmine is not reading JST template
@@ -26,11 +21,4 @@ describe("PoliticianSearchResultView", function(){
 
 
     });
-
-
 })
->>>>>>> 486fc8d06788351145ffa83fa2961a4dd7a43689
-=======
-
-})
->>>>>>> 9bef913b29bb0509989fee1fa093c828763875b9
