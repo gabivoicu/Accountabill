@@ -8,7 +8,9 @@ $(document).ready(function(){
         console.log(zipcode);
 
         var politicians = new PoliticiansCollection({ zipcode: zipcode });
+
         var searchResultView = new PoliticianSearchResultsView({collection: politicians});
+
         searchResultView.render()
         $("#search-container").html(searchResultView.el);
         politicians.fetch({reset: true});
@@ -17,6 +19,7 @@ $(document).ready(function(){
 
   $(".politician").on("click", function(event){
     event.preventDefault();
+    
     var bio_id = "A000014";
     //Steps:
     //Pull biocode out of results from zipcode search and replace the above line
