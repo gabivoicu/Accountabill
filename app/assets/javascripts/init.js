@@ -7,15 +7,11 @@ $(document).ready(function(){
     var zipcode = $("#zip-search-form input").val();
     console.log(zipcode);
 
-    // var new_url = "http://congress.api.sunlightfoundation.com/legislators/locate?zip=" + zipcode + "&apikey=" + API_KEY;
-
-    var politicians = new PoliticiansCollection({ url: new_url });
+    var politicians = new PoliticiansCollection({ zipcode: zipcode });
     var searchResultView = new PoliticianSearchResultsView({collection: politicians});
     searchResultView.render()
     $("#search-container").append(searchResultView.el);
     politicians.fetch({reset: true});
-
-
   });
 
   $(".politician").on("click", function(event){
