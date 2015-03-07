@@ -1,13 +1,10 @@
 $(document).ready(function(){
-// API_KEY = <%= ENV['SUNLIGHT_API_KEY'] %>;
 
   $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
 
     var zipcode = $("#zip-search-form input").val();
     console.log(zipcode);
-
-    // var new_url = "http://congress.api.sunlightfoundation.com/legislators/locate?zip=" + zipcode + "&apikey=" + API_KEY;
 
     var politicians = new PoliticiansCollection({ url: new_url });
     var searchResultView = new PoliticianSearchResultsView({collection: politicians});
