@@ -6,6 +6,7 @@ describe("PoliticianSearchResultView", function(){
     });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 })
 =======
@@ -29,3 +30,7 @@ describe("PoliticianSearchResultView", function(){
 
 })
 >>>>>>> 486fc8d06788351145ffa83fa2961a4dd7a43689
+=======
+
+})
+>>>>>>> 9bef913b29bb0509989fee1fa093c828763875b9
