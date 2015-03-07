@@ -34,6 +34,7 @@ body h1{
   padding-bottom: 15px;
   border: 2px solid #F4F2F3;
   border-radius: 25px;
+  display: none;
 }
 
 .politician-results{
