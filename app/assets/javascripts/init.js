@@ -14,6 +14,7 @@ $(document).ready(function(){
         $("#search-container").html(searchResultView.el);
         politicians.fetch({reset: true});
     }
+
   });
 
   $(".politician").on("click", function(event){
