@@ -37,6 +37,7 @@ $(document).ready(function(){
     var allDetailsView = new AllDetailsView();
     allDetailsView.render();
     $(".search-results").hide();
+    $("#front-page-header").css("margin-top", "1%");
     $("#results-view").html(allDetailsView.el);
     $(document).foundation('accordion', 'reflow');
   });
