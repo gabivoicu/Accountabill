@@ -61,6 +61,24 @@ body h1{
   background: #E0ECFF;
 }
 
+       .tooltip {                                                        /* NEW */
+  background: #eee;                                               /* NEW */
+  box-shadow: 0 0 5px #999999;                                    /* NEW */
+  color: #333;                                                    /* NEW */
+  display: none;                                                  /* NEW */
+  font-size: 12px;                                                /* NEW */
+  left: 130px;                                                    /* NEW */
+  padding: 10px;                                                  /* NEW */
+  position: absolute;                                             /* NEW */
+  text-align: center;                                             /* NEW */
+  top: 80px;                                                      /* NEW */
+  width: 80px;                                                    /* NEW */
+  z-index: 10;                                                    /* NEW */
+}                                                 
+  
+                                                              
+
+
 
 
 
