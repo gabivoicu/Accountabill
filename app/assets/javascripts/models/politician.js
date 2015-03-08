@@ -1,6 +1,35 @@
 var Politician = Backbone.Model.extend({
   defaults: {
-    name: ""
+    bioguide_id: null,
+    birthday: null,
+    chamber: null,
+    contact_form: null,
+    crp_id: null,
+    district: null,
+    facebook_id: null,
+    fax: null,
+    first_name: null,
+    gender: null,
+    in_office: null,
+    last_name: null,
+    middle_name: null,
+    name_suffix: null,
+    nickname: null,
+    oc_email: null,
+    office: null,
+    party: null,
+    phone: null,
+    senate_class: null,
+    state: null,
+    state_name: null,
+    state_rank: null,
+    term_end: null,
+    term_start: null,
+    thomas_id: null,
+    title: null,
+    twitter_id: null,
+    website: null,
+    youtube_id: null
   }
 
 })
