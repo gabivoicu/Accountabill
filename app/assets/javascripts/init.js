@@ -37,5 +37,6 @@ $(document).ready(function(){
     
     var allDetailsView = new AllDetailsView();
     allDetailsView.render();
+    ("#results-view").html(allDetailsView.el);
   });
 });
