@@ -41,4 +41,8 @@ $(document).ready(function(){
     $("#results-view").html(allDetailsView.el);
     $(document).foundation('accordion', 'reflow');
   });
+
+  $("#front-page-header").on("click", function(event){
+
+  });
 });
