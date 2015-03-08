@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   get '/politician/:bio_id' => "politician#details", as: "politician_details"
   
+  get '/contributor_types/:bio_id' => "network#contributor_types", as: "contributor_types_request"
+
+
   root 'page#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
