@@ -12,6 +12,7 @@ $(document).ready(function(){
 
         searchResultView.render()
         $("#search-container").html(searchResultView.el);
+        $('.detail').hide();
         politicians.fetch({reset: true});
     }
 
@@ -33,10 +34,9 @@ $(document).ready(function(){
     var content = $(this).html();
     console.log(content.attributes)
     
-    $(".search-results").hide();
-    
     var allDetailsView = new AllDetailsView();
     allDetailsView.render();
+    $(".search-results").hide();
     $("#results-view").html(allDetailsView.el);
   });
 });
