@@ -38,6 +38,7 @@ class NetworkController < ApplicationController
     render :json => sector_array
   end
 
+  
   def bills
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/bills?sponsor_id=#{params[:bio_id]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
