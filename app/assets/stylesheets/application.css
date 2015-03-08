@@ -34,12 +34,19 @@ body h1{
   padding-bottom: 15px;
   border: 2px solid #F4F2F3;
   border-radius: 25px;
-  display: none;
+  padding: 0.25em;
+  /*display: none;*/
 }
 
-.politician-results{
-  background-color: #64BCBA;
-  border: 2px solid #F4F2F3;
-  border-radius: 25px;
-  height: 80px;
+.politician-result{
+  max-height: 35px;
+  display: inline-block;
 }
+.politician-result img{
+  max-height: 50%;
+}
+
+
+
+
+

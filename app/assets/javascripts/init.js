@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $("#zip-search-form").on("keyup", function(event){
+  $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
 
     if($("#zip-search-form input").val().length === 5) {
