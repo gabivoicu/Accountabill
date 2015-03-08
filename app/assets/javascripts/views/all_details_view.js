@@ -1,5 +1,5 @@
 var AllDetailsView = Backbone.View.extend({
-  template: JST['/templates/details'],
+  template: JST['/templates/politician_detail'],
   className: "detail",
 
   render: function(){
