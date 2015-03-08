@@ -37,6 +37,7 @@ $(document).ready(function(){
     
     var allDetailsView = new AllDetailsView();
     allDetailsView.render();
+    console.log(allDetailsView.el);
     ("#results-view").html(allDetailsView.el);
   });
 });
