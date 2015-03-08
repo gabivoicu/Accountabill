@@ -30,7 +30,7 @@ gem 'ejs'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
+# # Use Unicorn as the app server
 gem 'unicorn'
 gem "httparty"
 # Use Capistrano for deployment
