@@ -23,4 +23,20 @@ class NetworkController < ApplicationController
 
     render :json => contribution_array
   end
+
+  def sectors
+    # A: Agribusiness, B: Communications/Electronics, C: Construction, D: Defense, E: Energy/Natural Resources, F: Finance/Insurance/Real Estate, H: Health, K: Lawyers and Lobbyists, M: Transportation, N: Misc. Business, Q: Ideology/Single Issue, P: Labor, W: Other, Y: Unknown, Z: Administrative Use
+
+    politician = Politician.find_by_bio_id(params[:bio_id])
+
+    response = HTTParty.get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/sectors.json?cycle=2012&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
+
+    sector_array = []
+
+    response.parsed_response.each do |s_info|
+      sector_array << 42
+    end
+
+    render :json => sector_array
+  end
 end
