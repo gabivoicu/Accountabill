@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/sectors/:bio_id' => "network#sectors", as: "sectors_request"
 
+  get '/bills/:bio_id' => "network#bills", as: "bills_request"
+
   root 'page#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
