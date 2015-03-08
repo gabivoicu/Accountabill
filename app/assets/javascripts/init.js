@@ -17,18 +17,20 @@ $(document).ready(function(){
 
   });
 
-  $(".politician").on("click", function(event){
+  $("#search-container").on("click", ".politician-result", function(event){
     event.preventDefault();
-    
-    var bio_id = "A000014";
+    // var bio_id = "A000014";
     //Steps:
     //Pull biocode out of results from zipcode search and replace the above line
-    var contributions = new ContributionsCollection({biocode: bio_id});
-    console.log(contributions);
+    // var contributions = new ContributionsCollection({biocode: bio_id});
+    // console.log(contributions);
 
-    var contributionView = new AllContributionsView({ collection: contributions });
+    // var contributionView = new AllContributionsView({ collection: contributions });
     
-    contributionView.render();
-    contributions.fetch({ reset: true });
+    // contributionView.render();
+    // contributions.fetch({ reset: true });
+
+    var content = $(this).html();
+    console.log(content)
   });
 });
