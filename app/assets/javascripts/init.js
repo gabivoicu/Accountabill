@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
 
     request.done(function(response){
-        var allDetailsView = new AllDetailsView({data: response});
+        var allDetailsView = new AllDetailsView({model: response});
         allDetailsView.render();
         $(".search-results").hide();
         $("#front-page-header").css("margin-top", "1%");
