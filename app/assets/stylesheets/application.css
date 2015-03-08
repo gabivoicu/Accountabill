@@ -11,7 +11,42 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require foundation_and_overrides
+ *= require_self
 
  */
+
+body{
+  background: #E8FFFE;
+}
+
+body h1{
+  color: #142525;
+}
+
+#front-page-header{
+  margin-top: 10%;
+  font-size: 5em;
+}
+
+#search-container{
+  background-color: #F4F2F3;
+  padding-bottom: 15px;
+  border: 2px solid #F4F2F3;
+  border-radius: 25px;
+  padding: 0.25em;
+  /*display: none;*/
+}
+
+.politician-result{
+  max-height: 35px;
+  display: inline-block;
+}
+.politician-result img{
+  max-height: 50%;
+}
+
+
+
+
+

@@ -1,12 +1,11 @@
 $(document).ready(function(){
 
-  $("#zip-search-form").on("keyup", function(event){
+  $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
 
     if($("#zip-search-form input").val().length === 5) {
         var zipcode = $("#zip-search-form input").val();
         console.log(zipcode);
-
         var politicians = new PoliticiansCollection({ zipcode: zipcode });
 
         var searchResultView = new PoliticianSearchResultsView({collection: politicians});
@@ -15,6 +14,7 @@ $(document).ready(function(){
         $("#search-container").html(searchResultView.el);
         politicians.fetch({reset: true});
     }
+
   });
 
   $(".politician").on("click", function(event){
