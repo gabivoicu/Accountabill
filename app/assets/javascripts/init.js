@@ -114,10 +114,13 @@ $(document).ready(function(){
         path.on('mouseover', function(d) {                            
           var total = d3.sum(dataset.map(function(d) {                
             return d.amount;                                           
-        }));                                                        
+        }));        
+          console.log(d.data.count)
           var percent = Math.round(1000 * d.data.amount / total) / 10; 
-            tooltip.select('.sector').html(d.data.sector);                
-            tooltip.select('.amount').html(d.data.amount);                
+
+            tooltip.select('.sector').html(d.data.sector);
+            tooltip.select('.count').html(d.data.count);                 
+            tooltip.select('.amount').html('$' + d.data.amount);               
             tooltip.select('.percent').html(percent + '%');             
             tooltip.style('display', 'block');                          
           });                                                           
