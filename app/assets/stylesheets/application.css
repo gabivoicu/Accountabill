@@ -61,6 +61,8 @@ body h1{
   background: #E0ECFF;
 }
 
-
+#hide-bio {
+  display: none;
+}
 
 
