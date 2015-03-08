@@ -4,7 +4,7 @@ var AllDetailsView = Backbone.View.extend({
 
   render: function(){
   	console.log(this.model);
-    this.$el.html(this.template(this.model));
+    this.$el.html(this.template(this.model.hash_data));
     return this;
   }
 
