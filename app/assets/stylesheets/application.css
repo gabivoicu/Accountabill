@@ -34,18 +34,25 @@ body h1{
   padding-bottom: 15px;
   border: 2px solid #F4F2F3;
   border-radius: 25px;
-  padding: 0.25em;
+  padding: 1em;
   /*display: none;*/
 }
 
-.politician-result{
-  max-height: 35px;
-  display: inline-block;
-}
-.politician-result img{
-  max-height: 50%;
+.search-results {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
 }
 
+.politician-result{
+  background: #fff;
+  margin: 0.1% 0;
+}
+
+.politician-result:hover {
+  background: #E0ECFF;
+}
 
 
 

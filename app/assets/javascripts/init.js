@@ -32,5 +32,10 @@ $(document).ready(function(){
 
     var content = $(this).html();
     console.log(content)
+    
+    $(".search-results").hide();
+    
+    var allDetailsView = new AllDetailsView();
+    allDetailsView.render();
   });
 });

@@ -44,7 +44,7 @@ class NetworkController < ApplicationController
     bills_array = []
 
     response.fetch("results").each do |b_info|
-      bills_array << {official_title: b_info["official_title"]}
+      bills_array << {official_title: b_info["official_title"], open_congress: b_info.fetch("urls")["opencongress"]}
     end
 
     render :json => bills_array
