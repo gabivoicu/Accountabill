@@ -1,12 +1,16 @@
 $(document).ready(function(){
-
+  var politician_results;
+  
   $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
+
 
     if($("#zip-search-form input").val().length === 5) {
         var zipcode = $("#zip-search-form input").val();
         console.log(zipcode);
         var politicians = new PoliticiansCollection({ zipcode: zipcode });
+
+        politician_results = politicians;
 
         var searchResultView = new PoliticianSearchResultsView({collection: politicians});
 
@@ -20,25 +24,21 @@ $(document).ready(function(){
 
   $("#search-container").on("click", ".politician-result", function(event){
     event.preventDefault();
-    // var bio_id = "A000014";
     //Steps:
     //Pull biocode out of results from zipcode search and replace the above line
-    // var contributions = new ContributionsCollection({biocode: bio_id});
-    // console.log(contributions);
+    var bio_id = $(this).children("span").text()
 
-    // var contributionView = new AllContributionsView({ collection: contributions });
-    
-    // contributionView.render();
-    // contributions.fetch({ reset: true });
+    var request = $.ajax({
+        url: '/politician/' + bio_id
+    });
 
-    var content = $(this).html();
-    console.log(content.attributes)
-    
-    var allDetailsView = new AllDetailsView();
-    allDetailsView.render();
-    $(".search-results").hide();
-    $("#front-page-header").css("margin-top", "1%");
-    $("#results-view").html(allDetailsView.el);
-    $(document).foundation('accordion', 'reflow');
+    request.done(function(response){
+        var allDetailsView = new AllDetailsView({data: response});
+        allDetailsView.render();
+        $(".search-results").hide();
+        $("#front-page-header").css("margin-top", "1%");
+        $("#results-view").html(allDetailsView.el);
+        $(document).foundation('accordion', 'reflow'); 
+    });
   });
 });
