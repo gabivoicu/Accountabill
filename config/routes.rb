@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/contributions/:bio_id' => "network#contributions", as: "contributions_request"
 
-  get '/sectors' => "network#sectors", as "sectors_request"
+  get '/sectors/:bio_id' => "network#sectors", as "sectors_request"
 
   root 'page#index'
   # The priority is based upon order of creation: first created -> highest priority.
