@@ -1,8 +1,9 @@
 var PoliticianSearchResultsView = Backbone.View.extend({
-  template: JST['templates/politician_search_result'],
+  template: JST['templates/politician_search_results'],
   initialize: function(){
     this.listenTo(this.collection, "reset", this.addAll);
   },
+
   render: function(){
     this.$el.html(this.template);
     return this;

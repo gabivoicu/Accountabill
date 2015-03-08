@@ -1,8 +1,13 @@
 class NetworkController < ApplicationController
   def politicians
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators/locate?zip=#{params[:zipcode]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
+    politician_array = []
 
-    render :json => response
+    response.fetch("results").each do |p_info|
+      politician_array << {first_name: p_info["first_name"], last_name: p_info["last_name"], title: p_info["title"], party: p_info["party"]}
+    end
+
+    render :json => politician_array
   end
 
   def contributions
