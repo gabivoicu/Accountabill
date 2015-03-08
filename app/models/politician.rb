@@ -29,5 +29,6 @@ class Politician < ActiveRecord::Base
   senate_class: :string,
   birthdate: :string,
   oc_email: :string,
-  bio: :text
+  bio: :string,
+  photo_url: :string
 end
