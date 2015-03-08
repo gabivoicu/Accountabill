@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get '/bills/:bio_id' => "network#bills", as: "bills_request"
 
+  get '/auth' => "twitter#login", as: "twitter_login"
+  match '/auth/:provider', :to => "twitter#auth", :via => [:get, :post]
+  match '/auth/failure', :to => "twitter#failure", :via => [:get, :post]
+
   root 'page#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
