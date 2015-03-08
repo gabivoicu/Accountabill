@@ -20,18 +20,25 @@ CSV.foreach('db/entity_id.csv') do |row|
   politician.save
 end
 
-# Politician.all.each do |politician|
-#   response = HTTParty.get("http://transparencydata.com/api/1.0/entities/id_lookup.json?namespace=urn%3Acrp%3Aorganization&bioguide_id=#{politician.bio_id}&apikey=API_KEY_GOES_HERE!")
-#   politician.entity_id = response[0]["id"] unless response.body == "[]"
-#   response = JSON.parse(response.body)
-#   politician.save
-#   puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
-#   sleep(0.5)
-# end
+Politician.all.each do |politician|
+  puts "#{politician.firstname} #{politician.lastname}" 
+  if politician.entity_id
+    response = HTTParty.get("http://transparencydata.com/api/1.0/entities/#{politician.entity_id}.json?apikey=#{ENV['SUNLIGHT_API_KEY']}")
+    if response.parsed_response.fetch("metadata").fetch("bio")
+      politician.bio = response.parsed_response.fetch("metadata").fetch("bio")
+      politician.save
+    end
+  else
+    politician.bio = "Biography Not Available"
+    politician.save
+  end
 
-# CSV.open('db/entity_id.csv', 'w' ) do |writer|
-#   Politician.all.each do |politician|
-#     puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
-#     writer << [politician.bio_id, politician.entity_id]
-#   end
-# end
+  if politician.bio.include?("<p>") || politician.bio.include?("</p>")
+    politician.bio.gsub!(/<p>/, "")
+    politician.bio.gsub!(/<\/p>/, "")
+  end
+
+  puts "#{politician.bio}"  
+  sleep(0.5)
+  puts ""
+end
