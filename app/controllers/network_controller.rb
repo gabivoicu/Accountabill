@@ -21,8 +21,6 @@ class NetworkController < ApplicationController
       contribution_array << {total_amount: c_info["total_amount"], name: c_info["name"]}
     end
 
-    p contribution_array
-
     render :json => contribution_array
   end
 end
