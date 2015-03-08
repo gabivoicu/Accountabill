@@ -38,5 +38,6 @@ $(document).ready(function(){
     allDetailsView.render();
     $(".search-results").hide();
     $("#results-view").html(allDetailsView.el);
+    $(document).foundation('accordion', 'reflow');
   });
 });
