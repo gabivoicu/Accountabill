@@ -31,7 +31,7 @@ $(document).ready(function(){
     // contributions.fetch({ reset: true });
 
     var content = $(this).html();
-    console.log(content)
+    console.log(content.attributes)
     
     $(".search-results").hide();
     
