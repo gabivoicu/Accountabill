@@ -38,12 +38,10 @@ body h1{
   /*display: none;*/
 }
 
-.politician-result{
-  max-height: 35px;
-  display: inline-block;
-}
-.politician-result img{
-  max-height: 50%;
+.search-results {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 
