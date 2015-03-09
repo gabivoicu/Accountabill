@@ -50,7 +50,7 @@ $(document).ready(function(){
     event.preventDefault();
     //Steps:
     //Pull biocode out of results from zipcode search and replace the above line
-    var bio_id = $(this).children("span").text()
+    var bio_id = $(this).children("span").text();
 
     var request = $.ajax({
         url: '/politician/' + bio_id
@@ -102,14 +102,27 @@ $(document).ready(function(){
 
     // request.done(function(response)
 
-    var request = $.ajax({
+    var sector_request = $.ajax({
       url: '/sectors/' + bio_id,
       type: 'get',
       dataType: 'json',
     });
-    // D3 DONUT CHART
 
-    request.done(function(response) {
+    var contributor_request = $.ajax({
+      url: '/contributions/' + bio_id,
+      type: 'get',
+      dataType: 'json',
+    });
+
+    var industry_request = $.ajax({
+      url: '/industries/' + bio_id,
+      type: 'get',
+      dataType: 'json',
+    });
+
+//-------------------------------- SECTOR DONUT GRAPH --------------------------------//
+
+    sector_request.done(function(response) {
       (function(d3) {
         'use strict';
 
@@ -127,12 +140,12 @@ $(document).ready(function(){
         var legendRectSize = 18;
         var legendSpacing = 4;
         var color = d3.scale.ordinal()
-          .range(["#1D3535", "#244242", "#2B5050", "#325D5D", "#396A6A", "#407777", "#478585", "#4F9292", "#569F9F", "#60A9A9"]);
+          .range(["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee090", "#e0f3f8", "#abd9e9", "#74add1", "#4575b4", "#313695"]);
 
         var svg = d3.select('#sector-chart')
           .append('svg')
           .attr('width', 650)
-          .attr('height', 650)
+          .attr('height', 360)
           .append('g')
           .attr('transform', 'translate(' + (width / 2) +
             ',' + (height / 2) + ')');
@@ -145,16 +158,16 @@ $(document).ready(function(){
           .value(function(d) { return d.amount; })
           .sort(null);
 
-        var tooltip = d3.select('#chart')
-          .append('div')
-          .attr('class', 'tooltip');
-
-        tooltip.append('div')
-          .attr('class', 'sector');
-
-        tooltip.append('div')
-          .attr('class', 'amount');
-        tooltip.append('div')
+        var tooltip = d3.select('#sector-chart')                               
+          .append('div')                                                
+          .attr('class', 'tooltip');                                    
+                      
+        tooltip.append('div')                                           
+          .attr('class', 'sector');                                      
+             
+        tooltip.append('div')                                           
+          .attr('class', 'amount');                                      
+        tooltip.append('div')                                           
           .attr('class', 'percent');
 
         var path = svg.selectAll('path')
@@ -214,5 +227,307 @@ $(document).ready(function(){
           .text(function(d) { return d; });
       })(window.d3);
     });
+
+//-------------------------------- CONTRIBUTOR BAR GRAPH --------------------------------//
+
+  contributor_request.done(function(response) {
+    var w = 600;
+    var h = 250;
+
+    var dataset = [];
+    for (var i = 0; i < response.length; i++) {
+      dataset.push({name: response[i].name, total_amount: response[i].total_amount });
+    }
+
+    var xScale = d3.scale.ordinal()
+      .domain(d3.range(dataset.length))
+      .rangeRoundBands([0, w], 0.05); 
+
+    var yScale = d3.scale.linear()
+      .domain([0, d3.max(dataset, function(d) {return d.total_amount;})])
+      .range([0, h]);
+
+    var name = function(d) {
+      return d.name;
+    };
+
+    //Create SVG element
+    var svg = d3.select("#top-contributor")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    //Create bars
+    svg.selectAll("rect")
+      .data(dataset, name)
+      .enter()
+      .append("rect")
+      .attr("x", function(d, i) {
+        return xScale(i);
+      })
+      .attr("y", function(d) {
+        return h - yScale(d.total_amount);
+      })
+      .attr("width", xScale.rangeBand())
+      .attr("height", function(d) {
+        return yScale(d.total_amount);
+      })
+      .attr("fill", function(d) {
+        return "rgb(0, 0, " + (d.total_amount * 10) + ")";
+      })
+
+    //Tooltip
+    .on("mouseover", function(d) {
+      //Get this bar's x/y values, then augment for the tooltip
+      var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
+      var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
+    
+      //Update Tooltip Position & value
+      d3.select("#tooltip")
+        .style("left", xPosition + "px")
+        .style("top", yPosition + "px")
+        .select("#value")
+        .text(d.total_amount);
+      d3.select("#tooltip").classed("hidden", false);
+      })
+  .on("mouseout", function() {
+    //Remove the tooltip
+    d3.select("#tooltip").classed("hidden", true);
+  });
+
+    //Create labels
+  svg.selectAll("text")
+   .data(dataset, name)
+   .enter()
+   .append("text")
+   .text(function(d) {
+    return "$" + d.total_amount;
+   })
+   .attr("text-anchor", "middle")
+   .attr("x", function(d, i) {
+    return xScale(i) + xScale.rangeBand() / 2;
+   })
+   .attr("y", function(d) {
+    return h - yScale(d.total_amount) + 14;
+   })
+   .attr("font-family", "sans-serif") 
+   .attr("font-size", "11px")
+   .attr("fill", "white");
+   
+  var sortOrder = false;
+  var sortBars = function () {
+    sortOrder = !sortOrder;
+    
+    sortItems = function (a, b) {
+        if (sortOrder) {
+            return a.total_amount - b.total_amount;
+        }
+        return b.total_amount - a.total_amount;
+    };
+
+    svg.selectAll("rect")
+        .sort(sortItems)
+        .transition()
+        .delay(function (d, i) {
+        return i * 50;
+    })
+        .duration(1000)
+        .attr("x", function (d, i) {
+        return xScale(i);
+    });
+
+    svg.selectAll('text')
+        .sort(sortItems)
+        .transition()
+        .delay(function (d, i) {
+        return i * 50;
+        })
+        .duration(1000)
+        .text(function (d) {
+        return d.total_amount;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+        return xScale(i) + xScale.rangeBand() / 2;
+        })
+        .attr("y", function (d) {
+        return h - yScale(d.total_amount) + 14;
+        });
+    };
+
+    function randomSort() {
+
+    svg.selectAll("rect")
+      .sort(sortItems)
+      .transition()
+      .delay(function (d, i) {
+        return i * 50;
+      })
+      .duration(1000)
+      .attr("x", function (d, i) {
+        return xScale(i);
+      });
+
+    svg.selectAll('text')
+      .sort(sortItems)
+      .transition()
+      .delay(function (d, i) {
+        return i * 50;
+      })
+      .duration(1000)
+      .text(function (d) {
+        return d.total_amount;
+      })
+      .attr("text-anchor", "middle")
+      .attr("x", function (d, i) {
+        return xScale(i) + xScale.rangeBand() / 2;
+      })
+      .attr("y", function (d) {
+        return h - yScale(d.total_amount) + 14;
+      });
+  }
+  function reset() {
+  svg.selectAll("rect")
+    .sort(function(a, b){
+      return a.name - b.name;
+    })
+    .transition()
+      .delay(function (d, i) {
+        return i * 50;
+      })
+      .duration(1000)
+      .attr("x", function (d, i) {
+        return xScale(i);
+      });
+    
+  svg.selectAll('text')
+    .sort(function(a, b){
+      return a.name - b.name;
+    })
+    .transition()
+    .delay(function (d, i) {
+      return i * 50;
+    })
+    .duration(1000)
+    .text(function (d) {
+      return d.total_amount;
+    })
+    .attr("text-anchor", "middle")
+    .attr("x", function (d, i) {
+      return xScale(i) + xScale.rangeBand() / 2;
+    })
+    .attr("y", function (d) {
+      return h - yScale(d.total_amount) + 14;
+    });
+    }
+    });
+
+//-------------------------------- INDUSTRY DONUT GRAPH --------------------------------//
+    industry_request.done(function(response) {
+      (function(d3) {
+        'use strict';
+
+      // parses response  
+      var dataset = [];
+      for (var i = 0; i < response.length; i++) {
+        dataset.push({amount: response[i].amount, name: response[i].name, count: response[i].count});
+        console.log(response[i]);
+      }
+
+        var width = 360;
+        var height = 360;
+        var radius = Math.min(width, height) / 2;
+        var donutWidth = 75;
+        var legendRectSize = 18;                                  
+        var legendSpacing = 4;                                    
+        var color = d3.scale.ordinal()
+          .range(["#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#d1e5f0", "#92c5de", "#4393c3", "#2166ac", "#053061"]);
+
+        var svg = d3.select('#industry-chart')
+          .append('svg')
+          .attr('width', 650)
+          .attr('height', 360)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) + 
+            ',' + (height / 2) + ')');
+
+        var arc = d3.svg.arc()
+          .innerRadius(radius - donutWidth)
+          .outerRadius(radius);
+
+        var pie = d3.layout.pie()
+          .value(function(d) { return d.amount; })
+          .sort(null);
+
+        var tooltip = d3.select('#industry-chart')                               
+          .append('div')                                                
+          .attr('class', 'tooltip');                                    
+                      
+        tooltip.append('div')                                           
+          .attr('class', 'name');                                      
+             
+        tooltip.append('div')                                           
+          .attr('class', 'amount');                                      
+        tooltip.append('div')                                           
+          .attr('class', 'percent');
+
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d, i) { 
+            return color(d.data.name);
+          });
+
+        path.on('mouseover', function(d) {                            
+          var total = d3.sum(dataset.map(function(d) {                
+            return d.amount;                                           
+        }));        
+
+          var percent = Math.round(1000 * d.data.amount / total) / 10; 
+
+            tooltip.select('.name').html(d.data.name);
+            tooltip.select('.count').html(d.data.count);                 
+            tooltip.select('.amount').html('$' + d.data.amount);               
+            tooltip.select('.percent').html(percent + '%');             
+            tooltip.style('display', 'block');                          
+          });                                                           
+          
+          path.on('mouseout', function() {                              
+            tooltip.style('display', 'none');                           
+          });                                                           
+  
+          path.on('mousemove', function(d) {                            
+            tooltip.style('top', (d3.event.pageY + -140) + 'px')          
+              .style('left', (d3.event.pageX + 10) + 'px');             
+          });                                                           
+
+        var legend = svg.selectAll('.legend')                     
+          .data(color.domain())                                   
+          .enter()                                                
+          .append('g')                                            
+          .attr('class', 'legend')                                
+          .attr('transform', function(d, i) {                     
+            var height = legendRectSize + legendSpacing;          
+            var offset =  height * color.domain().length / 2;     
+            var horz = 12 * legendRectSize;                       
+            var vert = i * height - offset;                       
+            return 'translate(' + horz + ',' + vert + ')';        
+          });
+
+        legend.append('rect')                                     
+          .attr('width', legendRectSize)                          
+          .attr('height', legendRectSize)                         
+          .style('fill', color)                                   
+          .style('stroke', color);                                
+          
+        legend.append('text')                                     
+          .attr('x', legendRectSize + legendSpacing)              
+          .attr('y', legendRectSize - legendSpacing)              
+          .text(function(d) { return d; });                       
+      })(window.d3);
+    });
+
   });
 });
