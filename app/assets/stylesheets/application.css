@@ -15,6 +15,16 @@
  *= require_self
 
  */
+<<<<<<< HEAD
+body{
+  background: #E8FFFE;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body h1, h2, h3, h4, h5, h6{
+  font-family: 'Josefin Sans', sans-serif;
+  color: #142525;
+=======
 .search-state, .search-name, .search-type{
   display: inline-block;
   width: 24%;
@@ -26,6 +36,7 @@
 
 .search-type{
   text-align: right;
+>>>>>>> adb68e065fcc801dcd3aaf78a38140794c8a104e
 }
 
 .result-text{
@@ -109,6 +120,7 @@ rect:hover{
 }
 .bullet {
   font: 10px sans-serif;
+<<<<<<< HEAD
 }
 
 .bullet .marker {
@@ -145,6 +157,48 @@ rect:hover{
 
 .bullet .subtitle {
   fill: #999;
+}
+
+input:focus {
+  outline: none;
+=======
+}
+
+.bullet .marker {
+  stroke: #000; stroke-width: 2px;
+}
+
+.bullet .tick line {
+  stroke: #666; stroke-width: .5px;
+}
+
+.bullet .range.s0 {
+  fill: #eee;
+}
+
+.bullet .range.s1 {
+  fill: #ddd;
+}
+
+.bullet .range.s2 {
+  fill: #ccc;
+}
+
+.bullet .measure.s0 {
+  fill: lightsteelblue;
+}
+
+.bullet .measure.s1 {
+  fill: steelblue;
+}
+
+.bullet .title {
+  font-size: 14px; font-weight: bold;
+}
+
+.bullet .subtitle {
+  fill: #999;
+>>>>>>> adb68e065fcc801dcd3aaf78a38140794c8a104e
 }
 
 input.button:focus {
