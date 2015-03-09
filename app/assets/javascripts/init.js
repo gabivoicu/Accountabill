@@ -459,7 +459,7 @@ $(document).ready(function(){
           .value(function(d) { return d.amount; })
           .sort(null);
 
-        var tooltip = d3.select('#chart')                               
+        var tooltip = d3.select('#industry-chart')                               
           .append('div')                                                
           .attr('class', 'tooltip');                                    
                       
