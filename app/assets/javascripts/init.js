@@ -12,9 +12,7 @@ $(document).ready(function(){
     var searchVal = $("#zip-search-form input").val().charAt(0)
 
     if (isNaN(searchVal)) {
-      console.log("string");
       var name = $("#zip-search-form input").val();
-      console.log(name);
 
       var politicians = new PoliticiansCollection({ name: name, entryType: "String" });
 
@@ -29,9 +27,7 @@ $(document).ready(function(){
       Transition.defaultToDisplaySearchResults();
     }
     else{
-      console.log("integer")
       var zipcode = $("#zip-search-form input").val();
-      console.log(zipcode);
       var politicians = new PoliticiansCollection({ zipcode: zipcode, entryType: "Integer" });
 
       politician_results = politicians;
