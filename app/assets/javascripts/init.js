@@ -449,13 +449,10 @@ $(document).ready(function(){
         var radius = Math.min(width, height) / 2;
         var donutWidth = 75;
         var legendRectSize = 18;                                  
-        var legendSpacing = 4;                                    
-<<<<<<< Updated upstream
+        var legendSpacing = 4;
+
         var color = d3.scale.ordinal()
           .range(["#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#d1e5f0", "#92c5de", "#4393c3", "#2166ac", "#053061"]);
-=======
-        var color = d3.scale.category20b();
->>>>>>> Stashed changes
 
         var svg = d3.select('#industry-chart')
           .append('svg')
@@ -497,12 +494,9 @@ $(document).ready(function(){
         path.on('mouseover', function(d) {                            
           var total = d3.sum(dataset.map(function(d) {                
             return d.amount;                                           
-        }));        
-<<<<<<< Updated upstream
+        }));
 
-=======
-          // console.log(d.data.count)
->>>>>>> Stashed changes
+
           var percent = Math.round(1000 * d.data.amount / total) / 10; 
 
             tooltip.select('.name').html(d.data.name);
@@ -546,11 +540,5 @@ $(document).ready(function(){
           .text(function(d) { return d; });                       
       })(window.d3);
     });
-
   });
-
-  $( document ).ready(function() {
-   
-  });
-
 });
