@@ -12,10 +12,13 @@ class NetworkController < ApplicationController
 
   def politician_names
     name = split_into_names(params[:name])
+    politician_array = []
 
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
-    p response.parsed_response
+    response.parsed_response.fetch("results").each do |p_info|
+      politician_array << Politician.find_by_bio_id(p_info["bioguide_id"]).hash_data
+    end
 
     render :json => politician_array
   end
