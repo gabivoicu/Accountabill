@@ -79,7 +79,7 @@ body h1, h2, h3, h4, h5, h6{
   top: 80px;                                                      /* NEW */
   width: 80px;                                                    /* NEW */
   z-index: 10;                                                    /* NEW */
-}           
+}                                                 
 
 #chart{
   margin: 0 auto;

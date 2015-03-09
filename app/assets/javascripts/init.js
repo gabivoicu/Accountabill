@@ -21,6 +21,8 @@ $(document).ready(function(){
     }
   });
 
+
+
   $("#search-container").on("click", ".politician-result", function(event){
     event.preventDefault();
     //Steps:
@@ -51,7 +53,6 @@ $(document).ready(function(){
       type: 'get',
       dataType: 'json',
     });
-
     // D3 DONUT CHART
 
     request.done(function(response) {
