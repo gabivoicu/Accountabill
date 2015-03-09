@@ -1,20 +1,21 @@
 <div class="row">
-	<img src="<%= photo_url %>" class="large-4 columns">
-  <span id="hide-bio"><%=bioguide_id%></span>
-	<div class="large-8 columns">
-		<div class="row">
-		<h2 class="large-centered columns"> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h2>
-		</div>
-		<div class="row">
-			<p><%= bio %></p>
-		</div>
-    <div class="row">
-      <h4>Contact</h4>
-      <% if (oc_email) {%>
-      <a href="mailto:"<%= oc_email %>><%= oc_email %> </a>
-      <%} %>
+  <div class="row">
+    <img src="<%= photo_url %>" class="large-4 columns" id="detail-img">
+		<h2 class="large-8 columns"> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h2>
+    <span id="hide-bio"><%=bioguide_id%></span>
+  </div>
+  <div class="row">
+    <div class="large-centered columns">
+  		<div class="row">
+  			<p><%= bio %></p>
+  		</div>
+      <div class="row">
+        <h4>Contact</h4>
+        <% if (oc_email) {%>
+        <a href="mailto:"<%= oc_email %>><%= oc_email %> </a>
+        <%} %>
+      </div>
     </div>
-
 	</div>
 </div>
 <div class="row">

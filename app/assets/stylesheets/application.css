@@ -15,6 +15,7 @@
  *= require_self
 
  */
+<<<<<<< HEAD
 body{
   background: #E8FFFE;
   font-family: 'Josefin Sans', sans-serif;
@@ -23,13 +24,25 @@ body{
 body h1, h2, h3, h4, h5, h6{
   font-family: 'Josefin Sans', sans-serif;
   color: #142525;
+=======
+.search-state, .search-name, .search-type{
+  display: inline-block;
+  width: 24%;
+}
+.search-name {
+  width: 50%;
+  text-align: center;
 }
 
-#front-page-header{
-  margin-top: 10%;
-  font-size: 5em;
-  transition: margin-top 2s;
+.search-type{
+  text-align: right;
+>>>>>>> adb68e065fcc801dcd3aaf78a38140794c8a104e
 }
+
+.result-text{
+  margin-top: 6%;
+}
+
 
 #search-container{
   background-color: #F4F2F3;
@@ -37,7 +50,6 @@ body h1, h2, h3, h4, h5, h6{
   border: 2px solid #F4F2F3;
   border-radius: 25px;
   padding: 1em;
-  /*display: none;*/
 }
 
 .search-results {
@@ -108,6 +120,7 @@ rect:hover{
 }
 .bullet {
   font: 10px sans-serif;
+<<<<<<< HEAD
 }
 
 .bullet .marker {
@@ -148,4 +161,42 @@ rect:hover{
 
 input:focus {
   outline: none;
+=======
+}
+
+.bullet .marker {
+  stroke: #000; stroke-width: 2px;
+}
+
+.bullet .tick line {
+  stroke: #666; stroke-width: .5px;
+}
+
+.bullet .range.s0 {
+  fill: #eee;
+}
+
+.bullet .range.s1 {
+  fill: #ddd;
+}
+
+.bullet .range.s2 {
+  fill: #ccc;
+}
+
+.bullet .measure.s0 {
+  fill: lightsteelblue;
+}
+
+.bullet .measure.s1 {
+  fill: steelblue;
+}
+
+.bullet .title {
+  font-size: 14px; font-weight: bold;
+}
+
+.bullet .subtitle {
+  fill: #999;
+>>>>>>> adb68e065fcc801dcd3aaf78a38140794c8a104e
 }
