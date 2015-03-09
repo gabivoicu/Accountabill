@@ -24,6 +24,12 @@ Politician.all.each do |politician|
   puts "#{politician.firstname} #{politician.lastname}" 
   if politician.entity_id
     response = HTTParty.get("http://transparencydata.com/api/1.0/entities/#{politician.entity_id}.json?apikey=#{ENV['SUNLIGHT_API_KEY']}")
+
+    politician.photo_url = response.parsed_response.fetch("metadata").fetch("photo_url");
+    puts "Photo Okay!"
+
+    sleep(0.5)
+
     if response.parsed_response.fetch("metadata").fetch("bio")
       politician.bio = response.parsed_response.fetch("metadata").fetch("bio")
       politician.save
@@ -38,7 +44,16 @@ Politician.all.each do |politician|
     politician.bio.gsub!(/<\/p>/, "")
   end
 
+
+
   puts "#{politician.bio}"  
   sleep(0.5)
   puts ""
+end
+
+CSV.open('db/entity_id.csv', 'w' ) do |writer|
+  Politician.all.each do |politician|
+    puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
+    writer << [politician.bio_id, politician.entity_id, politician.bio, politician.photo_url]
+  end
 end

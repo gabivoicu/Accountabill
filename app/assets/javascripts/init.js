@@ -19,10 +19,7 @@ $(document).ready(function(){
         $('.detail').hide();
         politicians.fetch({reset: true});
     }
-
   });
-
-
 
   $("#search-container").on("click", ".politician-result", function(event){
     event.preventDefault();
@@ -42,18 +39,20 @@ $(document).ready(function(){
         $("#results-view").html(allDetailsView.el);
         $(document).foundation('accordion', 'reflow'); 
     });
-  });
 
+    // var request = $.ajax({
+    //     url: '/bills/' + bio_id
+    // });
 
-  $("#front-page-header").on("click", function(event){
+    // request.done(function(response)
 
     var request = $.ajax({
-      url: '/sectors/K000360',
+      url: '/sectors/' + bio_id,
       type: 'get',
       dataType: 'json',
     });
 
-    
+    // D3 DONUT CHART
 
     request.done(function(response) {
       (function(d3) {
