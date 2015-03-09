@@ -105,7 +105,8 @@ $(document).ready(function(){
         var donutWidth = 75;
         var legendRectSize = 18;                                  
         var legendSpacing = 4;                                    
-        var color = d3.scale.category20b();
+        var color = d3.scale.ordinal()
+          .range(["#1D3535", "#244242", "#2B5050", "#325D5D", "#396A6A", "#407777", "#478585", "#4F9292", "#569F9F", "#60A9A9"]);
 
         var svg = d3.select('#chart')
           .append('svg')
