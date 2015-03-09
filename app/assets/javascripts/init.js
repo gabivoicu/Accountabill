@@ -18,6 +18,7 @@ $(document).ready(function(){
 
       var politicians = new PoliticiansCollection({ name: name, entryType: "String" });
 
+
       politician_results = politicians;
 
       var searchResultView = new PoliticianSearchResultsView({collection: politicians});
@@ -44,8 +45,6 @@ $(document).ready(function(){
     }
   });
 
-
-
   $("#search-container").on("click", ".politician-result", function(event){
     event.preventDefault();
     //Steps:
@@ -62,7 +61,7 @@ $(document).ready(function(){
       $("#results-view").html(allDetailsView.el);
       Transition.searchToDetail();
 
-      var margin = {top: 5, right: 15, bottom: 20, left: 200},
+      var margin = {top: 8, right: 15, bottom: 20, left: 200},
       width = 700 - margin.left - margin.right,
       height = 50 - margin.top - margin.bottom;
 
@@ -70,14 +69,25 @@ $(document).ready(function(){
       .width(width)
       .height(height);
 
-      d3.json("bullets.json", function(error, data) {
+      console.log("/contributor_types/" + bio_id + ".json")
+
+      d3.json(("/contributor_types/" + bio_id + ".json"), function(error, data) {
+        console.log(data)
+      // parses response  
+      var dataset = [];
+      for (var i = 0; i < data.length; i++) {
+        console.log(data[i])
+        dataset.push({"title": data[i].title,"subtitle":"US$, in thousands","ranges":[2500],"count": data[i].count,"measures":[(data[i].total_amount/1000)],"markers":[(data[i].total_amount/1000)]});
+        console.log(dataset);
+      }
+
       var svg = d3.select("#contributor-types").selectAll("svg")
-        .data(data)
-      .enter().append("svg")
+        .data(dataset)
+        .enter().append("svg")
         .attr("class", "bullet")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-      .append("g")
+        .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .call(chart);
 
@@ -130,7 +140,7 @@ $(document).ready(function(){
       var dataset = [];
       for (var i = 0; i < response.length; i++) {
         dataset.push({amount: response[i].amount, sector: response[i].sector, count: response[i].count});
-        console.log(response[i]);
+        // console.log(response[i]);
       }
 
         var width = 360;
@@ -440,8 +450,12 @@ $(document).ready(function(){
         var donutWidth = 75;
         var legendRectSize = 18;                                  
         var legendSpacing = 4;                                    
+<<<<<<< Updated upstream
         var color = d3.scale.ordinal()
           .range(["#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#d1e5f0", "#92c5de", "#4393c3", "#2166ac", "#053061"]);
+=======
+        var color = d3.scale.category20b();
+>>>>>>> Stashed changes
 
         var svg = d3.select('#industry-chart')
           .append('svg')
@@ -484,7 +498,11 @@ $(document).ready(function(){
           var total = d3.sum(dataset.map(function(d) {                
             return d.amount;                                           
         }));        
+<<<<<<< Updated upstream
 
+=======
+          // console.log(d.data.count)
+>>>>>>> Stashed changes
           var percent = Math.round(1000 * d.data.amount / total) / 10; 
 
             tooltip.select('.name').html(d.data.name);
@@ -530,4 +548,9 @@ $(document).ready(function(){
     });
 
   });
+
+  $( document ).ready(function() {
+   
+  });
+
 });
