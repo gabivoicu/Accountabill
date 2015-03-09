@@ -15,6 +15,7 @@
 //= require foundation
 //= require underscore
 //= require backbone
+//= require d3.v3.min
 //= require bullet
 //
 //= require_tree ./templates
