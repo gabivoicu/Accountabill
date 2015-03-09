@@ -15,6 +15,18 @@
  *= require_self
 
  */
+.search-state, .search-name, .search-type{
+  display: inline-block;
+  width: 32%;
+}
+
+.result-text{
+  margin-top: 6%;
+}
+
+.search-type{
+  text-align: right;
+}
 
 #search-container{
   background-color: #F4F2F3;
