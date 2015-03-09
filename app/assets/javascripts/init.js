@@ -132,12 +132,12 @@ $(document).ready(function(){
 //-------------------------------- BILLS HERE ----------------------------------------//
 
   var request = $.ajax({
-    url: '/bills' + bio_id,
+    url: '/bills/' + bio_id,
     type: 'get',
     dataType: 'json'
   }).done(function(response){
     for (var i = 0; i < response.length; i++) {
-      
+      $("#bills-listing").append("<span id='bill'><p><a href='" + response[i].open_congress + "'>" + response[i].official_title + "</a></p></span>")
     }
   });
 
