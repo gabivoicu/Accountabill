@@ -3,7 +3,7 @@ var PoliticiansCollection = Backbone.Collection.extend({
     if (options.entryType == "Integer") {
       this.url = '/politicians/' + options.zipcode;
     } else {
-      this.url = '/politicians/' + options.name;
+      this.url = '/politicians/find/' + options.name;
     }
   },
   model: Politician
