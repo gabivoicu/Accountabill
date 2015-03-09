@@ -15,21 +15,6 @@
  *= require_self
 
  */
-body{
-  background: #E8FFFE;
-  font-family: 'Josefin Sans', sans-serif; 
-}
-
-body h1, h2, h3, h4, h5, h6{
-  font-family: 'Josefin Sans', sans-serif; 
-  color: #142525;
-}
-
-#front-page-header{
-  margin-top: 10%;
-  font-size: 5em;
-  transition: margin-top 2s;
-}
 
 #search-container{
   background-color: #F4F2F3;
@@ -37,7 +22,6 @@ body h1, h2, h3, h4, h5, h6{
   border: 2px solid #F4F2F3;
   border-radius: 25px;
   padding: 1em;
-  /*display: none;*/
 }
 
 .search-results {
@@ -66,21 +50,21 @@ body h1, h2, h3, h4, h5, h6{
   display: none;
 }
 
-.tooltip {                                                        
-  background: #eee;                                               
-  box-shadow: 0 0 5px #999999;                                    
-  color: #142525;                                                    
-  display: none;                                                  
-  font-size: 12px;                                                
-  left: 130px;                                                    
-  padding: 10px;                                                  
-  position: absolute;                                             
-  text-align: center;                                             
-  top: 80px;                                                      
-  width: 80px;                                                    
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #142525;
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 80px;
+  width: 80px;
   z-index: 10;
-  word-wrap: break-word;                                                   
-} 
+  word-wrap: break-word;
+}
 
 .axis path,
 .axis line {
@@ -101,47 +85,47 @@ rect {
 }
 rect:hover{
   fill: #BC6466;
-}                                                 
+}
 
 #chart{
   margin: 0 auto;
-}                                      
-.bullet { 
-  font: 10px sans-serif; 
+}
+.bullet {
+  font: 10px sans-serif;
 }
 
-.bullet .marker { 
-  stroke: #000; stroke-width: 2px; 
+.bullet .marker {
+  stroke: #000; stroke-width: 2px;
 }
 
-.bullet .tick line { 
-  stroke: #666; stroke-width: .5px; 
+.bullet .tick line {
+  stroke: #666; stroke-width: .5px;
 }
 
-.bullet .range.s0 { 
-  fill: #eee; 
+.bullet .range.s0 {
+  fill: #eee;
 }
 
-.bullet .range.s1 { 
-  fill: #ddd; 
+.bullet .range.s1 {
+  fill: #ddd;
 }
 
-.bullet .range.s2 { 
-  fill: #ccc; 
+.bullet .range.s2 {
+  fill: #ccc;
 }
 
-.bullet .measure.s0 { 
-  fill: lightsteelblue; 
+.bullet .measure.s0 {
+  fill: lightsteelblue;
 }
 
-.bullet .measure.s1 { 
-  fill: steelblue; 
+.bullet .measure.s1 {
+  fill: steelblue;
 }
 
-.bullet .title { 
-  font-size: 14px; font-weight: bold; 
+.bullet .title {
+  font-size: 14px; font-weight: bold;
 }
 
-.bullet .subtitle { 
-  fill: #999; 
+.bullet .subtitle {
+  fill: #999;
 }
