@@ -129,7 +129,7 @@ $(document).ready(function(){
         var color = d3.scale.ordinal()
           .range(["#1D3535", "#244242", "#2B5050", "#325D5D", "#396A6A", "#407777", "#478585", "#4F9292", "#569F9F", "#60A9A9"]);
 
-        var svg = d3.select('#chart')
+        var svg = d3.select('#sector-chart')
           .append('svg')
           .attr('width', 650)
           .attr('height', 650)
