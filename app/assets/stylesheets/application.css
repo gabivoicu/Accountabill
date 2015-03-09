@@ -12,9 +12,12 @@
  *
  *= require_tree .
  *= require foundation_and_overrides
+ *= require_tree ./globals
+ *= require_tree ./sections
  *= require_self
 
  */
+
 .search-state, .search-name, .search-type{
   display: inline-block;
   width: 24%;
@@ -30,15 +33,6 @@
 
 .result-text{
   margin-top: 6%;
-}
-
-
-#search-container{
-  background-color: #F4F2F3;
-  padding-bottom: 15px;
-  border: 2px solid #F4F2F3;
-  border-radius: 25px;
-  padding: 1em;
 }
 
 .search-results {
