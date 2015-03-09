@@ -11,7 +11,9 @@ class NetworkController < ApplicationController
   end
 
   def politician_names
-    HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{}&last_name=#{}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
+    name = split_into_names(params[:name])
+
+    HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
     politician_array = []
 
@@ -130,5 +132,9 @@ class NetworkController < ApplicationController
     when "Z"
       sector = "Administrative Use"
     end
+  end
+
+  def split_into_names(name)
+    names = name.split
   end
 end
