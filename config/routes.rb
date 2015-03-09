@@ -2,22 +2,20 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   get '/politicians/:zipcode' => "network#politicians", as: "politicians_request"
-
+  get '/politicians/:name' => "network#politician_name", as: "politician_name_request"
   get '/contributions/:bio_id' => "network#contributions", as: "contributions_request"
-
   get '/sectors/:bio_id' => "network#sectors", as: "sectors_request"
 
   get '/industries/:bio_id' => "network#industries", as: "industries_request"
 
   get '/bills/:bio_id' => "network#bills", as: "bills_request"
+  get '/contributor_types/:bio_id' => "network#contributor_types", as: "contributor_types_request"
 
+  get '/politician/:bio_id' => "politician#details", as: "politician_details"
+  
   get '/auth' => "twitter#login", as: "twitter_login"
   match '/auth/:provider', :to => "twitter#auth", :via => [:get, :post]
   match '/auth/failure', :to => "twitter#failure", :via => [:get, :post]
-
-  get '/politician/:bio_id' => "politician#details", as: "politician_details"
-
-  get '/contributor_types/:bio_id' => "network#contributor_types", as: "contributor_types_request"
 
 
   root 'page#index'
