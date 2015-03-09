@@ -14,9 +14,15 @@ class NetworkController < ApplicationController
     name = split_into_names(params[:name])
     politician_array = []
 
-    puts "http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}"
+    # url = sanitize_url([])
 
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
+
+    response.parsed_response.fetch("results").each do |p_info|
+      politician_array << Politician.find_by_bio_id(p_info["bioguide_id"]).hash_data
+    end
+
+    response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[1]}&last_name=#{name[0]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
     response.parsed_response.fetch("results").each do |p_info|
       politician_array << Politician.find_by_bio_id(p_info["bioguide_id"]).hash_data
