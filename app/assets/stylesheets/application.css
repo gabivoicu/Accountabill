@@ -12,9 +12,13 @@
  *
  *= require_tree .
  *= require foundation_and_overrides
+ *= require_tree ./globals
+ *= require_tree ./sections
+ *= require_tree ./components
  *= require_self
 
  */
+
 .search-state, .search-name, .search-type{
   display: inline-block;
   width: 24%;
@@ -30,15 +34,6 @@
 
 .result-text{
   margin-top: 6%;
-}
-
-
-#search-container{
-  background-color: #F4F2F3;
-  padding-bottom: 15px;
-  border: 2px solid #F4F2F3;
-  border-radius: 25px;
-  padding: 1em;
 }
 
 .search-results {
@@ -65,88 +60,4 @@
 
 #hide-bio {
   display: none;
-}
-
-.tooltip {
-  background: #eee;
-  box-shadow: 0 0 5px #999999;
-  color: #142525;
-  display: none;
-  font-size: 12px;
-  left: 130px;
-  padding: 10px;
-  position: absolute;
-  text-align: center;
-  top: 80px;
-  width: 80px;
-  z-index: 10;
-  word-wrap: break-word;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: black;
-  shape-rendering: crispEdges;
-}
-.axis text {
-  font-family: sans-serif;
-  font-size: 11px;
-}
-
-rect {
-  -moz-transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
-rect:hover{
-  fill: #BC6466;
-}
-
-#chart{
-  margin: 0 auto;
-}
-.bullet {
-  font: 10px sans-serif;
-}
-
-.bullet .marker {
-  stroke: #000; stroke-width: 2px;
-}
-
-.bullet .tick line {
-  stroke: #666; stroke-width: .5px;
-}
-
-.bullet .range.s0 {
-  fill: #eee;
-}
-
-.bullet .range.s1 {
-  fill: #ddd;
-}
-
-.bullet .range.s2 {
-  fill: #ccc;
-}
-
-.bullet .measure.s0 {
-  fill: lightsteelblue;
-}
-
-.bullet .measure.s1 {
-  fill: steelblue;
-}
-
-.bullet .title {
-  font-size: 14px; font-weight: bold;
-}
-
-.bullet .subtitle {
-  fill: #999;
-}
-
-input.button:focus {
-  outline: none;
 }
