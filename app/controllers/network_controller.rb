@@ -38,7 +38,21 @@ class NetworkController < ApplicationController
     render :json => sector_array
   end
 
-  
+  def industries
+    politician = Politician.find_by_bio_id(params[:bio_id])
+
+    response = HTTParty.get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/industries.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
+
+    industries_array = []
+
+    response.parsed_response.each do |ind_info|
+      industries_array << {name: capitalize_all_words!(ind_info["name"]), count: ind_info["count"], amount: ind_info["amount"]}
+    end
+
+    render :json => industries_array
+  end
+
+
   def bills
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/bills?sponsor_id=#{params[:bio_id]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
@@ -64,6 +78,12 @@ class NetworkController < ApplicationController
   end
 
   private
+
+  def capitalize_all_words!(string)
+    array = string.split(" ")
+    new_array = array.map { |word| word.capitalize }
+    new_string = new_array.join(" ")
+  end
 
   def find_sector(sector)
     case sector
