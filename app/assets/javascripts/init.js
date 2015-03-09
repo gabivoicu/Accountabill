@@ -4,20 +4,38 @@ $(document).ready(function(){
   $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
 
+    var searchVal = $("#zip-search-form input").val().charAt(0)
 
-    if($("#zip-search-form input").val().length === 5) {
-        var zipcode = $("#zip-search-form input").val();
-        console.log(zipcode);
-        var politicians = new PoliticiansCollection({ zipcode: zipcode });
+    if (isNaN(searchVal)) {
+      console.log("string");
+      var name = $("#zip-search-form input").val();
+      console.log(name);
 
-        politician_results = politicians;
+      var politicians = new PoliticiansCollection({ name: name, entryType: "String" });
 
-        var searchResultView = new PoliticianSearchResultsView({collection: politicians});
+      politician_results = politicians;
 
-        searchResultView.render();
-        $("#search-container").html(searchResultView.el);
-        $('.detail').hide();
-        politicians.fetch({reset: true});
+      var searchResultView = new PoliticianSearchResultsView({collection: politicians});
+
+      searchResultView.render();
+      $("#search-container").html(searchResultView.el);
+      $('.detail').hide();
+      politicians.fetch({reset: true});
+    }
+    else{
+      console.log("integer")
+      var zipcode = $("#zip-search-form input").val();
+      console.log(zipcode);
+      var politicians = new PoliticiansCollection({ zipcode: zipcode, entryType: "Integer" });
+
+      politician_results = politicians;
+
+      var searchResultView = new PoliticianSearchResultsView({collection: politicians});
+
+      searchResultView.render();
+      $("#search-container").html(searchResultView.el);
+      $('.detail').hide();
+      politicians.fetch({reset: true});
     }
   });
 
