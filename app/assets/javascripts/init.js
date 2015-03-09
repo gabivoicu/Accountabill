@@ -102,20 +102,27 @@ $(document).ready(function(){
 
     // request.done(function(response)
 
-    var donut_request = $.ajax({
+    var sector_request = $.ajax({
       url: '/sectors/' + bio_id,
       type: 'get',
       dataType: 'json',
     });
 
-    var bar_request = $.ajax({
+    var contributor_request = $.ajax({
       url: '/contributions/' + bio_id,
       type: 'get',
       dataType: 'json',
     });
-    // D3 DONUT CHART
 
-    donut_request.done(function(response) {
+    var industry_request = $.ajax({
+      url: '/industries/' + bio_id,
+      type: 'get',
+      dataType: 'json',
+    });
+
+//-------------------------------- SECTOR DONUT GRAPH --------------------------------//
+
+    sector_request.done(function(response) {
       (function(d3) {
         'use strict';
 
@@ -221,9 +228,9 @@ $(document).ready(function(){
       })(window.d3);
     });
 
-// ------------------ BAR GRAPH ------------------- //
+//----------------------------------- BAR GRAPH -----------------------------------//
 
-  bar_request.done(function(response) {
+  contributor_request.done(function(response) {
     var w = 600;
     var h = 250;
 
@@ -414,6 +421,8 @@ $(document).ready(function(){
     });
     }
     });
+
+//-------------------------------- INDUSTRY DONUT GRAPH --------------------------------//
     
 
   });
