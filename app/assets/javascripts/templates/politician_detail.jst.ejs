@@ -8,6 +8,13 @@
 		<div class="row">
 			<p><%= bio %></p>
 		</div>
+    <div class="row">
+      <h4>Contact</h4>
+      <% if (oc_email) {%>
+      <a href="mailto:"<%= oc_email %>><%= oc_email %> </a>
+      <%} %>
+    </div>
+
 	</div>
 </div>
 <div class="row">
