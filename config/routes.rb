@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tweets/new'
+
+  get 'tweets/create'
+
   get 'sessions/new'
 
   get 'sessions/create'
