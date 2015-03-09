@@ -8,21 +8,10 @@
       <span id="hide-bio"><%=bioguide_id%></span>
     </div>
     <div class="row">
-      <div class="large-centered columns">
-    		<div class="row">
-    			<p><%= bio %></p>
-    		</div>
-        <div class="row">
-          <h4>Contact</h4>
-          <% if (oc_email) {%>
-          <a href="mailto:"<%= oc_email %>><%= oc_email %> </a>
-          <%} %>
-        </div>
-      </div>
-  	</div>
-    <div class="row">
       <ul class="tabs vertical" data-tab>
-        <li class="tab-title active"><a href="#panel11">Top Contributions By Sector</a></li>
+        <li class="tab-title"><a href="#panel61">Bio</a></li>
+        <li class="tab-title"><a href="#panel71">Contact</a></li>
+        <li class="tab-title"><a href="#panel11">Top Contributions By Sector</a></li>
         <li class="tab-title"><a href="#panel21">Contributor Types</a></li>
         <li class="tab-title"><a href="#panel31">Sponsored Legislation</a></li>
         <li class="tab-title"><a href="#panel41">Top Contributions By Industry</a></li>
@@ -33,6 +22,14 @@
 
   <div class="large-8 columns">
     <div class="tabs-content">
+      <div class="content" id="panel61">
+        <p><%= bio %></p>
+      </div>
+      <div class="content" id="panel71">
+        <% if (oc_email) {%>
+        <a href="mailto:<%= oc_email %>"><%= oc_email %> </a>
+        <%} %>
+      </div>
       <div class="content active" id="panel11">
         <div id="sector-chart"></div>
       </div>
