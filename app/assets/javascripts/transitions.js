@@ -1,7 +1,8 @@
 var Transition = ({
   searchToDetail: function(){
     $("#search-container").hide();
-    $(document).foundation('accordion', 'reflow');
+    $("#front-page-header").css("margin-top", "1%");
+    $(document).foundation('tab', 'reflow');
   },
   resetToDefault: function(){
     $('.detail').hide();
