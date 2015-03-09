@@ -19,9 +19,13 @@ Rails.application.routes.draw do
 
   get '/politician/:bio_id' => "politician#details", as: "politician_details"
 
-  match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
-  match "/signout" => "sessions#destroy", :as => :signout, via: [:get, :post]
-
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  resources :tweets, only: [:new, :create]
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
 
   root 'page#index'
   # The priority is based upon order of creation: first created -> highest priority.
