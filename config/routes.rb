@@ -13,9 +13,8 @@ Rails.application.routes.draw do
 
   get '/politician/:bio_id' => "politician#details", as: "politician_details"
 
-  get '/auth' => "twitter#login", as: "twitter_login"
-  match '/auth/:provider', :to => "twitter#auth", :via => [:get, :post]
-  match '/auth/failure', :to => "twitter#failure", :via => [:get, :post]
+  match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
+  match "/signout" => "sessions#destroy", :as => :signout, via: [:get, :post]
 
 
   root 'page#index'
