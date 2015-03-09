@@ -14,6 +14,8 @@ class NetworkController < ApplicationController
     name = split_into_names(params[:name])
     politician_array = []
 
+    puts "http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}"
+
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
     response.parsed_response.fetch("results").each do |p_info|
