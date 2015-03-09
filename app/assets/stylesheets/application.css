@@ -17,16 +17,21 @@
  */
 .search-state, .search-name, .search-type{
   display: inline-block;
-  width: 32%;
+  width: 24%;
+}
+.search-name {
+  width: 50%;
+  text-align: center;
+}
+
+.search-type{
+  text-align: right;
 }
 
 .result-text{
   margin-top: 6%;
 }
 
-.search-type{
-  text-align: right;
-}
 
 #search-container{
   background-color: #F4F2F3;
