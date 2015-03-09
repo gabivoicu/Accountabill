@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   get '/politicians/:zipcode' => "network#politicians", as: "politicians_request"
-  get '/politicians/find/:name' => "network#politician_name", as: "politician_name_request"
+  get '/politicians/find/:name' => "network#politician_names", as: "politician_name_request"
   get '/contributions/:bio_id' => "network#contributions", as: "contributions_request"
   get '/sectors/:bio_id' => "network#sectors", as: "sectors_request"
 

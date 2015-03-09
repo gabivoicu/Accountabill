@@ -13,6 +13,8 @@ class NetworkController < ApplicationController
   def politician_names
     name = split_into_names(params[:name])
 
+    p name
+
     HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
     politician_array = []
