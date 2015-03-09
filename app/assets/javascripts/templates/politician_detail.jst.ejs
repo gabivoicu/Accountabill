@@ -1,5 +1,6 @@
 <div class="row">
-	<img src="http://bioguide.congress.gov/bioguide/photo/<%=bioguide_id.charAt(0)%>/<%=bioguide_id%>.jpg" class="large-4 columns">
+	<img src="<%= photo_url %>" class="large-4 columns">
+  <span id="hide-bio"><%=bioguide_id%></span>
 	<div class="large-8 columns">
 		<div class="row">
 		<h2 class="large-centered columns"> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h2>
@@ -12,9 +13,9 @@
 <div class="row">
   <ul class="accordion" data-accordion>
     <li class="accordion-navigation">
-      <a href="#panel1a">Chart 1</a>
+      <a href="#panel1a">Contributions By Sector</a>
       <div id="panel1a" class="content active">
-  			<p>Chart Goes Here!</p>
+  			<div id="chart"></div>
       </div>
     </li>
     <li class="accordion-navigation">
@@ -24,7 +25,7 @@
       </div>
     </li>
     <li class="accordion-navigation">
-      <a href="#panel3a">Chart 3</a>
+      <a href="#panel3a">Sponsored Legislation</a>
       <div id="panel3a" class="content">
         <p>Chart Goes Here!</p>
       </div>
