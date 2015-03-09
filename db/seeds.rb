@@ -17,7 +17,11 @@ CSV.foreach('db/entity_id.csv') do |row|
   politician = Politician.find_by(bio_id: row[0])
   politician.entity_id = row[1]
   politician.bio = row[2]
-  politician.photo_url = row[3]
+  if politician.photo_url == nil || HTTParty.get(politician.photo_url.parsed_response.include?("Error"))
+    politician.photo_url = "https://pbs.twimg.com/profile_images/3210714480/7462307a8a69c3e7aa725c14fa6908ae.jpeg"
+  else
+    politician.photo_url = row[3]
+  end
   puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
   politician.save
 end
