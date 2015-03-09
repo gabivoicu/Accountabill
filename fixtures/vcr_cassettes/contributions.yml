@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://transparencydata.com/api/1.0/aggregates/pol/4d86ffd297c84c059577c0afe4f8d0ee/contributors.json?apikey=a715862097854379bd7b29f8f05540b7&cycle=2014&limit=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.5
+      Content-Type:
+      - application/json; charset=utf-8
+      Keep-Alive:
+      - timeout=20
+      Vary:
+      - Accept-Encoding, Authorization
+      X-Ua-Compatible:
+      - IE=edge
+      Content-Length:
+      - '867'
+      Date:
+      - Mon, 09 Mar 2015 19:11:26 GMT
+      X-Varnish:
+      - 1128000258 1127993741
+      Age:
+      - '111'
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"employee_amount": "15900.00", "total_amount": "21400.00", "total_count":
+        "19", "name": "Land O''Lakes", "direct_count": "3", "employee_count": "16",
+        "id": "f4af559f1a6c41208cdc918f689e9986", "direct_amount": "5500.00"},{"employee_amount":
+        "16100.00", "total_amount": "16100.00", "total_count": "7", "name": "Black,
+        Mann & Graham", "direct_count": "0", "employee_count": "7", "id": "b746a5d4437d4366ad721ccda9ddc6bc",
+        "direct_amount": "0"},{"employee_amount": "9250.00", "total_amount": "10250.00",
+        "total_count": "10", "name": "Cook Group", "direct_count": "1", "employee_count":
+        "9", "id": "b3bb4dbfb1284867821d3897d63d687d", "direct_amount": "1000.00"},{"employee_amount":
+        "0", "total_amount": "10000.00", "total_count": "4", "name": "UnitedHealth
+        Group", "direct_count": "4", "employee_count": "0", "id": "72ce11333dcc48b09ec60e643f3f596c",
+        "direct_amount": "10000.00"},{"employee_amount": "0", "total_amount": "10000.00",
+        "total_count": "2", "name": "Carpenters & Joiners Union", "direct_count":
+        "2", "employee_count": "0", "id": "597f647e3b7540f3a0d02d6940c3a7de", "direct_amount":
+        "10000.00"},{"employee_amount": "0", "total_amount": "10000.00", "total_count":
+        "3", "name": "Sheet Metal Workers Union", "direct_count": "3", "employee_count":
+        "0", "id": "425be85642b24cc2bc3d8a0bb3c7bc92", "direct_amount": "10000.00"},{"employee_amount":
+        "10000.00", "total_amount": "10000.00", "total_count": "4", "name": "Professional
+        Arts Pharmacy", "direct_count": "0", "employee_count": "4", "id": null, "direct_amount":
+        "0"},{"employee_amount": "10000.00", "total_amount": "10000.00", "total_count":
+        "4", "name": "Hiller Group", "direct_count": "0", "employee_count": "4", "id":
+        null, "direct_amount": "0"},{"employee_amount": "9200.00", "total_amount":
+        "9200.00", "total_count": "6", "name": "Salvi, Schostok & Pritchard", "direct_count":
+        "0", "employee_count": "6", "id": "a343a41525ef4298945cf16cc0648df2", "direct_amount":
+        "0"},{"employee_amount": "6800.00", "total_amount": "6800.00", "total_count":
+        "22", "name": "Krieg Devault Llp", "direct_count": "0", "employee_count":
+        "22", "id": "853feeb793104167b6ba9f1eb0b589fe", "direct_amount": "0"}]'
+    http_version: 
+  recorded_at: Mon, 09 Mar 2015 19:08:37 GMT
+recorded_with: VCR 2.9.3
