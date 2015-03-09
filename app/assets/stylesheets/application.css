@@ -63,9 +63,9 @@
 }
 
 .tooltip {                                                        
-  background: #eee;                                               
+  background: #333;                                               
   box-shadow: 0 0 5px #999999;                                    
-  color: #142525;                                                    
+  color: white;                                                    
   display: none;                                                  
   font-size: 12px;                                                
   left: 130px;                                                    
@@ -73,7 +73,7 @@
   position: absolute;                                             
   text-align: center;                                             
   top: 80px;                                                      
-  width: 80px;                                                    
+  width: 250px;                                                    
   z-index: 10;
   word-wrap: break-word;                                                   
 } 
