@@ -1,7 +1,6 @@
 var Transition = ({
   searchToDetail: function(){
-    $(".search-results").hide();
-    $("#front-page-header").css("margin-top", "1%");
+    $("#search-container").hide();
     $(document).foundation('accordion', 'reflow');
   },
   resetToDefault: function(){
@@ -12,5 +11,6 @@ var Transition = ({
   defaultToDisplaySearchResults: function(){
     $('.detail').hide();
     $("#search-container").show();
+    $("#front-page-header").css("margin-top", "1%");
   }
 })
