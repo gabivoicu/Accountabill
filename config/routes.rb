@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/sectors/:bio_id' => "network#sectors", as: "sectors_request"
 
+  get '/industries/:bio_id' => "network#industries", as: "industries_request"
+
   get '/bills/:bio_id' => "network#bills", as: "bills_request"
 
   get '/auth' => "twitter#login", as: "twitter_login"
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   match '/auth/failure', :to => "twitter#failure", :via => [:get, :post]
 
   get '/politician/:bio_id' => "politician#details", as: "politician_details"
-  
+
   get '/contributor_types/:bio_id' => "network#contributor_types", as: "contributor_types_request"
 
 
