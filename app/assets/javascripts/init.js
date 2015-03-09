@@ -140,12 +140,12 @@ $(document).ready(function(){
         var legendRectSize = 18;
         var legendSpacing = 4;
         var color = d3.scale.ordinal()
-          .range(["#1D3535", "#244242", "#2B5050", "#325D5D", "#396A6A", "#407777", "#478585", "#4F9292", "#569F9F", "#60A9A9"]);
+          .range(["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee090", "#e0f3f8", "#abd9e9", "#74add1", "#4575b4", "#313695"]);
 
         var svg = d3.select('#sector-chart')
           .append('svg')
           .attr('width', 650)
-          .attr('height', 650)
+          .attr('height', 360)
           .append('g')
           .attr('transform', 'translate(' + (width / 2) +
             ',' + (height / 2) + ')');
@@ -441,12 +441,12 @@ $(document).ready(function(){
         var legendRectSize = 18;                                  
         var legendSpacing = 4;                                    
         var color = d3.scale.ordinal()
-          .range(["#471F1F", "#562526", "#642B2C", "#723132", "#813738", "#8F3D3F", "#9D4345", "#AB494B", "#B65455", "#BC6263"]);
+          .range(["#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#d1e5f0", "#92c5de", "#4393c3", "#2166ac", "#053061"]);
 
         var svg = d3.select('#industry-chart')
           .append('svg')
           .attr('width', 650)
-          .attr('height', 650)
+          .attr('height', 360)
           .append('g')
           .attr('transform', 'translate(' + (width / 2) + 
             ',' + (height / 2) + ')');
@@ -484,7 +484,7 @@ $(document).ready(function(){
           var total = d3.sum(dataset.map(function(d) {                
             return d.amount;                                           
         }));        
-          console.log(d.data.count);
+
           var percent = Math.round(1000 * d.data.amount / total) / 10; 
 
             tooltip.select('.name').html(d.data.name);
