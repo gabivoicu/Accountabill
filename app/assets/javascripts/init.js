@@ -50,7 +50,7 @@ $(document).ready(function(){
     event.preventDefault();
     //Steps:
     //Pull biocode out of results from zipcode search and replace the above line
-    var bio_id = $(this).children("span").text()
+    var bio_id = $(this).children("span").text();
 
     var request = $.ajax({
         url: '/politician/' + bio_id
@@ -102,14 +102,20 @@ $(document).ready(function(){
 
     // request.done(function(response)
 
-    var request = $.ajax({
+    var donut_request = $.ajax({
       url: '/sectors/' + bio_id,
+      type: 'get',
+      dataType: 'json',
+    });
+
+    var bar_request = $.ajax({
+      url: '/contributions/' + bio_id,
       type: 'get',
       dataType: 'json',
     });
     // D3 DONUT CHART
 
-    request.done(function(response) {
+    donut_request.done(function(response) {
       (function(d3) {
         'use strict';
 
@@ -214,5 +220,201 @@ $(document).ready(function(){
           .text(function(d) { return d; });
       })(window.d3);
     });
+
+// ------------------ BAR GRAPH ------------------- //
+
+  bar_request.done(function(response) {
+    var w = 600;
+    var h = 250;
+
+    var dataset = [];
+    for (var i = 0; i < response.length; i++) {
+      dataset.push({name: response[i].name, total_amount: response[i].total_amount });
+    }
+
+    var xScale = d3.scale.ordinal()
+      .domain(d3.range(dataset.length))
+      .rangeRoundBands([0, w], 0.05); 
+
+    var yScale = d3.scale.linear()
+      .domain([0, d3.max(dataset, function(d) {return d.total_amount;})])
+      .range([0, h]);
+
+    var name = function(d) {
+      return d.name;
+    };
+
+    //Create SVG element
+    var svg = d3.select("body")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    //Create bars
+    svg.selectAll("rect")
+      .data(dataset, name)
+      .enter()
+      .append("rect")
+      .attr("x", function(d, i) {
+        return xScale(i);
+      })
+      .attr("y", function(d) {
+        return h - yScale(d.total_amount);
+      })
+      .attr("width", xScale.rangeBand())
+      .attr("height", function(d) {
+        return yScale(d.total_amount);
+      })
+      .attr("fill", function(d) {
+        return "rgb(0, 0, " + (d.total_amount * 10) + ")";
+      })
+
+    //Tooltip
+    .on("mouseover", function(d) {
+      //Get this bar's x/y values, then augment for the tooltip
+      var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
+      var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
+    
+      //Update Tooltip Position & value
+      d3.select("#tooltip")
+        .style("left", xPosition + "px")
+        .style("top", yPosition + "px")
+        .select("#value")
+        .text(d.total_amount);
+      d3.select("#tooltip").classed("hidden", false);
+      })
+  .on("mouseout", function() {
+    //Remove the tooltip
+    d3.select("#tooltip").classed("hidden", true);
+  });
+
+    //Create labels
+  svg.selectAll("text")
+   .data(dataset, name)
+   .enter()
+   .append("text")
+   .text(function(d) {
+    return "$" + d.total_amount;
+   })
+   .attr("text-anchor", "middle")
+   .attr("x", function(d, i) {
+    return xScale(i) + xScale.rangeBand() / 2;
+   })
+   .attr("y", function(d) {
+    return h - yScale(d.total_amount) + 14;
+   })
+   .attr("font-family", "sans-serif") 
+   .attr("font-size", "11px")
+   .attr("fill", "white");
+   
+  var sortOrder = false;
+  var sortBars = function () {
+    sortOrder = !sortOrder;
+    
+    sortItems = function (a, b) {
+        if (sortOrder) {
+            return a.total_amount - b.total_amount;
+        }
+        return b.total_amount - a.total_amount;
+    };
+
+    svg.selectAll("rect")
+        .sort(sortItems)
+        .transition()
+        .delay(function (d, i) {
+        return i * 50;
+    })
+        .duration(1000)
+        .attr("x", function (d, i) {
+        return xScale(i);
+    });
+
+    svg.selectAll('text')
+        .sort(sortItems)
+        .transition()
+        .delay(function (d, i) {
+        return i * 50;
+        })
+        .duration(1000)
+        .text(function (d) {
+        return d.total_amount;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+        return xScale(i) + xScale.rangeBand() / 2;
+        })
+        .attr("y", function (d) {
+        return h - yScale(d.total_amount) + 14;
+        });
+    };
+
+    function randomSort() {
+
+    svg.selectAll("rect")
+      .sort(sortItems)
+      .transition()
+      .delay(function (d, i) {
+        return i * 50;
+      })
+      .duration(1000)
+      .attr("x", function (d, i) {
+        return xScale(i);
+      });
+
+    svg.selectAll('text')
+      .sort(sortItems)
+      .transition()
+      .delay(function (d, i) {
+        return i * 50;
+      })
+      .duration(1000)
+      .text(function (d) {
+        return d.total_amount;
+      })
+      .attr("text-anchor", "middle")
+      .attr("x", function (d, i) {
+        return xScale(i) + xScale.rangeBand() / 2;
+      })
+      .attr("y", function (d) {
+        return h - yScale(d.total_amount) + 14;
+      });
+  }
+  function reset() {
+  svg.selectAll("rect")
+    .sort(function(a, b){
+      return a.name - b.name;
+    })
+    .transition()
+      .delay(function (d, i) {
+        return i * 50;
+      })
+      .duration(1000)
+      .attr("x", function (d, i) {
+        return xScale(i);
+      });
+    
+  svg.selectAll('text')
+    .sort(function(a, b){
+      return a.name - b.name;
+    })
+    .transition()
+    .delay(function (d, i) {
+      return i * 50;
+    })
+    .duration(1000)
+    .text(function (d) {
+      return d.total_amount;
+    })
+    .attr("text-anchor", "middle")
+    .attr("x", function (d, i) {
+      return xScale(i) + xScale.rangeBand() / 2;
+    })
+    .attr("y", function (d) {
+      return h - yScale(d.total_amount) + 14;
+    });
+    }
+    });
+    
+
   });
 });
