@@ -11,5 +11,6 @@ var Transition = ({
   },
   defaultToDisplaySearchResults: function(){
     $('.detail').hide();
+    $("#search-container").show();
   }
 })
