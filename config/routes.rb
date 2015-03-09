@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   get '/politicians/:zipcode' => "network#politicians", as: "politicians_request"
