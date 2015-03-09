@@ -14,7 +14,7 @@ class NetworkController < ApplicationController
     name = split_into_names(params[:name])
     politician_array = []
 
-    # url = sanitize_url([])
+    p name
 
     response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
@@ -143,5 +143,13 @@ class NetworkController < ApplicationController
 
   def split_into_names(name)
     names = name.split
+    capitalize_names(names)
+  end
+
+  def capitalize_names(names)
+    names.each do |name|
+      name.capitalize!
+    end
+    names
   end
 end

@@ -45,6 +45,8 @@ $(document).ready(function(){
     }
   });
 
+
+
   $("#search-container").on("click", ".politician-result", function(event){
     event.preventDefault();
     //Steps:
@@ -60,6 +62,8 @@ $(document).ready(function(){
       allDetailsView.render();
       $("#results-view").html(allDetailsView.el);
       Transition.searchToDetail();
+
+//---------------------------------CONTRIBUTOR TYPES----------------------------------------------//
 
       var margin = {top: 8, right: 15, bottom: 20, left: 200},
       width = 700 - margin.left - margin.right,
@@ -80,6 +84,7 @@ $(document).ready(function(){
         dataset.push({"title": data[i].title,"subtitle":"US$, in thousands","ranges":[2500],"count": data[i].count,"measures":[(data[i].total_amount/1000)],"markers":[(data[i].total_amount/1000)]});
         console.log(dataset);
       }
+
 
       var svg = d3.select("#contributor-types").selectAll("svg")
         .data(dataset)
@@ -106,12 +111,6 @@ $(document).ready(function(){
       });
     });
 
-    // var request = $.ajax({
-    //     url: '/bills/' + bio_id
-    // });
-
-    // request.done(function(response)
-
     var sector_request = $.ajax({
       url: '/sectors/' + bio_id,
       type: 'get',
@@ -129,6 +128,18 @@ $(document).ready(function(){
       type: 'get',
       dataType: 'json',
     });
+
+//-------------------------------- BILLS HERE ----------------------------------------//
+
+  var request = $.ajax({
+    url: '/bills/' + bio_id,
+    type: 'get',
+    dataType: 'json'
+  }).done(function(response){
+    for (var i = 0; i < response.length; i++) {
+      $("#bills-listing").append("<span id='bill'><p><a href='" + response[i].open_congress + "'>" + response[i].official_title + "</a></p></span>")
+    }
+  });
 
 //-------------------------------- SECTOR DONUT GRAPH --------------------------------//
 
