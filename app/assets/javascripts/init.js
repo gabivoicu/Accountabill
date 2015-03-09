@@ -106,11 +106,14 @@ $(document).ready(function(){
       });
     });
 
-    // var request = $.ajax({
-    //     url: '/bills/' + bio_id
-    // });
+    var request = $.ajax({
+        url: '/bills/' + bio_id
+    });
 
-    // request.done(function(response)
+    request.done(function(response){
+      console.log("Response:")
+      console.log(response)
+    });
 
     var sector_request = $.ajax({
       url: '/sectors/' + bio_id,
