@@ -130,7 +130,6 @@ $(document).ready(function(){
       var dataset = [];
       for (var i = 0; i < response.length; i++) {
         dataset.push({amount: response[i].amount, sector: response[i].sector, count: response[i].count});
-        console.log(response[i]);
       }
 
         var width = 360;
@@ -239,13 +238,16 @@ $(document).ready(function(){
       dataset.push({name: response[i].name, total_amount: response[i].total_amount });
     }
 
+
+    window.dataset = dataset;
+
     var xScale = d3.scale.ordinal()
       .domain(d3.range(dataset.length))
       .rangeRoundBands([0, w], 0.05); 
 
     var yScale = d3.scale.linear()
-      .domain([0, d3.max(dataset, function(d) {return d.total_amount;})])
-      .range([0, h]);
+      .range([0, h])
+      .domain([0, d3.max(dataset, function(d) {return d.total_amount;})]);
 
     var name = function(d) {
       return d.name;
@@ -272,9 +274,7 @@ $(document).ready(function(){
       .attr("height", function(d) {
         return yScale(d.total_amount);
       })
-      .attr("fill", function(d) {
-        return "rgb(0, 0, " + (d.total_amount * 10) + ")";
-      })
+      .attr("fill", "#64BCBA")
 
     //Tooltip
     .on("mouseover", function(d) {
@@ -431,7 +431,6 @@ $(document).ready(function(){
       var dataset = [];
       for (var i = 0; i < response.length; i++) {
         dataset.push({amount: response[i].amount, name: response[i].name, count: response[i].count});
-        console.log(response[i]);
       }
 
         var width = 360;
@@ -468,7 +467,7 @@ $(document).ready(function(){
              
         tooltip.append('div')                                           
           .attr('class', 'amount');                                      
-        tooltip.append('div')                                           
+        tooltip.append('div')                                            
           .attr('class', 'percent');
 
         var path = svg.selectAll('path')

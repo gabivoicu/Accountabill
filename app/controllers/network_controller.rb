@@ -39,7 +39,7 @@ class NetworkController < ApplicationController
     contribution_array = []
 
     response.parsed_response.each do |c_info|
-      contribution_array << {total_amount: c_info["total_amount"], name: c_info["name"]}
+      contribution_array << {total_amount: c_info["total_amount"].to_i, name: c_info["name"]}
     end
 
     render :json => contribution_array
