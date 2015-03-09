@@ -76,19 +76,18 @@ $(document).ready(function(){
       console.log("/contributor_types/" + bio_id + ".json")
 
       d3.json(("/contributor_types/" + bio_id + ".json"), function(error, data) {
-        console.log(data)
-      // parses response
+
+      // parses response  
       var dataset = [];
       for (var i = 0; i < data.length; i++) {
-        console.log(data[i])
-        dataset.push({"title": data[i].title,"subtitle":"US$, in thousands","ranges":[2500],"count": data[i].count,"measures":[(data[i].total_amount/1000)],"markers":[(data[i].total_amount/1000)]});
-        console.log(dataset);
+        dataset.push({"title": data[i].title,"subtitle":"US$, in thousands","ranges":[2500],"count": data[i].count,"total_amount":data[i].total_amount,"measures":[(data[i].total_amount/1000)],"markers":[(data[i].total_amount/1000)]});
       }
 
 
       var svg = d3.select("#contributor-types").selectAll("svg")
         .data(dataset)
-        .enter().append("svg")
+        .enter()
+        .append("svg")
         .attr("class", "bullet")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -96,18 +95,44 @@ $(document).ready(function(){
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .call(chart);
 
-      var title = svg.append("g")
-        .style("text-anchor", "end")
-        .attr("transform", "translate(-6," + height / 2 + ")");
+        var title = svg.append("g")
+          .style("text-anchor", "end")
+          .attr("transform", "translate(-6," + height / 2 + ")");
 
-      title.append("text")
-        .attr("class", "title")
-        .text(function(d) { return d.title; });
+        title.append("text")
+          .attr("class", "title")
+          .text(function(d) { return d.title; });
 
-      title.append("text")
-        .attr("class", "subtitle")
-        .attr("dy", "1em")
-        .text(function(d) { return d.subtitle; });
+        title.append("text")
+          .attr("class", "subtitle")
+          .attr("dy", "1em")
+          .text(function(d) { return d.subtitle; });
+
+        var tooltip = d3.select('#contributor-types')                               
+          .append('div')                                                
+          .attr('class', 'tooltip');
+
+        tooltip.append('div')                                           
+          .attr('class', 'amount');
+
+        svg.on('mouseover', function(d) {
+          console.log('HERE IS MOUSEOVER');
+          console.log(d);
+          console.log(d.total_amount);
+          tooltip.select('.amount').html('$' + d.total_amount);
+          tooltip.style('display', 'block');
+        });
+
+        svg.on('mouseout', function() {                              
+          tooltip.style('display', 'none');                           
+        });
+
+        
+        svg.on('mousemove', function(d) {                            
+          tooltip.style('top', (d3.event.pageY + -20) + 'px')          
+            .style('left', (d3.event.pageX + 10) + 'px');             
+        }); 
+
       });
     });
 

@@ -75,7 +75,8 @@
   top: 80px;                                                      
   width: 250px;                                                    
   z-index: 10;
-  word-wrap: break-word;                                                   
+
+  word-wrap: break-word;                          
 } 
 
 .axis path,
