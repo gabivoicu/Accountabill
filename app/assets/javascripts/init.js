@@ -34,12 +34,45 @@ $(document).ready(function(){
     });
 
     request.done(function(response){
-        var allDetailsView = new AllDetailsView({model: response});
-        allDetailsView.render();
-        $(".search-results").hide();
-        $("#front-page-header").css("margin-top", "1%");
-        $("#results-view").html(allDetailsView.el);
-        $(document).foundation('accordion', 'reflow'); 
+      var allDetailsView = new AllDetailsView({model: response});
+      allDetailsView.render();
+      $(".search-results").hide();
+      $("#front-page-header").css("margin-top", "1%");
+      $("#results-view").html(allDetailsView.el);
+      $(document).foundation('accordion', 'reflow'); 
+
+      var margin = {top: 5, right: 15, bottom: 20, left: 200},
+      width = 700 - margin.left - margin.right,
+      height = 50 - margin.top - margin.bottom;
+
+      var chart = d3.bullet()
+      .width(width)
+      .height(height);
+
+      d3.json("bullets.json", function(error, data) {
+      var svg = d3.select("#contributor-types").selectAll("svg")
+        .data(data)
+      .enter().append("svg")
+        .attr("class", "bullet")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .call(chart);
+
+      var title = svg.append("g")
+        .style("text-anchor", "end")
+        .attr("transform", "translate(-6," + height / 2 + ")");
+
+      title.append("text")
+        .attr("class", "title")
+        .text(function(d) { return d.title; });
+
+      title.append("text")
+        .attr("class", "subtitle")
+        .attr("dy", "1em")
+        .text(function(d) { return d.subtitle; });
+      });
     });
 
     // var request = $.ajax({
@@ -160,4 +193,9 @@ $(document).ready(function(){
       })(window.d3);
     });
   });
+
+  $( document ).ready(function() {
+   
+  });
+
 });
