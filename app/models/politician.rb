@@ -30,5 +30,7 @@ class Politician < ActiveRecord::Base
   birthdate: :string,
   oc_email: :string,
   bio: :string,
-  photo_url: :string
+  photo_url: :string,
+  term_end: :string,
+  term_start: :string
 end
