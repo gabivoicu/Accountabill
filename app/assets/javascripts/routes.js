@@ -7,11 +7,9 @@ var AppRouter = Backbone.Router.extend({
     "query/:input": "query"
   },
   bio: function(bioId) {
-    console.log("Bio:", bioId);
     renderPolitician(bioId)
   },
   query: function(input) {
-    console.log("In query, yay!");
     renderResults(input)
   }
 });

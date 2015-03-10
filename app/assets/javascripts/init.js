@@ -8,7 +8,7 @@ $(document).ready(function(){
   $("#zip-search-form").on("submit", function(event){
     event.preventDefault();
 
-    var searchVal = $("#zip-search-form input").val().charAt(0);
+    var searchVal = $("#zip-search-form input").val();
 
     renderResults(searchVal)
   });
@@ -17,7 +17,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     var bio_id = $(this).children("span").text();
-    
+
     renderPolitician(bio_id)
   });
 });
