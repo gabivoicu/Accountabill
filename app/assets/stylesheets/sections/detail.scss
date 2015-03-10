@@ -6,6 +6,10 @@
   display: none;
 }
 
+#back-to-search {
+  float:right;
+}
+
 .detail{
   background: #fff;
   padding: 3%;
@@ -15,6 +19,8 @@
   max-width: 64%;
   margin-bottom: 10px
 }
+/*    TABS    */
+
 
 .tabs.vertical {
   max-width: 100%;
@@ -28,16 +34,25 @@
   }
 }
 
+
+/*  DATA CONTAINER  */
+
+
 .data-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #C1E4E3;
+  min-height: 541px;
+  text-align: center;
 }
 
 #data-container {
   background: #fff;
   border: 10px solid #C1E4E3;
 }
+
+
 
 /*foundation override for tabs*/
 .tabs dd > a, .tabs .tab-title > a {
@@ -56,12 +71,6 @@
 .tabs dd.active a, .tabs .tab-title.active a {
   background-color: #C1E4E3;
   color: #142525;
-}
-
-.data-container {
-  background-color: #C1E4E3;
-  min-height: 513px;
-  text-align: center;
 }
 
 .centered {
