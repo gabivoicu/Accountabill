@@ -3,6 +3,11 @@
     <div class="row centered">
       <img src="<%= photo_url %>" class="large-centered columns" id="detail-img">
   		<h3> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h3>
+      <% if (title==="Rep") {%>
+        <h4>District <%= district %></h4>
+      <%} else{%>
+        <h4><%= district %></h4>
+      <% } %>
       <span id="hide-bio"><%=bioguide_id%></span>
     </div>
     <div class="row">
