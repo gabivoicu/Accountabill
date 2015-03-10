@@ -10,15 +10,17 @@ Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight
 
 ### Technologies
 - Rails
-- Unicorn
+- Postgres with HStore
+- Backbone JS
 - Foundation
-- HStore - Postgres
+
 
 ### Testing
 - Travis
 - SimpleCov
 - Jasmine
 - RSpec
+
 
 
 Accountabill is the brainchild of [Gabriela Voicu](https://github.com/gabivoicu), [Ian Agne](https://github.com/ianagne), [Rachel Kolcheck](https://github.com/rkolcheck), [Shiraz Sherwani](https://github.com/PacoGuy) and [Elliott Young](https://github.com/ElliottAYoung). 
