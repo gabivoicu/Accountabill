@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://congress.api.sunlightfoundation.com/legislators?apikey=2a92fee9d78f4fddbe5d9e14f3632465&first_name=Kirk&last_name=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 10 Mar 2015 14:51:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Status:
+      - 200 OK
+    body:
+      encoding: UTF-8
+      string: '{"results":[],"count":0,"page":{"count":0,"per_page":20,"page":1}}'
+    http_version: 
+  recorded_at: Tue, 10 Mar 2015 14:51:34 GMT
+- request:
+    method: get
+    uri: http://congress.api.sunlightfoundation.com/legislators?apikey=2a92fee9d78f4fddbe5d9e14f3632465&first_name=&last_name=Kirk
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 10 Mar 2015 14:51:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Status:
+      - 200 OK
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"bioguide_id":"K000360","birthday":"1959-09-15","chamber":"senate","contact_form":"http://www.kirk.senate.gov/?p=comment_on_legislation","crp_id":"N00012539","district":null,"facebook_id":"116381528428230","fax":"202-228-4611","fec_ids":["H0IL10120","S0IL00261"],"first_name":"Mark","gender":"M","govtrack_id":"400222","icpsr_id":20115,"in_office":true,"last_name":"Kirk","lis_id":"S339","middle_name":"Steven","name_suffix":null,"nickname":null,"oc_email":"Sen.Kirk@opencongress.org","ocd_id":"ocd-division/country:us/state:il","office":"524
+        Hart Senate Office Building","party":"R","phone":"202-224-2854","senate_class":3,"state":"IL","state_name":"Illinois","state_rank":"junior","term_end":"2017-01-03","term_start":"2011-01-05","thomas_id":"01647","title":"Sen","twitter_id":"SenatorKirk","votesmart_id":33502,"website":"http://www.kirk.senate.gov","youtube_id":"SenatorKirk"}],"count":1,"page":{"count":1,"per_page":20,"page":1}}'
+    http_version: 
+  recorded_at: Tue, 10 Mar 2015 14:51:34 GMT
+recorded_with: VCR 2.9.3

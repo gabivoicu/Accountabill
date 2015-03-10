@@ -37,7 +37,7 @@ class NetworkController < ApplicationController
     politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/sectors.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.each do |s_info|
-      sector_array << {sector: find_sector(s_info["sector"]), count: s_info["count"], amount: s_info["amount"]}
+      sector_array << {sector: find_sector(s_info["sector"]), count: s_info["count"].to_i, amount: s_info["amount"].to_i}
     end
     render :json => sector_array
   end
@@ -47,7 +47,7 @@ class NetworkController < ApplicationController
     politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/industries.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.each do |ind_info|
-      industries_array << {name: ind_info["name"].titleize, count: ind_info["count"], amount: ind_info["amount"]}
+      industries_array << {name: ind_info["name"].titleize, count: (ind_info["count"]).to_i, amount: (ind_info["amount"]).to_i}
     end
     render :json => industries_array
   end
@@ -66,8 +66,8 @@ class NetworkController < ApplicationController
     contributor_type_array = []
     politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/type_breakdown.json?cycle=2012&apikey=#{ENV['SUNLIGHT_API_KEY']}")
-    contributor_type_array.push(title: "Individuals", count: response.parsed_response.fetch("Individuals").at(0), total_amount: response.parsed_response.fetch("Individuals").at(1))
-    contributor_type_array.push(title: "PACs", count: response.parsed_response.fetch("PACs").at(0), total_amount: response.parsed_response.fetch("PACs").at(1))
+    contributor_type_array.push(title: "Individuals", count: response.parsed_response.fetch("Individuals").at(0).to_i, total_amount: response.parsed_response.fetch("Individuals").at(1).to_i)
+    contributor_type_array.push(title: "PACs", count: response.parsed_response.fetch("PACs").at(0).to_i, total_amount: response.parsed_response.fetch("PACs").at(1).to_i)
     render :json => contributor_type_array
   end
 

@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://congress.api.sunlightfoundation.com/legislators/locate?apikey=2a92fee9d78f4fddbe5d9e14f3632465&zip=60302
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 10 Mar 2015 13:46:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Status:
+      - 200 OK
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"bioguide_id":"K000360","birthday":"1959-09-15","chamber":"senate","contact_form":"http://www.kirk.senate.gov/?p=comment_on_legislation","crp_id":"N00012539","district":null,"facebook_id":"116381528428230","fax":"202-228-4611","fec_ids":["H0IL10120","S0IL00261"],"first_name":"Mark","gender":"M","govtrack_id":"400222","icpsr_id":20115,"in_office":true,"last_name":"Kirk","lis_id":"S339","middle_name":"Steven","name_suffix":null,"nickname":null,"oc_email":"Sen.Kirk@opencongress.org","ocd_id":"ocd-division/country:us/state:il","office":"524
+        Hart Senate Office Building","party":"R","phone":"202-224-2854","senate_class":3,"state":"IL","state_name":"Illinois","state_rank":"junior","term_end":"2017-01-03","term_start":"2011-01-05","thomas_id":"01647","title":"Sen","twitter_id":"SenatorKirk","votesmart_id":33502,"website":"http://www.kirk.senate.gov","youtube_id":"SenatorKirk"},{"bioguide_id":"D000096","birthday":"1941-09-06","chamber":"house","contact_form":"https://davis.house.gov/email-me","crp_id":"N00004884","district":7,"facebook_id":"280757931935749","fax":"202-225-5641","fec_ids":["H4IL07037"],"first_name":"Danny","gender":"M","govtrack_id":"400093","icpsr_id":29717,"in_office":true,"last_name":"Davis","middle_name":"K.","name_suffix":null,"nickname":null,"oc_email":"Rep.Davis@opencongress.org","ocd_id":"ocd-division/country:us/state:il/cd:7","office":"2159
+        Rayburn House Office Building","party":"D","phone":"202-225-5006","state":"IL","state_name":"Illinois","term_end":"2017-01-03","term_start":"2015-01-06","thomas_id":"01477","title":"Rep","twitter_id":"RepDannyDavis","votesmart_id":233,"website":"http://www.davis.house.gov","youtube_id":"dannykdavis07"},{"bioguide_id":"D000563","birthday":"1944-11-21","chamber":"senate","contact_form":"http://www.durbin.senate.gov/public/index.cfm/contact","crp_id":"N00004981","district":null,"facebook_id":"180436795325335","fax":"202-228-0400","fec_ids":["S6IL00151","H2IL20026"],"first_name":"Richard","gender":"M","govtrack_id":"300038","icpsr_id":15021,"in_office":true,"last_name":"Durbin","leadership_role":"Minority
+        Whip","lis_id":"S253","middle_name":"J.","name_suffix":null,"nickname":null,"oc_email":"Sen.Durbin@opencongress.org","ocd_id":"ocd-division/country:us/state:il","office":"711
+        Hart Senate Office Building","party":"D","phone":"202-224-2152","senate_class":2,"state":"IL","state_name":"Illinois","state_rank":"senior","term_end":"2021-01-03","term_start":"2015-01-06","thomas_id":"00326","title":"Sen","twitter_id":"SenatorDurbin","votesmart_id":26847,"website":"http://www.durbin.senate.gov","youtube_id":"SenatorDurbin"}],"count":3,"page":{"count":3,"per_page":20,"page":1}}'
+    http_version: 
+  recorded_at: Tue, 10 Mar 2015 13:46:57 GMT
+recorded_with: VCR 2.9.3

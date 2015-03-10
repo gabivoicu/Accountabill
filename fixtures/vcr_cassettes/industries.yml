@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://transparencydata.com/api/1.0/aggregates/pol/048563d4685b4fcab08889881f066fff/contributors/industries.json?apikey=2a92fee9d78f4fddbe5d9e14f3632465&cycle=2014&limit=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.5
+      Content-Type:
+      - application/json; charset=utf-8
+      Keep-Alive:
+      - timeout=20
+      Vary:
+      - Accept-Encoding, Authorization
+      X-Ua-Compatible:
+      - IE=edge
+      Content-Length:
+      - '783'
+      Date:
+      - Tue, 10 Mar 2015 15:19:28 GMT
+      X-Varnish:
+      - '1132509852'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"count": "170", "amount": "337600.00", "id": "0af3f418f426497e8bbf916bfc074ebc",
+        "should_show_entity": true, "name": "SECURITIES & INVESTMENT"},{"count": "206",
+        "amount": "156925.00", "id": "b21467ae32924f84ada9076535401a91", "should_show_entity":
+        false, "name": "RETIRED"},{"count": "88", "amount": "137571.00", "id": "bf2cfae020b84fae915ee48e8e15ea87",
+        "should_show_entity": true, "name": "PRO-ISRAEL"},{"count": "83", "amount":
+        "98350.00", "id": "8ada0fc2d6994f2ab06c7e025dff2284", "should_show_entity":
+        true, "name": "INSURANCE"},{"count": "46", "amount": "64949.00", "id": "13ca840788944cc79b362d068985fc73",
+        "should_show_entity": false, "name": "MISC MANUFACTURING & DISTRIBUTING"},{"count":
+        "64", "amount": "64100.00", "id": "a05a0d06f6814b31bece35a81fcb40c7", "should_show_entity":
+        true, "name": "HEALTH PROFESSIONALS"},{"count": "43", "amount": "60150.00",
+        "id": "7500030dffe24844aa467a75f7aedfd1", "should_show_entity": true, "name":
+        "REAL ESTATE"},{"count": "37", "amount": "59500.00", "id": "05b23aff0dbd4b74b95b3e16074a874c",
+        "should_show_entity": false, "name": "MISC FINANCE"},{"count": "66", "amount":
+        "59433.00", "id": "f50cf984a2e3477c8167d32e2b14e052", "should_show_entity":
+        true, "name": "LAWYERS/LAW FIRMS"},{"count": "39", "amount": "55375.00", "id":
+        "8b48cb51f18f4286b8e16b2dc8e9689d", "should_show_entity": true, "name": "MINING"}]'
+    http_version: 
+  recorded_at: Tue, 10 Mar 2015 15:16:39 GMT
+recorded_with: VCR 2.9.3
