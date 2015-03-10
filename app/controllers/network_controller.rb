@@ -23,7 +23,7 @@ class NetworkController < ApplicationController
   end
 
   def contributions
-    find(params[:bio_id])
+    politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors.json?cycle=2014&limit=50&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     contribution_array = []
     response.parsed_response.each do |c_info|
@@ -33,7 +33,7 @@ class NetworkController < ApplicationController
   end
 
   def sectors
-    find(params[:bio_id])
+    politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/sectors.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     sector_array = []
     response.parsed_response.each do |s_info|
@@ -43,7 +43,7 @@ class NetworkController < ApplicationController
   end
 
   def industries
-    find(params[:bio_id])
+    politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/industries.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     industries_array = []
     response.parsed_response.each do |ind_info|
@@ -63,7 +63,7 @@ class NetworkController < ApplicationController
   end
 
   def contributor_types
-    find(params[:bio_id])
+    politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/type_breakdown.json?cycle=2012&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     contributor_type_array = []
     contributor_type_array.push(title: "Individuals", count: response.parsed_response.fetch("Individuals").at(0), total_amount: response.parsed_response.fetch("Individuals").at(1))
@@ -78,7 +78,7 @@ class NetworkController < ApplicationController
   end
 
   def find(bio_id)
-    politician = Politician.find_by_bio_id(params[:bio_id])
+    Politician.find_by_bio_id(params[:bio_id])
   end
 
   def capitalize_all_words!(string)
