@@ -130,7 +130,7 @@ describe NetworkController do
         sector = body.first
 
         expect(sector["count"]).to be_kind_of(Integer)
-        expect(sector["total_amount"]).to be_kind_of(Integer)       
+        expect(sector["amount"]).to be_kind_of(Integer)       
       end
     end
 
@@ -144,7 +144,7 @@ describe NetworkController do
 
         expect(sector["sector"]).to eq("Finance/Insurance/Real Estate")
         expect(sector["count"]).to eq(373)
-        expect(sector["total_amount"]).to eq(606950)
+        expect(sector["amount"]).to eq(606950)
       end
     end
   end
@@ -159,7 +159,32 @@ describe NetworkController do
       end
     end
 
+    it "should convert count and amount to integers" do
+      VCR.use_cassette("industries") do
+        bio_id = "K000360"
 
+        response = get :industries, bio_id: bio_id
+        body = JSON.parse(response.body)
+        industry = body.first
+      
+        expect(industry["count"]).to be_kind_of(Integer)
+        expect(industry["amount"]).to be_kind_of(Integer)  
+      end  
+    end
+
+    it "should return data" do
+      VCR.use_cassette("industries") do
+        bio_id = "K000360"
+
+        response = get :industries, bio_id: bio_id
+        body = JSON.parse(response.body)
+        industry = body.first
+
+        expect(industry["name"]).to eq("Securities & Investment")
+        expect(industry["count"]).to eq(170)
+        expect(industry["amount"]).to eq(337600)
+      end
+    end
   end
 
   context "Finding Sponsored Bills" do
