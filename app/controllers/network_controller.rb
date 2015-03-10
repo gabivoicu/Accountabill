@@ -47,7 +47,7 @@ class NetworkController < ApplicationController
     politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/industries.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.each do |ind_info|
-      industries_array << {name: capitalize_all_words!(ind_info["name"]), count: ind_info["count"], amount: ind_info["amount"]}
+      industries_array << {name: ind_info["name"].titleize, count: ind_info["count"], amount: ind_info["amount"]}
     end
     render :json => industries_array
   end
@@ -79,12 +79,6 @@ class NetworkController < ApplicationController
 
   def find(bio_id)
     Politician.find_by_bio_id(bio_id)
-  end
-
-  def capitalize_all_words!(string)
-    array = string.split(" ")
-    new_array = array.map { |word| word.capitalize }
-    new_string = new_array.join(" ")
   end
 
   def find_sector(sector)
