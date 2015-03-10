@@ -7,6 +7,5 @@ Rails.application.configure do
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
   config.assets.debug = true
-  config.twitter_key = ENV['TWITTER_API_KEY']
-  config.twitter_secret = ENV['TWITTER_SECRET_KEY']
+
 end
