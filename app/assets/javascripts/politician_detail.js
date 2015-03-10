@@ -151,10 +151,11 @@ function renderSectorDonut(response) {
       
       var percent = Math.round(1000 * d.data.amount / total) / 10;
 
+
       tooltip.select('.sector').html(d.data.sector);
       tooltip.select('.count').html(d.data.count + ' contributors');
       tooltip.select('.amount').html('$' + d.data.amount);
-      tooltip.select('.percent').html(percent + '% of total');
+      tooltip.select('.percent').html(Math.round(percent) + '% of total');
       tooltip.style('display', 'block');
 
       svg.selectAll(".donut-slice").style('opacity','.6')
@@ -229,11 +230,11 @@ function renderSectorDonut(response) {
       
       var percent = Math.round(1000 * d.amount / total) / 10;
 
-      tooltip.select('.sector').html(d.sector);
-      tooltip.select('.count').html(d.count + ' contributors');
-      tooltip.select('.amount').html('$' + d.amount);
-      tooltip.select('.percent').html(percent + '% of total');
-      tooltip.style('display', 'block');
+      // tooltip.select('.sector').html(d.sector);
+      // tooltip.select('.count').html(d.count + ' contributors');
+      // tooltip.select('.amount').html('$' + d.amount);
+      // tooltip.select('.percent').html(percent + '% of total');
+      // tooltip.style('display', 'block');
 
       // svg.selectAll(".donut-slice").style('opacity','.6')
       // d3.select(this).style('opacity','1.0')
@@ -355,7 +356,25 @@ svg.selectAll("text")
  })
  .attr("font-family", "sans-serif")
  .attr("font-size", "11px")
- .attr("fill", "white");
+ .attr("fill", "white")
+   .on("mouseover", function(d) {
+    //Get this bar's x/y values, then augment for the tooltip
+    var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
+    var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
+
+    //Update Tooltip Position & value
+    d3.select(".tooltip")
+      tooltip.select('.name').html(d.name);
+      tooltip.select('.total').html("$" + d.total_amount);
+      tooltip.style('display', 'block');
+  })
+  .on('mouseout', function() {
+    tooltip.style('display', 'none');
+  })
+  .on('mousemove', function(d) {
+    tooltip.style('top', (d3.event.pageY + -510) + 'px')
+      .style('left', (d3.event.pageX + -712) + 'px');
+  });
 
 var sortOrder = false;
 var sortBars = function () {
