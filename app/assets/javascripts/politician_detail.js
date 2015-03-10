@@ -10,7 +10,7 @@ function renderPoliticianDetails(data){
 //------------------------ Contributor Types Graph ------------------------//
 
 function renderContributorTypes(bio_id, data) {
-    var margin = {top: 8, right: 15, bottom: 20, left: 200},
+    var margin = {top: 8, right: 15, bottom: 20, left: 90},
     width = 700 - margin.left - margin.right,
     height = 50 - margin.top - margin.bottom;
 
