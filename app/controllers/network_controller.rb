@@ -3,7 +3,7 @@ class NetworkController < ApplicationController
     response = get("http://congress.api.sunlightfoundation.com/legislators/locate?zip=#{params[:zipcode]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     politician_array = []
     response.fetch("results").each do |p_info|
-      politician_array << Politician.find_by_bio_id(p_info["bioguide_id"]).hash_data
+      politician_array << find(p_info["bioguide_id"]).hash_data
     end
     render :json => politician_array
   end
@@ -13,11 +13,11 @@ class NetworkController < ApplicationController
     politician_array = []
     response = get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[0]}&last_name=#{name[1]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.fetch("results").each do |p_info|
-      politician_array << Politician.find_by_bio_id(p_info["bioguide_id"]).hash_data
+      politician_array << find(p_info["bioguide_id"]).hash_data
     end
     response = get("http://congress.api.sunlightfoundation.com/legislators?first_name=#{name[1]}&last_name=#{name[0]}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.fetch("results").each do |p_info|
-      politician_array << Politician.find_by_bio_id(p_info["bioguide_id"]).hash_data
+      politician_array << find(p_info["bioguide_id"]).hash_data
     end
     render :json => politician_array
   end
@@ -78,7 +78,7 @@ class NetworkController < ApplicationController
   end
 
   def find(bio_id)
-    Politician.find_by_bio_id(params[:bio_id])
+    Politician.find_by_bio_id(bio_id)
   end
 
   def capitalize_all_words!(string)
