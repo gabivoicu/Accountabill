@@ -15,14 +15,32 @@
   </head>
 
   <body>
-      <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
-      <% end %>
-      
-    <%= yield %>
+    <div id="wrapper">
+      <div id="main">
+        <% if current_user %>
+          Signed in as <strong><%= current_user.name %></strong>!
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+          <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
+        <% end %>
 
+        <%= yield %>
+      </div>
+    </div>
+    <div id="footer">
+      <footer>
+        <div id="about-us">
+          <h5>About Us</h5>
+          <p>We are a group of five aspiring Web Developers out of DevBootcamp Chicago who created Accountabill with the hope that it will help educate voters about where the funding for their federal representatives is coming from.</p>
+        </div>
+        <div id="take-action">
+          <h5>Take Action</h5>
+        </div>
+        <div id="sunlight-logo">
+          <h5>Powered By:</h5>
+          <a href="http://sunlightfoundation.com/"><img src="https://pscl.sunlightfoundation.com/static/img/sunlight.png"/></a>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
