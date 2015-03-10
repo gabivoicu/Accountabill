@@ -71,8 +71,8 @@ function renderContributorTypes(bio_id, data) {
 
       
       svg.on('mousemove', function(d) {                            
-        tooltip.style('top', (d3.event.pageY + -20) + 'px')          
-          .style('left', (d3.event.pageX + 10) + 'px');             
+        tooltip.style('top', (d3.event.pageY + -460) + 'px')          
+          .style('left', (d3.event.pageX + -500) + 'px');             
       }); 
 
     });
@@ -163,8 +163,8 @@ function renderSectorDonut(response) {
     });
 
     path.on('mousemove', function(d) {
-      tooltip.style('top', (d3.event.pageY + -140) + 'px')
-        .style('left', (d3.event.pageX + 10) + 'px');
+      tooltip.style('top', (d3.event.pageY + -500) + 'px')
+        .style('left', (d3.event.pageX + -500) + 'px');
     });
 
   var legend = svg.selectAll('.legend')
@@ -271,8 +271,8 @@ function renderContributorBarGraph(response) {
     tooltip.style('display', 'none');
   })
   .on('mousemove', function(d) {
-    tooltip.style('top', (d3.event.pageY + -140) + 'px')
-      .style('left', (d3.event.pageX + 10) + 'px');
+    tooltip.style('top', (d3.event.pageY + -480) + 'px')
+      .style('left', (d3.event.pageX + -500) + 'px');
   });
 
   //Create labels
@@ -487,8 +487,8 @@ function renderIndustryDonut(response) {
       svg.selectAll(".donut-slice").style('opacity','1.0')
     });
         path.on('mousemove', function(d) {
-          tooltip.style('top', (d3.event.pageY + -140) + 'px')
-            .style('left', (d3.event.pageX + 10) + 'px');
+          tooltip.style('top', (d3.event.pageY + -500) + 'px')
+            .style('left', (d3.event.pageX + -500) + 'px');
         });
 
       var legend = svg.selectAll('.legend')
