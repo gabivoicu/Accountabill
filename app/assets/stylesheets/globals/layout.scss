@@ -1,0 +1,30 @@
+
+img {
+  border-radius: 6px;
+}
+
+html, body {height: 90%;}
+
+#wrapper {
+    min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom: 150px;
+}
+
+#footer {
+  position: relative;
+  margin-top: -150px;
+  height: 150px;
+  clear:both;}
+
+
+/**********FOOTER**********/
+
+#sunlight-logo, #about-us{
+  width: 30%;
+  float: left;
+}
+
