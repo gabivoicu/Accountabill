@@ -45,6 +45,7 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'jasmine-rails'
+  gem 'capybara'
   gem 'simplecov', :require => false
   gem 'rspec-rails'
   # Access an IRB console on exception pages or by using <%= console %> in views
