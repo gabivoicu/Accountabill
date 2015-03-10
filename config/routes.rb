@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
 
   root 'page#index'
+
+  get 'help', to: 'page#index'
+  get 'bio/:bio', to: 'page#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
