@@ -493,6 +493,12 @@ function renderIndustryDonut(response) {
     })(window.d3);
   }
 
+function renderBills(response) {
+  for (var i = 0; i < response.length; i++) {
+    $("#bills-listing").append("<span id='bill'><p>Bill Number " + response[i].bill_id + ": <a target='_blank' href='" + response[i].open_congress + "'>" + response[i].official_title + "</a></p></span>")
+  }
+}
+
 function renderPolitician(bio_id) {
   var request = $.ajax({
       url: '/politician/' + bio_id
@@ -513,9 +519,18 @@ function renderPolitician(bio_id) {
     dataType: 'json',
   });
 
+  var bills_request = $.ajax({
+    url: '/bills/' + bio_id,
+    type: 'get',
+    dataType: 'json'
+  })
+
+
+
   request.done(renderPoliticianDetails)
   request.done(function(response) { renderContributorTypes(bio_id, response) });
   sector_request.done(renderSectorDonut);
+  bills_request.done(renderBills);
   contributor_request.done(renderContributorBarGraph);
   industry_request.done(renderIndustryDonut);
 }
