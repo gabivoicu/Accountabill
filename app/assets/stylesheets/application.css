@@ -73,10 +73,8 @@
   position: absolute;                                             
   text-align: center;                                             
   top: 80px;                                                      
-  width: 250px;                                                    
-  z-index: 10;
-
-  word-wrap: break-word;                          
+  width: 190px;                                                    
+  z-index: 10;                        
 } 
 
 .axis path,
@@ -97,7 +95,7 @@ rect {
   transition: all 0.3s;
 }
 rect:hover{
-  fill: #257067;
+  fill: #B2182B;
 }                                                 
 
 #chart{

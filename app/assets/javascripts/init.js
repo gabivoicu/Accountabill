@@ -12,6 +12,7 @@ $(document).ready(function(){
     var searchVal = $("#zip-search-form input").val().charAt(0)
 
     if (isNaN(searchVal)) {
+  
       var name = $("#zip-search-form input").val();
 
       var politicians = new PoliticiansCollection({ name: name, entryType: "String" });
@@ -28,6 +29,7 @@ $(document).ready(function(){
     }
     else{
       var zipcode = $("#zip-search-form input").val();
+
       var politicians = new PoliticiansCollection({ zipcode: zipcode, entryType: "Integer" });
 
       politician_results = politicians;
@@ -69,7 +71,7 @@ $(document).ready(function(){
       .width(width)
       .height(height);
 
-      console.log("/contributor_types/" + bio_id + ".json")
+      
 
       d3.json(("/contributor_types/" + bio_id + ".json"), function(error, data) {
 
@@ -112,9 +114,6 @@ $(document).ready(function(){
           .attr('class', 'amount');
 
         svg.on('mouseover', function(d) {
-          console.log('HERE IS MOUSEOVER');
-          console.log(d);
-          console.log(d.total_amount);
           tooltip.select('.amount').html('$' + d.total_amount);
           tooltip.style('display', 'block');
         });
@@ -205,7 +204,8 @@ $(document).ready(function(){
 
         tooltip.append('div')
           .attr('class', 'sector');
-
+        tooltip.append('div')
+          .attr('class', 'count');
         tooltip.append('div')
           .attr('class', 'amount');
         tooltip.append('div')
@@ -224,7 +224,7 @@ $(document).ready(function(){
           var total = d3.sum(dataset.map(function(d) {
             return d.amount;
         }));
-          console.log(d.data.count)
+      
           var percent = Math.round(1000 * d.data.amount / total) / 10;
 
             tooltip.select('.sector').html(d.data.sector);
@@ -301,6 +301,17 @@ $(document).ready(function(){
       .attr("width", w)
       .attr("height", h);
 
+
+    var tooltip = d3.select('#top-contributor')                               
+      .append('div')                                                
+      .attr('class', 'tooltip');                                    
+                  
+    tooltip.append('div')                                           
+      .attr('class', 'name');
+    tooltip.append('div')                                           
+      .attr('class', 'total');                                       
+
+
     //Create bars
     svg.selectAll("rect")
       .data(dataset, name)
@@ -316,7 +327,7 @@ $(document).ready(function(){
       .attr("height", function(d) {
         return yScale(d.total_amount);
       })
-      .attr("fill", "#64BCBA")
+      .attr("fill", "#67001F")
 
     //Tooltip
     .on("mouseover", function(d) {
@@ -325,17 +336,18 @@ $(document).ready(function(){
       var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
 
       //Update Tooltip Position & value
-      d3.select("#tooltip")
-        .style("left", xPosition + "px")
-        .style("top", yPosition + "px")
-        .select("#value")
-        .text(d.total_amount);
-      d3.select("#tooltip").classed("hidden", false);
-      })
-  .on("mouseout", function() {
-    //Remove the tooltip
-    d3.select("#tooltip").classed("hidden", true);
-  });
+      d3.select(".tooltip")
+        tooltip.select('.name').html(d.name);
+        tooltip.select('.total').html("$" + d.total_amount);
+        tooltip.style('display', 'block');
+    })
+    .on('mouseout', function() {
+      tooltip.style('display', 'none');
+    })
+    .on('mousemove', function(d) {
+      tooltip.style('top', (d3.event.pageY + -140) + 'px')
+        .style('left', (d3.event.pageX + 10) + 'px');
+    });
 
     //Create labels
   svg.selectAll("text")
@@ -507,7 +519,8 @@ $(document).ready(function(){
                       
         tooltip.append('div')                                           
           .attr('class', 'name');                                      
-             
+        tooltip.append('div')                                           
+          .attr('class', 'count');     
         tooltip.append('div')                                           
           .attr('class', 'amount');                                      
         tooltip.append('div')                                            
