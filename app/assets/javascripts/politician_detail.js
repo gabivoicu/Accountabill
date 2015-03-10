@@ -18,8 +18,6 @@ function renderContributorTypes(bio_id, data) {
     .width(width)
     .height(height);
 
-    
-
     d3.json(("/contributor_types/" + bio_id + ".json"), function(error, data) {
 
     // parses response  
@@ -60,8 +58,12 @@ function renderContributorTypes(bio_id, data) {
       tooltip.append('div')                                           
         .attr('class', 'amount');
 
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
       svg.on('mouseover', function(d) {
-        tooltip.select('.amount').html('$' + d.total_amount + ' total');
+        tooltip.select('.amount').html('$' + numberWithCommas(d.total_amount) + ' total');
         tooltip.style('display', 'block');
       });
 
@@ -144,18 +146,20 @@ function renderSectorDonut(response) {
       })
       .each(function(d) { this._current = d; }); 
 
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
     path.on('mouseover', function(d) {
       var total = d3.sum(dataset.map(function(d) {
         return (d.enabled) ? d.count : 0; 
       }));
       
-      var percent = Math.round(1000 * d.data.amount / total) / 10;
-
+      var percent = Math.round( d.data.amount / total ) / 10;
 
       tooltip.select('.sector').html(d.data.sector);
       tooltip.select('.count').html(d.data.count + ' contributors');
-      tooltip.select('.amount').html('$' + d.data.amount);
-      tooltip.select('.percent').html(Math.round(percent) + '% of total');
+      tooltip.select('.amount').html('$' + numberWithCommas(d.data.amount));
+      tooltip.select('.percent').html(percent + '% of total');
       tooltip.style('display', 'block');
 
       svg.selectAll(".donut-slice").style('opacity','.6')
@@ -301,6 +305,9 @@ function renderContributorBarGraph(response) {
   tooltip.append('div')                                           
     .attr('class', 'total');                                       
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   //Create bars
   svg.selectAll("rect")
@@ -328,7 +335,7 @@ function renderContributorBarGraph(response) {
     //Update Tooltip Position & value
     d3.select(".tooltip")
       tooltip.select('.name').html(d.name);
-      tooltip.select('.total').html("$" + d.total_amount);
+      tooltip.select('.total').html("$" + numberWithCommas(d.total_amount));
       tooltip.style('display', 'block');
   })
   .on('mouseout', function() {
@@ -552,16 +559,20 @@ function renderIndustryDonut(response) {
       })                                                        
       .each(function(d) { this._current = d; });   
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
     path.on('mouseover', function(d) {
       var total = d3.sum(dataset.map(function(d) {
         return (d.enabled) ? d.count : 0;
       }));
       
-      var percent = Math.round(1000 * d.data.amount / total) / 10;
+      var percent = Math.round( d.data.amount / total ) / 10;
 
       tooltip.select('.name').html(d.data.name);
       tooltip.select('.count').html(d.data.count + ' contributors');
-      tooltip.select('.amount').html('$' + d.data.amount);
+      tooltip.select('.amount').html('$' + numberWithCommas(d.data.amount));
       tooltip.select('.percent').html(percent + '% of total');
       tooltip.style('display', 'block');
 
