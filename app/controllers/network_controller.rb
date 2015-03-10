@@ -22,6 +22,13 @@ class NetworkController < ApplicationController
     render :json => politician_array
   end
 
+  def companies
+    company_array = []
+    name = params[:name].capitalize!
+
+    response = get("http://transparencydata.com/api/1.0/entities.json?search=#{name}&apikey=ENV['SUNLIGHT_API_KEY']")  
+  end
+
   def contributions
     contribution_array = []
     politician = find(params[:bio_id])
