@@ -151,10 +151,10 @@ function renderSectorDonut(response) {
       }
     path.on('mouseover', function(d) {
       var total = d3.sum(dataset.map(function(d) {
-        return (d.enabled) ? d.count : 0; 
+        return (d.enabled) ? d.amount : 0; 
       }));
       
-      var percent = Math.round( d.data.amount / total ) / 10;
+      var percent = Math.round( 1000 * d.data.amount / total ) / 10;
 
       tooltip.select('.sector').html(d.data.sector);
       tooltip.select('.count').html(d.data.count + ' contributors');
@@ -232,7 +232,9 @@ function renderSectorDonut(response) {
         return (d.enabled) ? d.count : 0; 
       }));
       
-      var percent = Math.round(1000 * d.amount / total) / 10;
+
+      // start hover over box for legend
+      // var percent = Math.round(d.amount / total) / 10;
 
       // tooltip.select('.sector').html(d.sector);
       // tooltip.select('.count').html(d.count + ' contributors');
@@ -566,10 +568,12 @@ function renderIndustryDonut(response) {
 
     path.on('mouseover', function(d) {
       var total = d3.sum(dataset.map(function(d) {
-        return (d.enabled) ? d.count : 0;
+        return (d.enabled) ? d.amount : 0;
       }));
+
+      console.log(total)
       
-      var percent = Math.round( d.data.amount / total ) / 10;
+      var percent = Math.round( 1000 * d.data.amount / total ) / 10;
 
       tooltip.select('.name').html(d.data.name);
       tooltip.select('.count').html(d.data.count + ' contributors');
