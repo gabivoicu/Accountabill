@@ -4,6 +4,10 @@
   <p>
     <span class="search-state"> <%= state %> </span>
     <span class="search-name"><%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</span>
-    <span class="search-type">politician</span>
+    <%if (title === "Rep"){ %>
+      <span class="search-type">House</span>
+    <%} else if (title ==="Sen") {%>
+      <span class="search-type">Senate</span>
+    <%}%>
   </p>
 </div>
