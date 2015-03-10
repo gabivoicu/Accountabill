@@ -100,11 +100,11 @@ rect {
   cursor: pointer;                                              /* NEW */
   stroke-width: 2;
 }
-  
+
 rect:hover{
   fill: #D73027;
 }
-  
+
 rect.disabled {                                                 /* NEW */
     fill: transparent !important;                                 /* NEW */
 }                                                               /* NEW */
@@ -155,4 +155,3 @@ h1 {                                                            /* NEW */
 .bullet .subtitle {
   fill: #999;
 }
-
