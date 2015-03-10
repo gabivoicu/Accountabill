@@ -18,6 +18,8 @@ CSV.foreach('db/entity_id.csv') do |row|
   politician.entity_id = row[1]
   politician.bio = row[2]
   politician.photo_url = row[3]
+  politician.term_start = row[4]
+  politician.term_end = row[5]
   
   if politician.photo_url && politician.photo_url != ""
     if HTTParty.get(politician.photo_url).parsed_response.include?("Error")
