@@ -1,14 +1,10 @@
 function renderResults(searchVal) {
 
-
 if (isNaN(searchVal)) {
-  
-      var name = $("#zip-search-form input").val();
 
-      var politicians = new PoliticiansCollection({ name: name, entryType: "String" });
+      // var name = $("#zip-search-form input").val();
 
-
-      politician_results = politicians;
+      var politicians = new PoliticiansCollection({ name: searchVal, entryType: "String" });
 
       var searchResultView = new PoliticianSearchResultsView({collection: politicians});
 
@@ -18,11 +14,9 @@ if (isNaN(searchVal)) {
       Transition.defaultToDisplaySearchResults();
     }
     else{
-      var zipcode = $("#zip-search-form input").val();
+      // var zipcode = $("#zip-search-form input").val();
 
-      var politicians = new PoliticiansCollection({ zipcode: zipcode, entryType: "Integer" });
-
-      politician_results = politicians;
+      var politicians = new PoliticiansCollection({ zipcode: searchVal, entryType: "Integer" });
 
       var searchResultView = new PoliticianSearchResultsView({collection: politicians});
 
