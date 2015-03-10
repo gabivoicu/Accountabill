@@ -2,13 +2,9 @@
 
 [Provide Feedback](http://goo.gl/forms/SZ5EQcqXCv)
 
-Accountabill is an OpenSource web application that employs a user's location to easily view their government representatives on the Federal level. Users can examine the companies and corperations that have funded a representative, as well as what bills and laws they've supported in the past. Accountabill also provides the User with the representative's contact information.
+Accountabill is an Open Source web application that provides a list of State Representatives and Senators based on a user's zipcode. A user can look at contribution data for their Congress person for the latest campaing cycle. Information about contributing sectors, industries, individual vs. PAC and top contributors is available.
 
-
-## Requirements
-- OpenCongress
-
-
+Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight Foundation](https://sunlightfoundation.com/api/).
 
 ### Technologies
 - Rails
