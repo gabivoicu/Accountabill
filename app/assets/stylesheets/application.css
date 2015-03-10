@@ -97,15 +97,21 @@ rect {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+  cursor: pointer;                                              /* NEW */
+  stroke-width: 2;
 }
+  
 rect:hover{
-<<<<<<< HEAD
-  fill: #B2182B;
+  fill: #D73027;
 }
-=======
-  fill: #257067;
-}
->>>>>>> mad stylz with aly fluckey
+  
+rect.disabled {                                                 /* NEW */
+    fill: transparent !important;                                 /* NEW */
+}                                                               /* NEW */
+h1 {                                                            /* NEW */
+  font-size: 14px;                                              /* NEW */
+  text-align: center;                                           /* NEW */
+}                                                               /* NEW */
 
 #chart{
   margin: 0 auto;
