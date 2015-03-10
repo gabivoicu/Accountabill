@@ -6,13 +6,12 @@ var Transition = ({
     $(document).foundation('tab', 'reflow');
   },
   resetToDefault: function(){
-    $('.detail').hide();
     $(".search-results").hide();
     $("#results-view").hide();
     $("#front-page-header").css("margin-top", "10%");
   },
   defaultToDisplaySearchResults: function(){
-    $('.detail').hide();
+    $('#results-view').hide();
     $("#search-container").show();
     $("#front-page-header").css("margin-top", "1%");
   }
