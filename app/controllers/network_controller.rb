@@ -47,7 +47,7 @@ class NetworkController < ApplicationController
     politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/industries.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.each do |ind_info|
-      industries_array << {name: capitalize_all_words!(ind_info["name"]), count: (ind_info["count"]).to_i, amount: (ind_info["amount"]).to_i}
+      industries_array << {name: ind_info["name"].titleize, count: (ind_info["count"]).to_i, amount: (ind_info["amount"]).to_i}
     end
     render :json => industries_array
   end

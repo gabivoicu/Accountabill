@@ -196,6 +196,18 @@ describe NetworkController do
         expect { JSON.parse(response.body) }.to_not raise_error 
       end
     end
+
+    it "should return data" do
+      VCR.use_cassette("bills") do
+        bio_id = "K000360"
+
+        response = get :bills, bio_id: bio_id
+        body = JSON.parse(response.body)
+        bills = body.first
+
+        
+      end
+    end
   end
 
   context "Finding Types of Contributors" do
