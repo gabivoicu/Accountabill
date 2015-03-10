@@ -35,6 +35,7 @@ gem 'unicorn'
 gem 'httparty'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'twitter'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
