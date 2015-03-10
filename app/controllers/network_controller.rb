@@ -66,8 +66,8 @@ class NetworkController < ApplicationController
     contributor_type_array = []
     politician = find(params[:bio_id])
     response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors/type_breakdown.json?cycle=2012&apikey=#{ENV['SUNLIGHT_API_KEY']}")
-    contributor_type_array.push(title: "Individuals", count: response.parsed_response.fetch("Individuals").at(0), total_amount: response.parsed_response.fetch("Individuals").at(1))
-    contributor_type_array.push(title: "PACs", count: response.parsed_response.fetch("PACs").at(0), total_amount: response.parsed_response.fetch("PACs").at(1))
+    contributor_type_array.push(title: "Individuals", count: response.parsed_response.fetch("Individuals").at(0).to_i, total_amount: response.parsed_response.fetch("Individuals").at(1).to_i)
+    contributor_type_array.push(title: "PACs", count: response.parsed_response.fetch("PACs").at(0).to_i, total_amount: response.parsed_response.fetch("PACs").at(1).to_i)
     render :json => contributor_type_array
   end
 

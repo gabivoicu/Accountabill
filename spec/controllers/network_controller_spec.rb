@@ -9,215 +9,165 @@ describe NetworkController do
   end
 
   context "Finding a Politician by Zip Code" do
-
-    it "should return a JSON object" do
-      VCR.use_cassette("politicians") do
-        zipcode = 60302
-
-        response = get :politicians, zipcode: zipcode
-        expect { JSON.parse(response.body) }.to_not raise_error    
-      end
-    end
-
+    let(:zipcode) { 60302 }
     it "should have no fewer than three results" do
       VCR.use_cassette("politicians") do
-        zipcode = 60302
-
         response = get :politicians, zipcode: zipcode
-        expect(JSON.parse(response.body).length).to be >= (3)
       end
+      expect(JSON.parse(response.body).length).to be >= (3)
     end
 
     it "should return data" do
       VCR.use_cassette("politicians") do
-        zipcode = 60302
-
         response = get :politicians, zipcode: zipcode
-        body = JSON.parse(response.body)
-        politician = body.first
-        expect(politician["firstname"]).to eq("Mark")
-        expect(politician["lastname"]).to eq("Kirk")
       end
+      body = JSON.parse(response.body)
+      politician = body.first
+      expect(politician["firstname"]).to eq("Mark")
+      expect(politician["lastname"]).to eq("Kirk")
     end
   end
 
   context "Finding a Politician by Name" do
-    it "should return a JSON object" do
-      VCR.use_cassette("politician_names") do
-        name = "Kirk"
-
-        response = get :politician_names, name: name
-        expect { JSON.parse(response.body) }.to_not raise_error 
-      end
-    end
+    let(:name) { "Kirk" }
 
     it "should return data" do
       VCR.use_cassette("politician_names") do
-        name = "Kirk"
-
         response = get :politician_names, name: name
-        body = JSON.parse(response.body)
-        politician = body.first
-        expect(politician["firstname"]).to eq("Mark")
-        expect(politician["lastname"]).to eq("Kirk")
       end
+      body = JSON.parse(response.body)
+      politician = body.first
+      expect(politician["firstname"]).to eq("Mark")
+      expect(politician["lastname"]).to eq("Kirk")
     end
   end
 
   context "Finding Contributions to a Politician" do
-    it "should return a JSON object" do
-      VCR.use_cassette("contributions") do
-        bio_id = "K000360"
-
-        response = get :contributions, bio_id: bio_id
-        expect { JSON.parse(response.body) }.to_not raise_error 
-      end
-    end
+    let(:bio_id) { "K000360" }
 
     it "should convert the total amount donated to an integer" do
       VCR.use_cassette("contributions") do
-        bio_id = "K000360"
-
         response = get :contributions, bio_id: bio_id
-        contributions = JSON.parse(response.body)
-
-        expect(contributions[0]['total_amount']).to be_kind_of(Integer)
       end
+      contributions = JSON.parse(response.body)
+      expect(contributions[0]['total_amount']).to be_kind_of(Integer)
     end
 
     it "should return data" do
       VCR.use_cassette("contributions") do
-        bio_id = "K000360"
-
         response = get :contributions, bio_id: bio_id
-        body = JSON.parse(response.body)
-        contribution = body.first
-
-        expect(contribution["total_amount"]).to eq(52000)
-        expect(contribution["name"]).to eq("Highfields Capital Management")
       end
+      body = JSON.parse(response.body)
+      contribution = body.first
+      expect(contribution["total_amount"]).to eq(52000)
+      expect(contribution["name"]).to eq("Highfields Capital Management")
     end
   end
 
   context "Finding Contributions by Sector" do
-    it "should return a JSON object" do
-      VCR.use_cassette("sectors") do
-        bio_id = "K000360"
 
-        response = get :sectors, bio_id: bio_id
-        expect { JSON.parse(response.body) }.to_not raise_error 
-      end
-    end
+    let(:bio_id) { "K000360" }
 
     it "should translate the sector codes to real sectors" do
       VCR.use_cassette("sectors") do
-        bio_id = "K000360"
-
         response = get :sectors, bio_id: bio_id
-        body = JSON.parse(response.body)
-        sector = body.first
-      
-        expect(sector["sector"]).to eq("Finance/Insurance/Real Estate")
       end
+      body = JSON.parse(response.body)
+      sector = body.first
+      expect(sector["sector"]).to eq("Finance/Insurance/Real Estate")
     end
 
     it "should convert count and amount to integers" do
       VCR.use_cassette("sectors") do
-        bio_id = "K000360"
-
         response = get :sectors, bio_id: bio_id
-        body = JSON.parse(response.body)
-        sector = body.first
-
-        expect(sector["count"]).to be_kind_of(Integer)
-        expect(sector["amount"]).to be_kind_of(Integer)       
       end
+      body = JSON.parse(response.body)
+      sector = body.first
+      expect(sector["count"]).to be_kind_of(Integer)
+      expect(sector["amount"]).to be_kind_of(Integer)       
     end
 
     it "should return data" do
       VCR.use_cassette("sectors") do
-        bio_id = "K000360"
-
         response = get :sectors, bio_id: bio_id
-        body = JSON.parse(response.body)
-        sector = body.first
-
-        expect(sector["sector"]).to eq("Finance/Insurance/Real Estate")
-        expect(sector["count"]).to eq(373)
-        expect(sector["amount"]).to eq(606950)
       end
+      body = JSON.parse(response.body)
+      sector = body.first
+      expect(sector["sector"]).to eq("Finance/Insurance/Real Estate")
+      expect(sector["count"]).to eq(373)
+      expect(sector["amount"]).to eq(606950)
     end
   end
 
   context "Finding Contribuions by Industry" do
-    it "should return a JSON object" do
-      VCR.use_cassette("industries") do
-        bio_id = "K000360"
 
-        response = get :industries, bio_id: bio_id
-        expect { JSON.parse(response.body) }.to_not raise_error 
-      end
-    end
+    let(:bio_id) { "K000360" }
 
     it "should convert count and amount to integers" do
       VCR.use_cassette("industries") do
-        bio_id = "K000360"
-
         response = get :industries, bio_id: bio_id
-        body = JSON.parse(response.body)
-        industry = body.first
-      
-        expect(industry["count"]).to be_kind_of(Integer)
-        expect(industry["amount"]).to be_kind_of(Integer)  
       end  
+      body = JSON.parse(response.body)
+      industry = body.first 
+      expect(industry["count"]).to be_kind_of(Integer)
+      expect(industry["amount"]).to be_kind_of(Integer)  
     end
 
     it "should return data" do
       VCR.use_cassette("industries") do
-        bio_id = "K000360"
-
         response = get :industries, bio_id: bio_id
-        body = JSON.parse(response.body)
-        industry = body.first
-
-        expect(industry["name"]).to eq("Securities & Investment")
-        expect(industry["count"]).to eq(170)
-        expect(industry["amount"]).to eq(337600)
       end
+      body = JSON.parse(response.body)
+      industry = body.first
+      expect(industry["name"]).to eq("Securities & Investment")
+      expect(industry["count"]).to eq(170)
+      expect(industry["amount"]).to eq(337600)
     end
   end
 
   context "Finding Sponsored Bills" do
-    it "should return a JSON object" do
-      VCR.use_cassette("bills") do
-        bio_id = "K000360"
 
-        response = get :bills, bio_id: bio_id
-        expect { JSON.parse(response.body) }.to_not raise_error 
-      end
-    end
+    let(:bio_id) { "K000360" }
 
     it "should return data" do
       VCR.use_cassette("bills") do
-        bio_id = "K000360"
-
         response = get :bills, bio_id: bio_id
-        body = JSON.parse(response.body)
-        bills = body.first
-
-        
       end
+      body = JSON.parse(response.body)
+      bills = body.first
+      expect(bills["bill_id"]).to eq("s628-114")
+      expect(bills["official_title"]).to eq("A bill to amend the Public Health Service Act to provide for the designation of maternity care health professional shortage areas.")
+      expect(bills["open_congress"]).to eq("https://www.opencongress.org/bill/s628-114")
     end
   end
 
   context "Finding Types of Contributors" do
-    it "should return a JSON object" do
-      VCR.use_cassette("contributor_types") do
-        bio_id = "K000360"
 
+    let(:bio_id) { "K000360" }
+
+    it "should convert total amount and count to integers" do
+      VCR.use_cassette("contributor_types") do
         response = get :contributor_types, bio_id: bio_id
-        expect { JSON.parse(response.body) }.to_not raise_error 
       end
+      body = JSON.parse(response.body)
+      p body
+      type = body.first
+
+      expect(type["count"]).to be_kind_of(Integer)
+      expect(type["total_amount"]).to be_kind_of(Integer)
+    end
+
+    it "should return data" do
+      VCR.use_cassette("contributor_types") do
+        response = get :contributor_types, bio_id: bio_id
+      end
+      body = JSON.parse(response.body)
+      expect(body[0]["title"]).to eq("Individuals")
+      expect(body[0]["count"]).to eq(476)
+      expect(body[0]["total_amount"]).to eq(481028)
+      expect(body[1]["title"]).to eq("PACs")
+      expect(body[1]["count"]).to eq(198)
+      expect(body[1]["total_amount"]).to eq(240719)
     end
   end
 end
