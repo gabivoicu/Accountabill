@@ -8,6 +8,19 @@
 
 /**********BODY**********/
 
+body{
+  background: #fff;
+  font-family: 'Droid Sans', sans-serif;
+  color: #142525;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Josefin Sans', sans-serif;
+  color: #142525;
+}
+
+/**********SEARCH**********/
+
 #search-container{
   background-color: #F4F2F3;
   padding-bottom: 15px;
@@ -17,13 +30,8 @@
   display: none;
 }
 
-body{
-  background: #fff;
-  font-family: 'Droid Sans', sans-serif;
+.result-text {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
-
-h1, h2, h3, h4, h5, h6{
-  font-family: 'Josefin Sans', sans-serif;
-  color: #142525;
-}
-

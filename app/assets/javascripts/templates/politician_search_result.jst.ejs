@@ -1,9 +1,13 @@
 <img src=<%= photo_url %> class="large-4 columns">
 <span id="hide-bio"><%=bioguide_id%></span>
-<div class="large-8 columns result-text">
-  <p>
+<div class="large-8 columns">
+  <p class="result-text">
     <span class="search-state"> <%= state %> </span>
     <span class="search-name"><%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</span>
-    <span class="search-type">politician</span>
+    <%if (title === "Rep"){ %>
+      <span class="search-type">House</span>
+    <%} else if (title ==="Sen") {%>
+      <span class="search-type">Senate</span>
+    <%}%>
   </p>
 </div>

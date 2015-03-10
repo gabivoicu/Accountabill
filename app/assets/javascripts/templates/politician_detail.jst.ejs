@@ -18,15 +18,31 @@
     </div>
   </div>
 
-  <div class="data-container large-9 columns">
+  <div id="data-container" class="data-container large-9 columns">
     <div class="tabs-content">
       <div class="content" id="panel61">
         <p><%= bio %></p>
       </div>
       <div class="content" id="panel71">
-        <% if (oc_email) {%>
-        <a href="mailto:<%= oc_email %>"><%= oc_email %> </a>
-        <%} %>
+        <p>
+          <% if (oc_email) {%>
+            <span>Email: </span>
+            <a href="mailto:<%= oc_email %>"><%= oc_email %> </a>
+          <%} %>
+        </p>
+
+        <p>
+          <% if (phone) {%>
+            <span>Call: <%= phone %> </span>
+          <%} %>
+        </p>
+
+        <p>
+          <% if (twitter_id) {%>
+            <span>Tweet: </span>
+            <a href="//twitter.com/<%= twitter_id %>">@<%= twitter_id %> </a>
+          <%} %>
+        </p>
       </div>
       <div class="content active" id="panel11">
         <div id="sector-chart"></div>
@@ -45,4 +61,5 @@
       </div>
     </div>
   </div>
+
 </div>
