@@ -8,15 +8,6 @@
 
 /**********BODY**********/
 
-#search-container{
-  background-color: #F4F2F3;
-  padding-bottom: 15px;
-  border: 2px solid #F4F2F3;
-  border-radius: 25px;
-  padding: 1em;
-  display: none;
-}
-
 body{
   background: #fff;
   font-family: 'Droid Sans', sans-serif;
@@ -28,3 +19,19 @@ h1, h2, h3, h4, h5, h6{
   color: #142525;
 }
 
+/**********SEARCH**********/
+
+#search-container{
+  background-color: #F4F2F3;
+  padding-bottom: 15px;
+  border: 2px solid #F4F2F3;
+  border-radius: 25px;
+  padding: 1em;
+  display: none;
+}
+
+.result-text {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
