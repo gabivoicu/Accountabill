@@ -61,7 +61,7 @@ function renderContributorTypes(bio_id, data) {
         .attr('class', 'amount');
 
       svg.on('mouseover', function(d) {
-        tooltip.select('.amount').html('$' + d.total_amount);
+        tooltip.select('.amount').html('$' + d.total_amount + ' total');
         tooltip.style('display', 'block');
       });
 
@@ -71,8 +71,8 @@ function renderContributorTypes(bio_id, data) {
 
       
       svg.on('mousemove', function(d) {                            
-        tooltip.style('top', (d3.event.pageY + -460) + 'px')          
-          .style('left', (d3.event.pageX + -500) + 'px');             
+        tooltip.style('top', (d3.event.pageY + -485) + 'px')          
+          .style('left', (d3.event.pageX + -712) + 'px');             
       }); 
 
     });
@@ -148,9 +148,9 @@ function renderSectorDonut(response) {
       var percent = Math.round(1000 * d.data.amount / total) / 10;
 
       tooltip.select('.sector').html(d.data.sector);
-      tooltip.select('.count').html(d.data.count);
+      tooltip.select('.count').html(d.data.count + ' contributors');
       tooltip.select('.amount').html('$' + d.data.amount);
-      tooltip.select('.percent').html(percent + '%');
+      tooltip.select('.percent').html(percent + '% of total');
       tooltip.style('display', 'block');
 
       svg.selectAll(".donut-slice").style('opacity','.7')
@@ -163,8 +163,8 @@ function renderSectorDonut(response) {
     });
 
     path.on('mousemove', function(d) {
-      tooltip.style('top', (d3.event.pageY + -500) + 'px')
-        .style('left', (d3.event.pageX + -500) + 'px');
+      tooltip.style('top', (d3.event.pageY + -530) + 'px')
+        .style('left', (d3.event.pageX + -712) + 'px');
     });
 
   var legend = svg.selectAll('.legend')
@@ -271,8 +271,8 @@ function renderContributorBarGraph(response) {
     tooltip.style('display', 'none');
   })
   .on('mousemove', function(d) {
-    tooltip.style('top', (d3.event.pageY + -480) + 'px')
-      .style('left', (d3.event.pageX + -500) + 'px');
+    tooltip.style('top', (d3.event.pageY + -510) + 'px')
+      .style('left', (d3.event.pageX + -712) + 'px');
   });
 
   //Create labels
@@ -473,9 +473,9 @@ function renderIndustryDonut(response) {
       var percent = Math.round(1000 * d.data.amount / total) / 10;
 
       tooltip.select('.name').html(d.data.name);
-      tooltip.select('.count').html(d.data.count);
+      tooltip.select('.count').html(d.data.count + ' contributors');
       tooltip.select('.amount').html('$' + d.data.amount);
-      tooltip.select('.percent').html(percent + '%');
+      tooltip.select('.percent').html(percent + '% of total');
       tooltip.style('display', 'block');
 
       svg.selectAll(".donut-slice").style('opacity','.7')
@@ -487,8 +487,8 @@ function renderIndustryDonut(response) {
       svg.selectAll(".donut-slice").style('opacity','1.0')
     });
         path.on('mousemove', function(d) {
-          tooltip.style('top', (d3.event.pageY + -500) + 'px')
-            .style('left', (d3.event.pageX + -500) + 'px');
+          tooltip.style('top', (d3.event.pageY + -530) + 'px')
+            .style('left', (d3.event.pageX + -712) + 'px');
         });
 
       var legend = svg.selectAll('.legend')
