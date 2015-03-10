@@ -346,42 +346,43 @@ function renderContributorBarGraph(response) {
       .style('left', (d3.event.pageX + -712) + 'px');
   });
 
+
   //Create labels
-svg.selectAll("text")
- .data(dataset, name)
- .enter()
- .append("text")
- .text(function(d) {
-  return "$" + d.total_amount;
- })
- .attr("text-anchor", "middle")
- .attr("x", function(d, i) {
-  return xScale(i) + xScale.rangeBand() / 2;
- })
- .attr("y", function(d) {
-  return h - yScale(d.total_amount) + 14;
- })
- .attr("font-family", "sans-serif")
- .attr("font-size", "11px")
- .attr("fill", "white")
-   .on("mouseover", function(d) {
+  svg.selectAll("text")
+    .data(dataset, name)
+    .enter()
+    .append("text")
+    .text(function(d) {
+      return "$" + numberWithCommas(d.total_amount);
+    })
+    .attr("text-anchor", "middle")
+    .attr("x", function(d, i) {
+      return xScale(i) + xScale.rangeBand() / 2;
+    })
+    .attr("y", function(d) {
+      return h - yScale(d.total_amount) + 14;
+    })
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "11px")
+    .attr("fill", "white")
+      .on("mouseover", function(d) {
     //Get this bar's x/y values, then augment for the tooltip
-    var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
-    var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
+        var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
+        var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
 
     //Update Tooltip Position & value
     d3.select(".tooltip")
       tooltip.select('.name').html(d.name);
       tooltip.select('.total').html("$" + d.total_amount);
       tooltip.style('display', 'block');
-  })
-  .on('mouseout', function() {
-    tooltip.style('display', 'none');
-  })
-  .on('mousemove', function(d) {
-    tooltip.style('top', (d3.event.pageY + -510) + 'px')
-      .style('left', (d3.event.pageX + -712) + 'px');
-  });
+      })
+      .on('mouseout', function() {
+       tooltip.style('display', 'none');
+      })
+      .on('mousemove', function(d) {
+        tooltip.style('top', (d3.event.pageY + -510) + 'px')
+          .style('left', (d3.event.pageX + -712) + 'px');
+      });
 
 var sortOrder = false;
 var sortBars = function () {
