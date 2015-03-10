@@ -18,7 +18,7 @@ CSV.foreach('db/entity_id.csv') do |row|
   politician.entity_id = row[1]
   politician.bio = row[2]
   politician.photo_url = row[3]
-  puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
+  
   if politician.photo_url && politician.photo_url != ""
     if HTTParty.get(politician.photo_url).parsed_response.include?("Error")
       politician.photo_url = "https://pbs.twimg.com/profile_images/3210714480/7462307a8a69c3e7aa725c14fa6908ae.jpeg"
@@ -27,40 +27,29 @@ CSV.foreach('db/entity_id.csv') do |row|
   politician.save
 end
 
-# Politician.all.each do |politician|
-#   puts "#{politician.firstname} #{politician.lastname}" 
-#   if politician.entity_id
-#     response = HTTParty.get("http://transparencydata.com/api/1.0/entities/#{politician.entity_id}.json?apikey=#{ENV['SUNLIGHT_API_KEY']}")
+Politician.all.each do |politician|
+  puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
+  if politician.entity_id
+    response = HTTParty.get("http://congress.api.sunlightfoundation.com/legislators?bioguide_id=#{politician.bio_id}&apikey=#{ENV['SUNLIGHT_API_KEY']}")
 
-#     politician.photo_url = response.parsed_response.fetch("metadata").fetch("photo_url");
-#     puts "Photo Okay!"
+    puts "Parsed Response:"
+    puts response.parsed_response.fetch("results")
 
-#     sleep(0.5)
+    if response.parsed_response.fetch("results")[0] != nil
 
-#     if response.parsed_response.fetch("metadata").fetch("bio")
-#       politician.bio = response.parsed_response.fetch("metadata").fetch("bio")
-#       politician.save
-#     end
-#   else
-#     politician.bio = "Biography Not Available"
-#     politician.save
-#   end
+      politician.term_start = response.parsed_response.fetch("results")[0]["term_start"]
+      politician.term_end = response.parsed_response.fetch("results")[0]["term_end"]
+      politician.save
 
-#   if politician.bio.include?("<p>") || politician.bio.include?("</p>")
-#     politician.bio.gsub!(/<p>/, "")
-#     politician.bio.gsub!(/<\/p>/, "")
-#   end
-
-
-
-#   puts "#{politician.bio}"  
-#   sleep(0.5)
-#   puts ""
-# end
+      sleep(0.5)
+    end
+  end
+  puts ""
+end
 
 # CSV.open('db/entity_id.csv', 'w' ) do |writer|
 #   Politician.all.each do |politician|
 #     puts "#{politician.firstname} #{politician.lastname} - #{politician.bio_id}, #{politician.entity_id}"
-#     writer << [politician.bio_id, politician.entity_id, politician.bio, politician.photo_url]
+#     writer << [politician.bio_id, politician.entity_id, politician.bio, politician.photo_url, politician.term_start, politician.term_end]
 #   end
 # end

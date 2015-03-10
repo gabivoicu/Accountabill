@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/politicians/find/:name' => "network#politician_names", as: "politician_name_request"
   get '/contributions/:bio_id' => "network#contributions", as: "contributions_request"
   get '/sectors/:bio_id' => "network#sectors", as: "sectors_request"
+  get '/companies/:entity_id' => "network#companies", as: "companies_request"
 
   get '/industries/:bio_id' => "network#industries", as: "industries_request"
 
