@@ -23,5 +23,4 @@ Accountabill is an OpenSource web application that employs a user's location to 
 - RSpec
 
 
-Accountabill was created by: 
-Gabriela Voicu, Ian Agne, Shiraz Sherwani, Elliott Young, and Rachel Kolcheck. 
+Accountabill is the brainchild of [Gabriela Voicu](https://github.com/gabivoicu), [Ian Agne](https://github.com/ianagne), [Shiraz Sherwani](https://github.com/PacoGuy), [Elliott Young](https://github.com/ElliottAYoung), and [Rachel Kolcheck](https://github.com/rkolcheck). 
