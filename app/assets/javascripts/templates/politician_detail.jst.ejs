@@ -1,26 +1,24 @@
 <div class="row">
-  <div class="large-4 columns">
-    <div class="row">
+  <div class="large-3 columns">
+    <div class="row centered">
       <img src="<%= photo_url %>" class="large-centered columns" id="detail-img">
-    </div>
-    <div class="row">
-  		<h3 class="large-8 columns"> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h3>
+  		<h3> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h3>
       <span id="hide-bio"><%=bioguide_id%></span>
     </div>
     <div class="row">
       <ul class="tabs vertical" data-tab>
         <li class="tab-title"><a href="#panel61">Bio</a></li>
         <li class="tab-title"><a href="#panel71">Contact</a></li>
-        <li class="tab-title"><a href="#panel11">Top Contributions By Sector</a></li>
+        <li class="tab-title active"><a href="#panel11">Top Contributions By Sector</a></li>
         <li class="tab-title"><a href="#panel21">Contributor Types</a></li>
         <li class="tab-title"><a href="#panel31">Sponsored Legislation</a></li>
         <li class="tab-title"><a href="#panel41">Top Contributions By Industry</a></li>
-        <li class="tab-title"><a href="#panel51">Top Contributors</a></li>
+        <li class="tab-title last"><a href="#panel51">Top Contributors</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="large-8 columns">
+  <div class="data-container large-9 columns">
     <div class="tabs-content">
       <div class="content" id="panel61">
         <p><%= bio %></p>

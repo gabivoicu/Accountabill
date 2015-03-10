@@ -23,6 +23,10 @@
   display: inline-block;
   width: 24%;
 }
+
+.search-state {
+  width: 10%;
+}
 .search-name {
   width: 50%;
   text-align: center;
@@ -62,20 +66,20 @@
   display: none;
 }
 
-.tooltip {                                                        
-  background: #333;                                               
-  box-shadow: 0 0 5px #999999;                                    
-  color: white;                                                    
-  display: none;                                                  
-  font-size: 12px;                                                
-  left: 130px;                                                    
-  padding: 10px;                                                  
-  position: absolute;                                             
-  text-align: center;                                             
-  top: 80px;                                                      
-  width: 190px;                                                    
-  z-index: 10;                        
-} 
+.tooltip {
+  background: #333;
+  box-shadow: 0 0 5px #999999;
+  color: white;
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 80px;
+  width: 190px;
+  z-index: 10;
+}
 
 .axis path,
 .axis line {
@@ -95,49 +99,54 @@ rect {
   transition: all 0.3s;
 }
 rect:hover{
+<<<<<<< HEAD
   fill: #B2182B;
-}                                                 
+}
+=======
+  fill: #257067;
+}
+>>>>>>> mad stylz with aly fluckey
 
 #chart{
   margin: 0 auto;
-}                                      
-.bullet { 
-  font: 10px sans-serif; 
+}
+.bullet {
+  font: 10px sans-serif;
 }
 
-.bullet .marker { 
-  stroke: #000; stroke-width: 2px; 
+.bullet .marker {
+  stroke: #000; stroke-width: 2px;
 }
 
-.bullet .tick line { 
-  stroke: #666; stroke-width: .5px; 
+.bullet .tick line {
+  stroke: #666; stroke-width: .5px;
 }
 
-.bullet .range.s0 { 
-  fill: #eee; 
+.bullet .range.s0 {
+  fill: #eee;
 }
 
-.bullet .range.s1 { 
-  fill: #ddd; 
+.bullet .range.s1 {
+  fill: #ddd;
 }
 
-.bullet .range.s2 { 
-  fill: #ccc; 
+.bullet .range.s2 {
+  fill: #ccc;
 }
 
-.bullet .measure.s0 { 
-  fill: lightsteelblue; 
+.bullet .measure.s0 {
+  fill: lightsteelblue;
 }
 
-.bullet .measure.s1 { 
-  fill: steelblue; 
+.bullet .measure.s1 {
+  fill: steelblue;
 }
 
-.bullet .title { 
-  font-size: 14px; font-weight: bold; 
+.bullet .title {
+  font-size: 14px; font-weight: bold;
 }
 
-.bullet .subtitle { 
-  fill: #999; 
+.bullet .subtitle {
+  fill: #999;
 }
 

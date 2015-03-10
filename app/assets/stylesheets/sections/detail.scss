@@ -1,8 +1,57 @@
+#results-view {
+  margin-top: 10px;
+  background: #E8FFFE;
+}
+
 #detail-img {
-  max-width: 50%;
+  max-width: 64%;
+  margin-bottom: 10px
 }
 
 .tabs.vertical {
   max-width: 100%;
   width: 100%;
+}
+
+.tab-title {
+  border-bottom: 1px solid #64BCBA;
+  &.last {
+    border: none;
+  }
+}
+
+/*foundation override for tabs*/
+.tabs dd > a, .tabs .tab-title > a {
+  padding: .5rem 1rem;
+  background-color: #257067;
+  color: #C1E4E3;
+  font-weight: 300;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+.tabs dd > a, .tabs .tab-title > a:hover {
+  background-color: #C1E4E3;
+  color: #142525;
+}
+
+.tabs dd.active a, .tabs .tab-title.active a {
+  background-color: #C1E4E3;
+  color: #142525;
+}
+
+.data-container {
+  background-color: #C1E4E3;
+  min-height: 513px;
+  text-align: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+.button {
+  background-color: #257067;
+  &:hover {
+    background: #64BCBA;
+  }
 }
