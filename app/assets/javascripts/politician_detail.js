@@ -188,39 +188,66 @@ function renderSectorDonut(response) {
     .attr('width', legendRectSize)
     .attr('height', legendRectSize)
     .style('fill', color)
-    .style('stroke', color)                                   // UPDATED (removed semicolon)
-            .on('click', function(sector) {                            // NEW
-              var rect = d3.select(this);                             // NEW
-              var enabled = true;                                     // NEW
-              var totalEnabled = d3.sum(dataset.map(function(d) {     // NEW
-                return (d.enabled) ? 1 : 0;                           // NEW
-              }));                                                    // NEW
+    .style('stroke', color)                                   
+      .on('click', function(sector) {                            
+        var rect = d3.select(this);                             
+        var enabled = true;                                     
+        var totalEnabled = d3.sum(dataset.map(function(d) {     
+          return (d.enabled) ? 1 : 0;                           
+        }));                                                    
               
-              if (rect.attr('class') === 'disabled') {                // NEW
-                rect.attr('class', '');                               // NEW
-              } else {                                                // NEW
-                if (totalEnabled < 2) return;                         // NEW
-                rect.attr('class', 'disabled');                       // NEW
-                enabled = false;                                      // NEW
-              }                                                       // NEW
+        if (rect.attr('class') === 'disabled') {                
+          rect.attr('class', '');                               
+        } else {                                                
+          if (totalEnabled < 2) return;                         
+          rect.attr('class', 'disabled');                       
+          enabled = false;                                      
+        }                                                       
 
-              pie.value(function(d) {                                 // NEW
-                if (d.sector === sector) d.enabled = enabled;           // NEW
-                return (d.enabled) ? d.count : 0;                     // NEW
-              });                                                     // NEW
+        pie.value(function(d) {                                 
+        if (d.sector === sector) d.enabled = enabled;           
+          return (d.enabled) ? d.count : 0;                     
+        });                                                     
 
-              path = path.data(pie(dataset));                         // NEW
+        path = path.data(pie(dataset));                         
 
-              path.transition()                                       // NEW
-                .duration(750)                                        // NEW
-                .attrTween('d', function(d) {                         // NEW
-                  var interpolate = d3.interpolate(this._current, d); // NEW
-                  this._current = interpolate(0);                     // NEW
-                  return function(t) {                                // NEW
-                    return arc(interpolate(t));                       // NEW
-                  };                                                  // NEW
-                });                                                   // NEW
-            });                                                       // NEW
+        path.transition()                                       
+          .duration(750)                                        
+          .attrTween('d', function(d) {                         
+            var interpolate = d3.interpolate(this._current, d); 
+            this._current = interpolate(0);                     
+            return function(t) {                                
+              return arc(interpolate(t));                       
+            };                                                  
+          });                                                   
+      });
+
+      legend.on('mouseover', function(d) {
+      var total = d3.sum(dataset.map(function(d) {
+        return (d.enabled) ? d.count : 0; 
+      }));
+      
+      var percent = Math.round(1000 * d.amount / total) / 10;
+
+      tooltip.select('.sector').html(d.sector);
+      tooltip.select('.count').html(d.count + ' contributors');
+      tooltip.select('.amount').html('$' + d.amount);
+      tooltip.select('.percent').html(percent + '% of total');
+      tooltip.style('display', 'block');
+
+      // svg.selectAll(".donut-slice").style('opacity','.6')
+      // d3.select(this).style('opacity','1.0')
+    });
+
+    legend.on('mouseout', function() {
+      tooltip.style('display', 'none');
+      // svg.selectAll(".donut-slice").style('opacity','1.0')
+    });
+
+    legend.on('mousemove', function(d) {
+      tooltip.style('top', (d3.event.pageY + -530) + 'px')
+        .style('left', (d3.event.pageX + -712) + 'px');
+    });                                                       
 
   legend.append('text')
     .attr('x', legendRectSize + legendSpacing)
