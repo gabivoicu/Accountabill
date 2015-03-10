@@ -23,6 +23,12 @@
   }
 }
 
+.data-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /*foundation override for tabs*/
 .tabs dd > a, .tabs .tab-title > a {
   padding: .5rem 1rem;
