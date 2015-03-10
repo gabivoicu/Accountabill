@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'tweets/new'
+
+  get 'tweets/create'
+
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   get '/politicians/:zipcode' => "network#politicians", as: "politicians_request"
@@ -13,10 +23,13 @@ Rails.application.routes.draw do
 
   get '/politician/:bio_id' => "politician#details", as: "politician_details"
 
-  get '/auth' => "twitter#login", as: "twitter_login"
-  match '/auth/:provider', :to => "twitter#auth", :via => [:get, :post]
-  match '/auth/failure', :to => "twitter#failure", :via => [:get, :post]
-
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  resources :tweets, only: [:new, :create]
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
 
   root 'page#index'
   # The priority is based upon order of creation: first created -> highest priority.
