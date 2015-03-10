@@ -41,4 +41,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.twitter_key = ENV['TWITTER_API_KEY']
   config.twitter_secret = ENV['TWITTER_SECRET_KEY']
+  require 'factory_girl'
 end

@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://transparencydata.com/api/1.0/aggregates/pol/048563d4685b4fcab08889881f066fff/contributors/sectors.json?apikey=2a92fee9d78f4fddbe5d9e14f3632465&cycle=2014&limit=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.5
+      Content-Type:
+      - application/json; charset=utf-8
+      Keep-Alive:
+      - timeout=20
+      Vary:
+      - Accept-Encoding, Authorization
+      X-Ua-Compatible:
+      - IE=edge
+      Content-Length:
+      - '283'
+      Date:
+      - Tue, 10 Mar 2015 15:19:28 GMT
+      X-Varnish:
+      - '1132509845'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"sector": "F", "count": "373", "amount": "606950.00"},{"sector":
+        "Y", "count": "283", "amount": "280693.00"},{"sector": "W", "count": "232",
+        "amount": "194725.00"},{"sector": "Q", "count": "124", "amount": "181070.00"},{"sector":
+        "N", "count": "146", "amount": "179374.00"},{"sector": "H", "count": "128",
+        "amount": "159650.00"},{"sector": "E", "count": "98", "amount": "113850.00"},{"sector":
+        "K", "count": "112", "amount": "94430.00"},{"sector": "C", "count": "52",
+        "amount": "56175.00"},{"sector": "B", "count": "20", "amount": "33900.00"}]'
+    http_version: 
+  recorded_at: Tue, 10 Mar 2015 15:16:39 GMT
+recorded_with: VCR 2.9.3
