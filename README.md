@@ -9,7 +9,7 @@ Accountabill is an Open Source web application that provides a list of State Rep
 Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight Foundation](https://sunlightfoundation.com/api/).
 
 ### Technologies
-- Rails
+- Ruby on Rails
 - Postgres with HStore
 - Backbone JS
 - Foundation
