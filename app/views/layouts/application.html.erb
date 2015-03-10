@@ -21,8 +21,19 @@
       <% else %>
         <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
       <% end %>
-      
+
     <%= yield %>
 
   </body>
+
+  <footer>
+    <div class="">
+      <h3>Powered By:</h3><br>
+      <a href="http://sunlightfoundation.com/"><img src="https://pscl.sunlightfoundation.com/static/img/sunlight.png"/></a>
+    </div>
+    <div class="">
+      <h3>About Us</h3>
+      <p>We are a group of five aspiring Web Developers out of DevBootcamp Chicago who created Accountabill with the hope that it will help educate voters about where the funding for their federal representatives is coming from.</p>
+    </div>
+  </footer>
 </html>
