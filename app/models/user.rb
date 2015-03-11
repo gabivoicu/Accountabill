@@ -11,15 +11,4 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-
-  def tweet(tweet)
-    client = ::Twitter::REST::Client.new do |config|
-      config.consumer_key        = TWITTER_KEY
-      config.consumer_secret     = TWITTER_SECRET
-      config.access_token        = oauth_token
-      config.access_token_secret = oauth_secret
-    end
-    
-    client.update(tweet)
-  end
 end

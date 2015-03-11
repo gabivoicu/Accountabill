@@ -26,6 +26,7 @@
 //= require search_results
 //= require politician_detail
 //= require_tree ./routers
+//= require init
 //= require_tree .
 
 

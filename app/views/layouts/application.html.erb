@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Droid+Sans:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <title><%= content_for?(:title) ? yield(:title) : "Accountabill" %></title>
 
@@ -17,12 +18,7 @@
   <body>
     <div id="wrapper">
       <div id="main">
-        <% if current_user %>
-          Signed in as <strong><%= current_user.name %></strong>!
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
-        <% else %>
-          <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
-        <% end %>
+
 
         <%= yield %>
       </div>
@@ -36,6 +32,19 @@
         <div id="take-action">
           <h5>Take Action</h5>
           <a target="_blank" href="//www.usa.gov/Citizen/Topics/Voting/Register.shtml">Register to Vote</a>
+          <% if current_user %>
+            <div id="twitter-logo">
+              <a target="_blank" href="http://twitter.com/"><img src="https://g.twimg.com/Twitter_logo_blue.png"/></a>
+            </div>
+            Signed in as <strong><%= current_user.name %></strong>!
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <% else %>
+            <div id="twitter-logo">
+              <a target="_blank" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+              <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
+            </div>
+          <% end %>
+
         </div>
         <div id="sunlight-logo">
           <h5>Powered By:</h5>
