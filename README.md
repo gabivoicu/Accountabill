@@ -11,6 +11,7 @@ Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight
 - Postgres with HStore
 - Backbone JS
 - Foundation
+- SASS
 - D3 JS Library
 - OmniAuth
 
