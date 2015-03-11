@@ -1,19 +1,24 @@
 /**********HEADER**********/
 
 #front-page-header{
-  margin: 10%;
+  margin-top: 10%;
   font-size: 5em;
   transition: margin-top 2s;
   font-family: 'Josefin Sans', sans-serif;
 
   h3 {
     margin: 0;
-  }
-
+    }
+  // text header
   a {
     color: #142525;
+    }
+  // logo header
+  img {
+    max-width: 60%;
+    min-width: 200px;
+    }
   }
-}
 
 
 /**********BODY**********/
