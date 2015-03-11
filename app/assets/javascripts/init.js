@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  var router = new AppRouter();
+
   $("#front-page-header").on("click", function(){
     Transition.resetToDefault();
   });
