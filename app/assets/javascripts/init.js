@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  var router = new AppRouter();
+
   $("#front-page-header").on("click", function(){
     Transition.resetToDefault();
   });
@@ -9,7 +11,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     var searchVal = $("#zip-search-form input").val();
-
+    router.navigate("query/" + searchVal);
     renderResults(searchVal)
   });
 
@@ -17,7 +19,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     var bio_id = $(this).children("span").text();
-
+    router.navigate("bio/" + bio_id);
     renderPolitician(bio_id)
   });
 });
