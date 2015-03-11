@@ -20,8 +20,9 @@ Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight
 ### Testing
 - Travis
 - SimpleCov
-- Jasmine
 - RSpec
+- Capybara
+- VCR
 
 
 
