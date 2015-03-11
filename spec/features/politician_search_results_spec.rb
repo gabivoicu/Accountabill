@@ -4,6 +4,7 @@ feature "User goes to main page" do
 
   it 'navigates to the main page' do
     visit('/')
+
     page.should have_selector('#about-us > h5')
     page.should have_selector('#take-action > h5')
     page.should have_selector('#sunlight-logo > h5')
@@ -12,7 +13,9 @@ feature "User goes to main page" do
 
   it 'can search by zipcode' do
     visit('/')
-    page.should have_selector('html  > body > #wrapper > #main > .row > .large-3.large-offset-4.columns > #zip-search-form > ##search-field')
+    page.should have_selector('#search-field')
+    page.fill_in('#search-field').with("43214")
+    save_and_open_page
     page.should have_selector('.large-1.columns.button.tiny.round.end')
     page.should have_selector('#search-container')
   end

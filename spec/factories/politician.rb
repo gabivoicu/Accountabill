@@ -19,4 +19,7 @@ FactoryGirl.define do
     firstname "Richard"
     lastname  "Durbin"
   end
+
+  factory :user do
+  end
 end
