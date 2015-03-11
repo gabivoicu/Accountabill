@@ -106,6 +106,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.2)
     kgio (2.9.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -265,6 +267,7 @@ DEPENDENCIES
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   omniauth
   omniauth-twitter
   pg
