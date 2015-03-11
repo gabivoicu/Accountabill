@@ -43,8 +43,9 @@
   flex-direction: column;
   justify-content: center;
   background-color: #C1E4E3;
-  min-height: 541px;
+  height: 574px;
   text-align: center;
+  overflow: auto;
 }
 
 #data-container {
