@@ -12,6 +12,3 @@
 !/log/.keep
 /tmp
 /coverage/*
-
-# Ignore csv file
-/db/entity_id.csv
