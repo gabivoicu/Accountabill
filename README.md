@@ -15,7 +15,6 @@ Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight
 - D3 JS Library
 - OmniAuth
 
-
 ### Testing
 - Travis
 - SimpleCov
