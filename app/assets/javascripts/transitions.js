@@ -4,6 +4,7 @@ var Transition = ({
     $("#results-view").show();
     $("#front-page-header").css("margin-top", "1%");
     $(document).foundation('tab', 'reflow');
+    $(document).foundation();
   },
   resetToDefault: function(){
     $(".search-results").hide();

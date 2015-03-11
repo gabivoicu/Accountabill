@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Droid+Sans:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <title><%= content_for?(:title) ? yield(:title) : "Accountabill" %></title>
 
@@ -39,9 +40,9 @@
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
           <% else %>
             <div id="twitter-logo">
-              <a target="_blank" href="http://twitter.com/"><img src="https://g.twimg.com/Twitter_logo_blue.png"/></a>
+              <a target="_blank" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+              <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
             </div>
-            <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
           <% end %>
 
         </div>

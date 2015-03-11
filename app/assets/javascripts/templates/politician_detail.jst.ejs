@@ -47,7 +47,12 @@
         <p>
           <% if (twitter_id) {%>
             <span>Tweet: </span>
-            <a href="//twitter.com/<%= twitter_id %>">@<%= twitter_id %> </a>
+            <a href="#" data-reveal-id="twitterModal">@<%= twitter_id %> </a>
+
+            <div id="twitterModal" class="reveal-modal" data-reveal>
+              
+              <a class="close-reveal-modal">&#215;</a>
+            </div>
           <%} %>
         </p>
       </div>
