@@ -22,6 +22,7 @@
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
+//= require_tree ./routers
 //= require transitions
 //= require search_results
 //= require politician_detail
