@@ -14,6 +14,6 @@ var Transition = ({
   defaultToDisplaySearchResults: function(){
     $('#results-view').hide();
     $("#search-container").show();
-    $("#front-page-header").css("margin-top", "1%");
+    $("#front-page-header").css("margin", "1%");
   }
 })
