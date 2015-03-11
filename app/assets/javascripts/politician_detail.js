@@ -671,13 +671,23 @@ var BillsView = {
       url: '/bills/' + bio_id,
       type: 'get',
       dataType: 'json'
-    }).done(this.render);
+    }).done(this.render(response));
   },
 
   render: function(response) {
     for (var i = 0; i < response.length; i++) {
       $("#bills-listing").append("<span id='bill'><p>Bill Number " + response[i].bill_id + ": <a target='_blank' href='" + response[i].open_congress + "'>" + response[i].official_title + "</a></p></span>")
     }
+  }
+}
+
+var ContributionView = {
+  load: function(bio_id) {
+    var contributor_request = $.ajax({
+      url: '/contributions/' + bio_id,
+      type: 'get',
+      dataType: 'json',
+    });
   }
 }
 
@@ -699,11 +709,7 @@ function renderPolitician(bio_id) {
     type: 'get',
     dataType: 'json',
   });
-  var contributor_request = $.ajax({
-    url: '/contributions/' + bio_id,
-    type: 'get',
-    dataType: 'json',
-  });
+
   var industry_request = $.ajax({
     url: '/industries/' + bio_id,
     type: 'get',
@@ -723,7 +729,9 @@ function renderPolitician(bio_id) {
   request.done(renderPoliticianDetails)
   request.done(function(response) { renderContributorTypes(bio_id, response) });
   sector_request.done(renderSectorDonut);
-  bills_request.done(renderBills);
+  // bills_request.done(renderBills);
   contributor_request.done(renderContributorBarGraph);
   industry_request.done(renderIndustryDonut);
 }
+
+renderPolitician(bio_id);
