@@ -8,6 +8,7 @@ function renderPoliticianDetails(data){
 //-------------------------- Ajax Calls ---------------------------//
 
 function renderPolitician(bio_id) {
+
   var request = $.ajax({
       url: '/politician/' + bio_id
   });
