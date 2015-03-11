@@ -665,9 +665,32 @@ function renderBills(response) {
 
 
 
+var BillsView = {
+  load: function(bio_id) {
+    $.ajax({
+      url: '/bills/' + bio_id,
+      type: 'get',
+      dataType: 'json'
+    }).done(this.render);
+  },
+
+  render: function(response) {
+    for (var i = 0; i < response.length; i++) {
+      $("#bills-listing").append("<span id='bill'><p>Bill Number " + response[i].bill_id + ": <a target='_blank' href='" + response[i].open_congress + "'>" + response[i].official_title + "</a></p></span>")
+    }
+  }
+}
+
+
+
 //-------------------------- Ajax Calls ---------------------------//
 
 function renderPolitician(bio_id) {
+  BillsView.load(bio_id);
+  ContributionView.load(bio_id);
+
+
+
   var request = $.ajax({
       url: '/politician/' + bio_id
   });
