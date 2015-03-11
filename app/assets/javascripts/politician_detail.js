@@ -687,7 +687,7 @@ var BillsView = {
 
 function renderPolitician(bio_id) {
   BillsView.load(bio_id);
-  ContributionView.load(bio_id);
+  // ContributionView.load(bio_id);
 
 
 
