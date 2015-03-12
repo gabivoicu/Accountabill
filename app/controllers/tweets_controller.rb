@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   end
 
   def create
+    redirect_to "/auth/twitter" unless current_user
     service = TweetService.new(current_user)
     service.tweet(twitter_params[:message])
   end

@@ -49,7 +49,11 @@
             <a href="#" data-reveal-id="twitterModal">@<%= twitter_id %> </a>
 
             <div id="twitterModal" class="reveal-modal" data-reveal>
-
+              <form action="/tweets/create">
+                <h1>Send a Twitter!</h1>
+                <textarea rows="4" cols="50" name="tweet">@<%=twitter_id%></textarea>
+                <input type="submit" value="Send Tweet"/>
+              </form>
               <a class="close-reveal-modal">&#215;</a>
             </div>
           <%} %>
