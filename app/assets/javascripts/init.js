@@ -1,8 +1,9 @@
 $(document).ready(function(){
   var router = new AppRouter();
 
-  $("#front-page-header").on("click", function(event){
+  $("#logo").on("click", function(event){
     event.preventDefault();
+
     router.navigate("/", {trigger: true});    
   });
 

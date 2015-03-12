@@ -7,7 +7,7 @@ var Transition = ({
     $(document).foundation();
   },
   resetToDefault: function(){
-    $(".search-results").hide();
+    $("#search-container").hide();
     $("#results-view").hide();
     $("#front-page-header").css("margin-top", "10%");
   },
