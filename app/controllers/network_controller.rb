@@ -25,7 +25,7 @@ class NetworkController < ApplicationController
   def contributions
     contribution_array = []
     politician = find(params[:bio_id])
-    response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors.json?cycle=2014&limit=50&apikey=#{ENV['SUNLIGHT_API_KEY']}")
+    response = get("http://transparencydata.com/api/1.0/aggregates/pol/#{politician.entity_id}/contributors.json?cycle=2014&limit=10&apikey=#{ENV['SUNLIGHT_API_KEY']}")
     response.parsed_response.each do |c_info|
       contribution_array << {total_amount: c_info["total_amount"].to_i, name: c_info["name"]}
     end
