@@ -3,7 +3,7 @@ var AppRouter = Backbone.Router.extend({
       Backbone.history.start({ pushState:true, root:"/" });
   },
   routes: {
-    "/": "root",
+    "": "root",
     "bio/:bioId": "bio",
     "query/:input": "query"
   },

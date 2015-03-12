@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#logo").on("click", function(event){
     event.preventDefault();
 
-    router.navigate("/", {trigger: true});    
+    router.navigate("", {trigger: true});    
   });
 
   var politician_results;
