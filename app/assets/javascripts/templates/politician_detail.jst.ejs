@@ -51,8 +51,10 @@
             <div id="twitterModal" class="reveal-modal" data-reveal>
               <form action="/tweets/create">
                 <h1>Send a Twitter!</h1>
-                <textarea rows="4" cols="50" name="tweet">@<%=twitter_id%></textarea>
-                <input type="submit" value="Send Tweet"/>
+                  <%= form_for :tweet, url: tweets_new_path, method: :post do |f| %>
+                    <%= f.text_area :message %>
+                    <%= f.submit "Send Tweet" %>
+                  <% end %>
               </form>
               <a class="close-reveal-modal">&#215;</a>
             </div>

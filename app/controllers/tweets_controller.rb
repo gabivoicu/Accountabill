@@ -3,9 +3,10 @@ class TweetsController < ApplicationController
   end
 
   def create
-    redirect_to "/auth/twitter" unless current_user
-    service = TweetService.new(current_user)
-    service.tweet(twitter_params[:message])
+    if current_user
+      current_user.tweet(twitter_params[:message])
+    else
+      redirect_to sessions_create_path
   end
 
   def twitter_params
