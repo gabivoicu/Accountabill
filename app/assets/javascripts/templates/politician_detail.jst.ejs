@@ -4,9 +4,9 @@
       <img src="<%= photo_url %>" class="large-centered columns" id="detail-img">
   		<h4> <%= title %> <%= firstname %> <%= lastname %> (<%= party %>)</h4>
       <% if (title==="Rep") {%>
-        <h5>District <%= district %></h5>
+        <h5 id="state"><span><%= state%></span> <span>District <%= district %></span></h5>
       <%} else{%>
-        <h5><%= district %></h5>
+        <h5 id="state"><span><%= state%></span> <span><%= district %></span></h5>
       <% } %>
         <h5> Term: <%= term_start.substring(0,4) %> - <%= term_end.substring(0,4) %> </h5>
       <span id="hide-bio"><%=bioguide_id%></span>

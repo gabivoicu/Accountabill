@@ -23,6 +23,11 @@
   min-height: 279px;
 }
 
+#state{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 19%;
+}
 .detail{
   background: #fff;
   padding: 38px;
@@ -75,6 +80,9 @@
   border-radius: 3px 3px 3px 0;
 }
 
+#bills-listing{
+  text-align: justify;
+}
 
 
 /*foundation override for tabs*/
