@@ -1,4 +1,3 @@
-
 //-------------------------- Bills ---------------------------//
 
 function renderBills(response) {
