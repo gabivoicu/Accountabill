@@ -11,7 +11,7 @@ function renderContributorTypes(bio_id, data) {
 
     d3.json(("/contributor_types/" + bio_id + ".json"), function(error, data) {
 
-    // parses response  
+    // parses response
     var dataset = [];
     for (var i = 0; i < data.length; i++) {
       dataset.push({"title": data[i].title,"subtitle":"US$, in thousands","ranges":[2500],"count": data[i].count,"total_amount":data[i].total_amount,"measures":[(data[i].total_amount/1000)],"markers":[(data[i].total_amount/1000)]});
@@ -42,11 +42,11 @@ function renderContributorTypes(bio_id, data) {
         .attr("dy", "1em")
         .text(function(d) { return d.subtitle; });
 
-      var tooltip = d3.select('#contributor-types')                               
-        .append('div')                                                
+      var tooltip = d3.select('#contributor-types')
+        .append('div')
         .attr('class', 'tooltip');
 
-      tooltip.append('div')                                           
+      tooltip.append('div')
         .attr('class', 'amount');
 
     function numberWithCommas(x) {
@@ -58,16 +58,14 @@ function renderContributorTypes(bio_id, data) {
         tooltip.style('display', 'block');
       });
 
-      svg.on('mouseout', function() {                              
-        tooltip.style('display', 'none');                           
+      svg.on('mouseout', function() {
+        tooltip.style('display', 'none');
       });
-      
-      svg.on('mousemove', function(d) {                            
-        tooltip.style('top', (d3.event.pageY + -485) + 'px')          
-          .style('left', (d3.event.pageX + -712) + 'px');             
-      }); 
+
+      svg.on('mousemove', function(d) {
+        tooltip.style('top', (d3.event.pageY + -485) + 'px')
+          .style('left', (d3.event.pageX + -712) + 'px');
+      });
 
     });
   }
-
-

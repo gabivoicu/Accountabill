@@ -1,7 +1,7 @@
 function renderResults(searchVal) {
 
 if (isNaN(searchVal)) {
-  
+
       var name = $("#zip-search-form input").val();
 
       var politicians = new PoliticiansCollection({ name: name, entryType: "String" });

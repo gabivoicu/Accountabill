@@ -1,4 +1,3 @@
-
 //-------------------------- Contributor Bar Graph ---------------------------//
 
 function renderContributorBarGraph(response) {
@@ -32,14 +31,14 @@ function renderContributorBarGraph(response) {
     .attr("height", h);
 
 
-  var tooltip = d3.select('#top-contributor')                               
-    .append('div')                                                
-    .attr('class', 'tooltip');                                    
-                
-  tooltip.append('div')                                           
+  var tooltip = d3.select('#top-contributor')
+    .append('div')
+    .attr('class', 'tooltip');
+
+  tooltip.append('div')
     .attr('class', 'name');
-  tooltip.append('div')                                           
-    .attr('class', 'total');                                       
+  tooltip.append('div')
+    .attr('class', 'total');
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -227,4 +226,3 @@ svg.selectAll('text')
   });
   }
   }
-

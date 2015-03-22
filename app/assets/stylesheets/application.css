@@ -97,7 +97,7 @@ rect {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  cursor: pointer;                                              /* NEW */
+  cursor: pointer;
   stroke-width: 2;
 }
 
@@ -105,13 +105,13 @@ rect:hover{
   fill: #D73027;
 }
 
-rect.disabled {                                                 /* NEW */
-    fill: transparent !important;                                 /* NEW */
-}                                                               /* NEW */
-h1 {                                                            /* NEW */
-  font-size: 14px;                                              /* NEW */
-  text-align: center;                                           /* NEW */
-}                                                               /* NEW */
+rect.disabled {
+    fill: transparent !important;
+}
+h1 {
+  font-size: 14px;
+  text-align: center;
+}
 
 #chart{
   margin: 0 auto;

@@ -11,7 +11,7 @@ function renderSectorDonut(response) {
     }
     dataset.forEach(function(d) {
       d.count = +d.count;
-      d.enabled = true;                                         
+      d.enabled = true;
     });
 
     var width = 360;
@@ -61,16 +61,16 @@ function renderSectorDonut(response) {
       .attr('fill', function(d, i) {
         return color(d.data.sector);
       })
-      .each(function(d) { this._current = d; }); 
+      .each(function(d) { this._current = d; });
 
       function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
     path.on('mouseover', function(d) {
       var total = d3.sum(dataset.map(function(d) {
-        return (d.enabled) ? d.amount : 0; 
+        return (d.enabled) ? d.amount : 0;
       }));
-      
+
       var percent = Math.round( 1000 * d.data.amount / total ) / 10;
 
       tooltip.select('.sector').html(d.data.sector);
@@ -110,68 +110,55 @@ function renderSectorDonut(response) {
     .attr('width', legendRectSize)
     .attr('height', legendRectSize)
     .style('fill', color)
-    .style('stroke', color)                                   
-      .on('click', function(sector) {                            
-        var rect = d3.select(this);                             
-        var enabled = true;                                     
-        var totalEnabled = d3.sum(dataset.map(function(d) {     
-          return (d.enabled) ? 1 : 0;                           
-        }));                                                    
-              
-        if (rect.attr('class') === 'disabled') {                
-          rect.attr('class', '');                               
-        } else {                                                
-          if (totalEnabled < 2) return;                         
-          rect.attr('class', 'disabled');                       
-          enabled = false;                                      
-        }                                                       
+    .style('stroke', color)
+      .on('click', function(sector) {
+        var rect = d3.select(this);
+        var enabled = true;
+        var totalEnabled = d3.sum(dataset.map(function(d) {
+          return (d.enabled) ? 1 : 0;
+        }));
 
-        pie.value(function(d) {                                 
-        if (d.sector === sector) d.enabled = enabled;           
-          return (d.enabled) ? d.count : 0;                     
-        });                                                     
+        if (rect.attr('class') === 'disabled') {
+          rect.attr('class', '');
+        } else {
+          if (totalEnabled < 2) return;
+          rect.attr('class', 'disabled');
+          enabled = false;
+        }
 
-        path = path.data(pie(dataset));                         
+        pie.value(function(d) {
+        if (d.sector === sector) d.enabled = enabled;
+          return (d.enabled) ? d.count : 0;
+        });
 
-        path.transition()                                       
-          .duration(750)                                        
-          .attrTween('d', function(d) {                         
-            var interpolate = d3.interpolate(this._current, d); 
-            this._current = interpolate(0);                     
-            return function(t) {                                
-              return arc(interpolate(t));                       
-            };                                                  
-          });                                                   
+        path = path.data(pie(dataset));
+
+        path.transition()
+          .duration(750)
+          .attrTween('d', function(d) {
+            var interpolate = d3.interpolate(this._current, d);
+            this._current = interpolate(0);
+            return function(t) {
+              return arc(interpolate(t));
+            };
+          });
       });
 
       legend.on('mouseover', function(d) {
       var total = d3.sum(dataset.map(function(d) {
-        return (d.enabled) ? d.count : 0; 
+        return (d.enabled) ? d.count : 0;
       }));
-      
 
-      // start hover over box for legend
-      // var percent = Math.round(d.amount / total) / 10;
-
-      // tooltip.select('.sector').html(d.sector);
-      // tooltip.select('.count').html(d.count + ' contributors');
-      // tooltip.select('.amount').html('$' + d.amount);
-      // tooltip.select('.percent').html(percent + '% of total');
-      // tooltip.style('display', 'block');
-
-      // svg.selectAll(".donut-slice").style('opacity','.6')
-      // d3.select(this).style('opacity','1.0')
     });
 
     legend.on('mouseout', function() {
       tooltip.style('display', 'none');
-      // svg.selectAll(".donut-slice").style('opacity','1.0')
     });
 
     legend.on('mousemove', function(d) {
       tooltip.style('top', (d3.event.pageY + -530) + 'px')
         .style('left', (d3.event.pageX + -712) + 'px');
-    });                                                       
+    });
 
   legend.append('text')
     .attr('x', legendRectSize + legendSpacing)
@@ -179,4 +166,3 @@ function renderSectorDonut(response) {
     .text(function(d) { return d; });
   })(window.d3);
 }
-

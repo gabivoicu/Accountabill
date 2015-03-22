@@ -84,7 +84,7 @@ describe NetworkController do
       body = JSON.parse(response.body)
       sector = body.first
       expect(sector["count"]).to be_kind_of(Integer)
-      expect(sector["amount"]).to be_kind_of(Integer)       
+      expect(sector["amount"]).to be_kind_of(Integer)
     end
 
     it "should return data" do
@@ -99,18 +99,18 @@ describe NetworkController do
     end
   end
 
-  context "Finding Contribuions by Industry" do
+  context "Finding Contributions by Industry" do
 
     let(:bio_id) { "K000360" }
 
     it "should convert count and amount to integers" do
       VCR.use_cassette("industries") do
         response = get :industries, bio_id: bio_id
-      end  
+      end
       body = JSON.parse(response.body)
-      industry = body.first 
+      industry = body.first
       expect(industry["count"]).to be_kind_of(Integer)
-      expect(industry["amount"]).to be_kind_of(Integer)  
+      expect(industry["amount"]).to be_kind_of(Integer)
     end
 
     it "should return data" do
@@ -171,6 +171,3 @@ describe NetworkController do
     end
   end
 end
-
-
-
