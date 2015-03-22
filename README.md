@@ -28,6 +28,13 @@ Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight
 - VCR
 
 
+### Getting Started
+1. Clone repo ```git clone https://github.com/gabivoicu/Accountabill.git ```
+2. Install dependencies ```bundle install```
+3. Set up database ```rake db:reset```
+4. Start serves ```rails s```
+5. Project is now live on [localhost:3000](http://localhost:3000/)
+
 ### Team
 
 Accountabill is the brainchild of [Gabriela Voicu](https://github.com/gabivoicu), [Ian Agne](https://github.com/ianagne), [Rachel Kolcheck](https://github.com/rkolcheck), [Shiraz Sherwani](https://github.com/PacoGuy) and [Elliott Young](https://github.com/ElliottAYoung). 
