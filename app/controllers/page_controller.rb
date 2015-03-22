@@ -1,0 +1,3 @@
+class PageController < ApplicationController
+
+end
