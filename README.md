@@ -28,5 +28,6 @@ Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight
 - VCR
 
 
+### Team
 
 Accountabill is the brainchild of [Gabriela Voicu](https://github.com/gabivoicu), [Ian Agne](https://github.com/ianagne), [Rachel Kolcheck](https://github.com/rkolcheck), [Shiraz Sherwani](https://github.com/PacoGuy) and [Elliott Young](https://github.com/ElliottAYoung). 
