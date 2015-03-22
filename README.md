@@ -8,6 +8,9 @@ Built in 8 days, this web app is the final project of five newbie software devel
 
 Accountabill uses the Congress v3 and Influence Explorer APIs from the [Sunlight Foundation](https://sunlightfoundation.com/api/).
 
+### Screenshots
+![Screenshots](/images/screenshots.png)
+
 ### Technologies
 - Ruby on Rails
 - Postgres with HStore
