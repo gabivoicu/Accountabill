@@ -9,7 +9,7 @@ var Transition = ({
   resetToDefault: function(){
     $("#search-container").hide();
     $("#results-view").hide();
-    $("#front-page-header").css("margin-top", "10%");
+    $("#front-page-header").css("margin-top", "5%");
   },
   defaultToDisplaySearchResults: function(){
     $('#results-view').hide();
