@@ -55,6 +55,7 @@
 
 .politician-result img{
   width: 15%;
+  min-width: 90px;
   margin: 1%;
 }
 
