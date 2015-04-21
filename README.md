@@ -1,6 +1,6 @@
 # Accountabill
 
-[Live on Heroku](https://accountabill.herokuapp.com/)
+[Live on Heroku](https://accountabill.herokuapp.com/) (might take up to 30s to load because Heroku archives seldom visited sites)
 
 Accountabill is an Open Source web application that provides a list of State Representatives and Senators based on a user's zipcode. A user can look at campaign contribution data for their Congress person for the latest election cycle. Information about contributing sectors, industries, individual vs. PAC and top contributors is available.
 
