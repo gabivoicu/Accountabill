@@ -18,3 +18,15 @@
 <div id="search-container" class="small-12 medium-8 large-6 large-centered medium-centered small-centered columns">
 
 </div>
+
+<%= form_for :tweet, url: tweets_create_path, method: :get do |f| %>
+  <%= f.text_area :message %>
+  <%= f.submit "Send Tweet" %>
+<% end %>
+
+<% if current_user %>
+  Welcome <%= current_user.name %>!
+  <%= link_to "Sign Out", signout_path %>
+<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>

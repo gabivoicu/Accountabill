@@ -5,7 +5,8 @@ var AppRouter = Backbone.Router.extend({
   routes: {
     "": "root",
     "bio/:bioId": "bio",
-    "query/:input": "query"
+    "query/:input": "query",
+    "tweets/create": "tweet"
   },
   
   root: function() {

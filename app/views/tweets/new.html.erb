@@ -1,3 +1,7 @@
 <p>
-
+  <h1>Twitter</h1>
+  <%= form_for :tweet, url: tweets_new_path, method: :post do |f| %>
+    <%= f.text_area :message %>
+    <%= f.submit "Send Tweet" %>
+  <% end %>
 </p>
